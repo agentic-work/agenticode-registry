@@ -9,9 +9,9 @@ from:
   path: skills/tmux
   follows: main
 license: MIT
-license_file: UPSTREAM-LICENSE
-vendor: true
-vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+license_from: LICENSE
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: null
 description: "Control tmux sessions/panes for interactive CLIs: list, capture output, send keys, paste text, monitor prompts."

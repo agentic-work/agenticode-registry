@@ -9,9 +9,8 @@ from:
   commit: "35b9610bb2710c37ca11326c4cbf7818b6725fec"
   follows: main
 license: Apache-2.0
-license_file: plugin/LICENSE
-vendor: true
-vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: 20705
 description: Data engineering plugin - warehouse exploration, pipeline authoring, Airflow integration
@@ -19,7 +18,10 @@ why: Data engineering plugin - warehouse exploration, pipeline authoring, Airflo
 install:
   type: plugin
   marketplace: agenticode-registry
-  path: plugins/data-engineering/plugin
+  upstream:
+    source: url
+    url: https://github.com/astronomer/agents.git
+    sha: 35b9610bb2710c37ca11326c4cbf7818b6725fec
 scan_allow:
   skills/analyzing-data/scripts/tests/test_connectors.py: "test fixture: the 'private key' is the literal text 'test' between PEM markers (reviewed 2026-11-10)"
 lint_allow:

@@ -9,9 +9,8 @@ from:
   path: skills/.curated/security-best-practices
   follows: main
 license: Apache-2.0
-license_file: LICENSE.txt
-vendor: true
-vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: null
 description: "Perform language and framework specific security best-practice reviews and suggest improvements. Trigger only when the user explicitly requests security best practices guidance, a security review/report, or…"

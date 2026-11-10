@@ -4,10 +4,10 @@
 // command text, where prompt injection hides.
 //   bun scout/bump.ts                 report only
 //   bun scout/bump.ts --apply <name>  move <name> to the new commit on a branch
-//                                     (bump/<name>-<date>), re-vendor, re-gate
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "fs";
-import { dirname, join } from "path";
-import { ROOT, listFiles, loadItems, upstreamTree, type Item } from "../gates/lib";
+//                                     (bump/<name>-<date>) and re-gate
+import { mkdirSync, readFileSync, writeFileSync } from "fs";
+import { join } from "path";
+import { ROOT, loadItems, type Item } from "../gates/lib";
 
 const gh = (path: string): any => { const r = Bun.spawnSync(["gh", "api", path]); try { return r.exitCode ? null : JSON.parse(r.stdout.toString()); } catch { return null; } };
 const applyName = process.argv.includes("--apply") ? process.argv[process.argv.indexOf("--apply") + 1] : null;
@@ -32,7 +32,7 @@ for (const it of applyName ? picks.filter(p => p.pick.name === applyName) : pick
   bumps.push({ it, head, files, text: files.filter(x => MODEL_TEXT.test(x.name)).map(x => x.name) });
 }
 
-const out = [`# Bumps ${new Date().toISOString().slice(0, 10)}`, "", bumps.length ? `${bumps.length} pick(s) whose upstream moved past the pinned commit. Nothing is merged automatically: \`scripts/registry/bump.sh --apply <name>\` re-vendors one on a branch and re-runs its gates.` : "Every pick is at its upstream's latest commit for its path.", ""];
+const out = [`# Bumps ${new Date().toISOString().slice(0, 10)}`, "", bumps.length ? `${bumps.length} pick(s) whose upstream moved past the pinned commit. Nothing is merged automatically: \`scripts/registry/bump.sh --apply <name>\` moves one pin on a branch and re-runs its gates.` : "Every pick is at its upstream's latest commit for its path.", ""];
 for (const b of bumps) {
   const f = b.it.pick.from!;
   out.push(`## ${b.it.id}`, "", `[${f.commit.slice(0, 7)}…${b.head.slice(0, 7)}](https://github.com/${f.repo}/compare/${f.commit}...${b.head}) · ${b.files.length} file(s)${b.text.length ? ` · **model-facing text changed: ${b.text.slice(0, 8).join(", ")}**` : ""}`, "");
@@ -49,15 +49,8 @@ if (applyName) {
   const it = b.it, p = it.pick, f = p.from!;
   const branch = `bump/${p.name}-${new Date().toISOString().slice(0, 10)}`;
   if (Bun.spawnSync(["git", "-C", ROOT, "switch", "-c", branch]).exitCode) throw new Error(`could not create ${branch}`);
-  if (p.vendor) {
-    const tree = upstreamTree(f.repo, b.head);
-    const src = f.path ? join(tree, f.path) : tree;
-    const dest = p.kind === "plugin" ? join(it.dir, "plugin") : it.dir;
-    const keep = new Set(["pick.yaml", "UPSTREAM.md", "entry.json", "UPSTREAM-LICENSE", "UPSTREAM-NOTICE"]);
-    for (const old of listFiles(dest, false)) if (!keep.has(old)) rmSync(join(dest, old));
-    const files = p.kind === "agent" ? [f.file!] : listFiles(src, false).filter(x => x !== ".complete");
-    for (const x of files) { const to = join(dest, p.kind === "agent" ? p.install.file : x); mkdirSync(dirname(to), { recursive: true }); cpSync(join(src, x), to); }
-  }
+  // nothing is copied here: moving the pin is the whole bump; the gates then
+  // re-read every file from upstream at the new commit
   const y = readFileSync(join(it.dir, "pick.yaml"), "utf8").replace(`commit: ${f.commit}`, `commit: ${b.head}`);
   writeFileSync(join(it.dir, "pick.yaml"), y);
   const g = Bun.spawnSync(["bash", join(ROOT, "scripts/registry/gate.sh"), it.id], { stdout: "inherit", stderr: "inherit" });

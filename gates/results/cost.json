@@ -1,6 +1,6 @@
 {
   "gate": "cost",
-  "ran_at": "2026-11-10T14:31:02.329Z",
+  "ran_at": "2026-11-10T15:17:46.720Z",
   "results": {
     "mcp/aws-knowledge": {
       "status": "pass",

@@ -11,7 +11,7 @@ import { join } from "path";
 import { CACHE, ROOT, installable, loadItems, readResults, selected, writeResults, type GateResult, type Item } from "./lib";
 
 const BIN = (process.env.AGENTICODE_BIN ?? "bun /Users/trenton/agenticode/src/entrypoints/cli.tsx").split(" ");
-const conc = Number(process.argv[process.argv.indexOf("--concurrency") + 1]) || 6;
+const conc = Number(process.argv[process.argv.indexOf("--concurrency") + 1]) || 2;
 const homes = join(CACHE, "homes");
 const shared = { npm_config_cache: join(CACHE, "npm-cache"), UV_CACHE_DIR: join(CACHE, "uv-cache") };
 const version = Bun.spawnSync([...BIN, "--version"]).stdout.toString().trim();
@@ -29,6 +29,8 @@ const lastJson = (s: string) => { const l = s.trim().split("\n").reverse().find(
 
 async function gate(it: Item): Promise<GateResult> {
   const p = it.pick;
+  // a blocked plugin is left out of the marketplace, so there is nothing to install yet
+  if (p.kind === "plugin" && p.status === "blocked") return { status: "skip", detail: `blocked (${p.blocked_reason?.split(":")[0] ?? "gate"}), so it is not in the marketplace` };
   const home = join(homes, it.id.replace("/", "__"));
   rmSync(home, { recursive: true, force: true }); mkdirSync(join(home, "work"), { recursive: true });
   const env: Record<string, string> = {

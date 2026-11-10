@@ -1,6 +1,6 @@
 {
   "gate": "lint",
-  "ran_at": "2026-11-10T14:31:12.419Z",
+  "ran_at": "2026-11-10T15:17:37.389Z",
   "results": {
     "agent/code-simplifier": {
       "status": "pass",
@@ -461,6 +461,10 @@
       "status": "pass",
       "detail": "1 text file(s)"
     },
+    "skill/docx": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
     "skill/frontend-design": {
       "status": "pass",
       "detail": "1 text file(s)"
@@ -527,9 +531,17 @@
       "status": "pass",
       "detail": "12 text file(s)"
     },
+    "skill/pdf": {
+      "status": "pass",
+      "detail": "3 text file(s)"
+    },
     "skill/playground": {
       "status": "pass",
       "detail": "7 text file(s)"
+    },
+    "skill/pptx": {
+      "status": "pass",
+      "detail": "1 text file(s)"
     },
     "skill/render-deploy": {
       "status": "pass",
@@ -554,6 +566,10 @@
     "skill/security-threat-model": {
       "status": "pass",
       "detail": "4 text file(s)"
+    },
+    "skill/simplify": {
+      "status": "pass",
+      "detail": "1 text file(s)"
     },
     "skill/skill-creator": {
       "status": "pass",
@@ -600,6 +616,10 @@
       "detail": "1 text file(s)"
     },
     "skill/weekly-review-planning": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/xlsx": {
       "status": "pass",
       "detail": "1 text file(s)"
     }

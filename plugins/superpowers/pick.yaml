@@ -9,9 +9,8 @@ from:
   commit: bb92a77741419a4ab5f06e711a283343f1ada0c3
   follows: main
 license: MIT
-license_file: plugin/LICENSE
-vendor: true
-vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: 1141697
 description: Superpowers teaches Claude brainstorming, subagent driven development with built in code review, systematic debugging, and red/green TDD. Additionally, it teaches Claude how to author and test new skills.
@@ -20,7 +19,10 @@ note: TDD, debugging, brainstorming, plans
 install:
   type: plugin
   marketplace: agenticode-registry
-  path: plugins/superpowers/plugin
+  upstream:
+    source: url
+    url: https://github.com/obra/superpowers.git
+    sha: bb92a77741419a4ab5f06e711a283343f1ada0c3
 lint_allow:
   ".github/ISSUE_TEMPLATE/bug_report.md#hidden-text": "GitHub issue-template comment, not model-facing (reviewed 2026-11-10)"
   ".github/PULL_REQUEST_TEMPLATE.md#hidden-text": "GitHub PR-template comment, not model-facing (reviewed 2026-11-10)"

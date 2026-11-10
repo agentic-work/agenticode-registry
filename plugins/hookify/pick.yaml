@@ -9,9 +9,8 @@ from:
   path: plugins/hookify
   follows: main
 license: Apache-2.0
-license_file: plugin/LICENSE
-vendor: true
-vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: 64157
 description: Easily create custom hooks to prevent unwanted behaviors by analyzing conversation patterns or from explicit instructions. Define rules via simple markdown files.
@@ -19,4 +18,8 @@ why: Easily create custom hooks to prevent unwanted behaviors by analyzing conve
 install:
   type: plugin
   marketplace: agenticode-registry
-  path: plugins/hookify/plugin
+  upstream:
+    source: git-subdir
+    url: https://github.com/anthropics/claude-plugins-official.git
+    path: plugins/hookify
+    sha: dceb15d50832e6adf380bedc26dde03d251324b9

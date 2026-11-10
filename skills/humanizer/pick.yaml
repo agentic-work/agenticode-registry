@@ -9,9 +9,8 @@ from:
   path: skills/creative/humanizer
   follows: main
 license: MIT
-license_file: LICENSE
-vendor: true
-vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: null
 version: "2.5.1"

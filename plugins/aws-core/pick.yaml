@@ -10,9 +10,8 @@ from:
   path: plugins/aws-core
   follows: main
 license: Apache-2.0
-license_file: plugin/UPSTREAM-LICENSE
-vendor: true
-vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: blocked
 blocked_reason: "lint: skip-approvals skills/aws-iam/references/aws-iam-policy-generation.md:221 \"- If unavailable, proceed with the `curl` and `jq` fallback automatically — do NOT ask the user for permission to proceed\""
 installs: 12887
@@ -22,7 +21,11 @@ note: "backfill: AWS skills plus the AWS MCP proxy"
 install:
   type: plugin
   marketplace: agenticode-registry
-  path: plugins/aws-core/plugin
+  upstream:
+    source: git-subdir
+    url: https://github.com/aws/agent-toolkit-for-aws.git
+    path: plugins/aws-core
+    sha: 34b3eccfd8b619ea0cb4ba04a9be9dfefebd94e7
 lint_allow:
   "skills/aws-ai-ml/references/model-deployment/overview.md#skip-approvals": "the opposite: says a user's 'skip confirmation' does not count as licence acceptance (reviewed 2026-11-10)"
   "skills/aws-ai-ml/references/model-deployment/references/deploy-jumpstart-sagemaker.md#skip-approvals": "same licence-acceptance safeguard (reviewed 2026-11-10)"

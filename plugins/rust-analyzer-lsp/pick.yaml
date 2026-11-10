@@ -10,9 +10,8 @@ from:
   path: plugins/rust-analyzer-lsp
   follows: main
 license: Apache-2.0
-license_file: plugin/LICENSE
-vendor: true
-vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: 39257
 version: "1.0.0"
@@ -21,4 +20,8 @@ why: Rust language server for code intelligence and analysis
 install:
   type: plugin
   marketplace: agenticode-registry
-  path: plugins/rust-analyzer-lsp/plugin
+  upstream:
+    source: git-subdir
+    url: https://github.com/anthropics/claude-plugins-official.git
+    path: plugins/rust-analyzer-lsp
+    sha: dceb15d50832e6adf380bedc26dde03d251324b9

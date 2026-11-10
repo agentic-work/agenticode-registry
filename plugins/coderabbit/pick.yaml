@@ -8,9 +8,8 @@ from:
   commit: "3e8763d24d543b48615b82535d02288de3ddae40"
   follows: main
 license: MIT
-license_file: plugin/LICENSE
-vendor: true
-vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: 34833
 description: "Your code review partner. CodeRabbit provides external validation using a specialized AI architecture and 40+ integrated static analyzers—offering a different perspective that catches bugs, security vulnerabilities,…"
@@ -19,4 +18,7 @@ note: "skills + review agent (needs the CodeRabbit CLI); upstream ships no MCP"
 install:
   type: plugin
   marketplace: agenticode-registry
-  path: plugins/coderabbit/plugin
+  upstream:
+    source: url
+    url: https://github.com/coderabbitai/skills.git
+    sha: 3e8763d24d543b48615b82535d02288de3ddae40

@@ -73,8 +73,7 @@ async function scanItem(it: Item): Promise<GateResult> {
 
   const pl = payload(it)!;
   const hosts = new Set<string>();
-  for (const f of pl.files) {
-    const abs = join(pl.base, f);
+  for (const { p: f, abs } of pl.files) {
     const buf = readFileSync(abs);
     if (buf.includes(0)) continue; // binary (fonts, images)
     const text = buf.toString("utf8");
@@ -97,7 +96,7 @@ async function scanItem(it: Item): Promise<GateResult> {
     const r = Bun.spawnSync(["gitleaks", "dir", pl.base, "--no-banner", "--redact", "--exit-code", "3"]);
     if (r.exitCode === 3) findings.push("gitleaks found leaks");
   }
-  if (tools.osv && pl.files.some(f => /(package-lock\.json|requirements\.txt|uv\.lock|poetry\.lock|pnpm-lock\.yaml|bun\.lock)$/.test(f))) {
+  if (tools.osv && pl.files.some(({ p: f }) => /(package-lock\.json|requirements\.txt|uv\.lock|poetry\.lock|pnpm-lock\.yaml|bun\.lock)$/.test(f))) {
     const r = Bun.spawnSync(["osv-scanner", "scan", "source", "-r", pl.base]);
     if (r.exitCode === 1) findings.push("osv-scanner found vulnerabilities");
   }

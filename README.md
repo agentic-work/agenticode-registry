@@ -16,22 +16,24 @@ agenticode store doctor      # re-verifies checksums and MCP handshakes
 
 1. **Scout** (weekly, `scripts/registry/scout.sh`): ranks candidates from the Claude marketplace install feed, the MCP Registry and GitHub activity for openai/skills, hermes-agent, openclaw and clawhub. Writes `scout/candidates.md` (Add? / Drop? / Overlap / Watch).
 2. **Pick** (a human): one `pick.yaml` per item with the upstream repo, the exact commit, the licence and why we want it.
-3. **Vendor**: only where the licence allows redistribution (MIT, Apache-2.0, BSD, ISC, OFL for fonts) is the item copied here, at the pinned commit, with its licence kept beside it and credit in [`THIRD_PARTY.md`](THIRD_PARTY.md). Anything else is **link-only**: agenticode fetches it from upstream at the pinned commit. MCP servers are never copied; only their connection config lives here.
+3. **No copies**: nothing is copied into this repo. A pick is its upstream repo and commit; the index records the sha256 of every file at that commit. agenticode fetches each file from upstream and checks it before installing, and puts the upstream licence (plus our attribution note) in the installed skill folder. Credit for every pick is in [`THIRD_PARTY.md`](THIRD_PARTY.md). MCP servers: only their connection config lives here.
 4. **Gate** (`scripts/registry/gate.sh`): licence (SPDX on every licence file and header), supply chain and secrets, a prompt-injection lint, and a real install test with agenticode in a throwaway home. An MCP must complete its handshake and list its tools. A pick that fails a gate is marked `status: blocked` with the reason; it is never dropped silently.
 5. **Publish** (`scripts/registry/publish.sh`): `index/index.json` is built from the picks and gate results, signed with minisign and released. agenticode carries the public key and refuses an index it cannot verify.
 6. **Install**: every file agenticode installs is checked against its sha256 in the signed index before anything lands.
 
-**Keeping fresh:** `bump.sh` (daily) lists picks whose upstream moved past the pin, highlighting changes to skill/agent/command text; `bump.sh --apply <name>` re-vendors on a branch and re-runs the gates. `yank.sh <kind>/<name> "<advisory>"` withdraws a pick; agenticode turns it off at its next index read and says why.
+**Sources.** Claude (the claude-plugins-official marketplace and anthropics/skills), Codex (openai/skills), Hermes (NousResearch/hermes-agent), OpenClaw (openclaw/openclaw), the MCP reference servers, and our own repo [agentic-work/agenticode-skills](https://github.com/agentic-work/agenticode-skills). Our own skills are picks like any other: pinned to a commit of that repo and installed from it. Skills that used to be compiled into agenticode (`/simplify`) are installed from there on first run.
+
+**Keeping fresh:** `bump.sh` (daily) lists picks whose upstream moved past the pin, highlighting changes to skill/agent/command text; `bump.sh --apply <name>` moves the pin on a branch and re-runs the gates. `yank.sh <kind>/<name> "<advisory>"` withdraws a pick; agenticode turns it off at its next index read and says why.
 
 GitHub Actions on agentic-work is blocked by billing, so these jobs run from `scripts/registry/*.sh` on the maintainer's Mac. The workflow files in `.github/workflows/` are ready to move over unchanged.
 
 ## Layout
 
 ```
-skills/<name>/     SKILL.md …, pick.yaml, UPSTREAM.md      (ours: ours.yaml, README.md)
-agents/<name>/     <name>.md, pick.yaml, UPSTREAM.md
-mcp/<name>/        mcp.json, pick.yaml
-plugins/<name>/    plugin/ (vendored tree), pick.yaml, entry.json, UPSTREAM.md
+skills/<name>/     pick.yaml, UPSTREAM.md       (built-in / planned ours: ours.yaml, README.md)
+agents/<name>/     pick.yaml, UPSTREAM.md
+mcp/<name>/        pick.yaml, mcp.json
+plugins/<name>/    pick.yaml, entry.json, UPSTREAM.md
 scout/             scout.ts, bump.ts, candidates.md, bumps.md, snapshots/
 gates/             license.ts, scan.ts, lint.ts, install.ts, apply.ts, results/
 index/             build.ts, index.json, index.json.minisig   (generated; never edited by hand)
@@ -60,4 +62,4 @@ The trusted comment names the index version and the registry commit it was built
 
 ## Licence
 
-This repository's own files are MIT ([LICENSE](LICENSE)). Vendored material keeps its upstream licence; see [THIRD_PARTY.md](THIRD_PARTY.md).
+This repository's own files are MIT ([LICENSE](LICENSE)). Nothing upstream is copied here; each pick keeps its own licence, listed in [THIRD_PARTY.md](THIRD_PARTY.md).

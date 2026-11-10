@@ -9,9 +9,9 @@ from:
   path: plugins/playground/skills/playground
   follows: main
 license: Apache-2.0
-license_file: UPSTREAM-LICENSE
-vendor: true
-vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+license_from: plugins/playground/LICENSE
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: 69797
 description: "Creates interactive HTML playgrounds — self-contained single-file explorers with visual controls, live preview, and prompt output with copy button. Includes templates for design playgrounds, data explorers, concept…"

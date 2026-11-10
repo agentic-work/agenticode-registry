@@ -10,9 +10,8 @@ from:
   path: plugins/explanatory-output-style
   follows: main
 license: Apache-2.0
-license_file: plugin/LICENSE
-vendor: true
-vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: 67065
 description: Adds educational insights about implementation choices and codebase patterns (mimics the deprecated Explanatory output style)
@@ -20,4 +19,8 @@ why: Adds educational insights about implementation choices and codebase pattern
 install:
   type: plugin
   marketplace: agenticode-registry
-  path: plugins/explanatory-output-style/plugin
+  upstream:
+    source: git-subdir
+    url: https://github.com/anthropics/claude-plugins-official.git
+    path: plugins/explanatory-output-style
+    sha: dceb15d50832e6adf380bedc26dde03d251324b9

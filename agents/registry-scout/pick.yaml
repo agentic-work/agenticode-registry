@@ -1,0 +1,23 @@
+kind: agent
+name: registry-scout
+owner: agentic-work
+source: agentic-work
+category: Authoring
+from:
+  source: agentic-work
+  repo: agentic-work/agenticode-skills
+  commit: 3aa55cab59eb6b315d8d3b0c9f9922bf8bd1f3f6
+  file: agents/registry-scout.md
+  follows: main
+license: MIT
+license_from: LICENSE
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
+status: ok
+installs: null
+version: "1.0.0"
+description: "Runs scout, bump and yank for agentic-work/agenticode-registry and reports what needs a decision."
+why: "Ours. Keeps the registry fresh."
+install:
+  type: agent
+  file: registry-scout.md

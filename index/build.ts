@@ -4,7 +4,7 @@
 //   bun index/build.ts [--version 2026.11.10] [--commit <registry commit>]
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from "fs";
 import { join } from "path";
-import { MARKETPLACE_NAME, REGISTRY_REPO, ROOT, hashDir, loadItems, payload, readResults, sha256, treeHash, type Item } from "../gates/lib";
+import { MARKETPLACE_NAME, REGISTRY_REPO, ROOT, hashPayload, loadItems, payload, readResults, sha256, treeHash, type Item } from "../gates/lib";
 
 const arg = (k: string) => { const i = process.argv.indexOf(k); return i >= 0 ? process.argv[i + 1] : undefined; };
 const today = new Date().toISOString().slice(0, 10).replace(/-/g, ".");
@@ -21,7 +21,7 @@ export function canonicalJson(v: unknown): string {
 const gates = Object.fromEntries(["license", "scan", "lint", "install", "cost"].map(g => [g, readResults(g)?.results ?? {}]));
 const gateMeta = { scan: readResults("scan")?.tools, install: readResults("install")?.agenticode };
 
-function tokensIdle(it: Item, files: { p: string }[], base?: string): number | null {
+function tokensIdle(it: Item, files: { p: string; abs?: string }[], base?: string): number | null {
   // what the model carries while the item is idle: names + descriptions of
   // each skill / agent / command (frontmatter), roughly 4 characters a token
   if (it.pick.kind === "mcp") return gates.cost[it.id]?.tokens_idle ?? null;
@@ -31,7 +31,7 @@ function tokensIdle(it: Item, files: { p: string }[], base?: string): number | n
     if (!/(^|\/)(SKILL\.md|[^/]+\.md)$/.test(f.p)) continue;
     const isEntry = /(^|\/)SKILL\.md$/.test(f.p) || /(^|\/)(agents|commands)\/[^/]+\.md$/.test(f.p) || (it.pick.kind === "agent");
     if (!isEntry) continue;
-    const m = readFileSync(join(base, f.p), "utf8").match(/^---\n([\s\S]*?)\n---/);
+    const m = readFileSync(f.abs ?? join(base, f.p), "utf8").match(/^---\n([\s\S]*?)\n---/);
     if (!m) continue;
     const fm = m[1].match(/^(name|description):.*(\n[ \t]+.*)*$/gm)?.join(" ") ?? "";
     chars += fm.length;
@@ -68,24 +68,27 @@ for (const it of loadItems()) {
       entry.tokens_idle = tokensIdle(it, []);
     } else {
       const pl = payload(it)!;
-      const files = hashDir(pl.base, pl.files);
+      // plugins install through agenticode's plugin system from upstream, so
+      // their hash covers exactly the upstream plugin folder
+      const files = hashPayload(pl.files);
       entry.sha256 = treeHash(files);
-      entry.tokens_idle = tokensIdle(it, files, pl.base);
+      entry.tokens_idle = tokensIdle(it, pl.files, pl.base);
       if (p.kind === "plugin") {
         entry.plugin = { marketplace: MARKETPLACE_NAME, files: files.length };
         if (p.status === "ok") {
           const extra = existsSync(join(it.dir, "entry.json")) ? JSON.parse(readFileSync(join(it.dir, "entry.json"), "utf8")) : {};
-          marketplace.push({ ...extra, name: p.name, description: p.description ?? extra.description, ...(p.version ? { version: p.version } : {}), category: (p.category ?? "").toLowerCase() || undefined,
-            source: p.vendor ? `./${pl.regPath}` : p.install.upstream });
+          marketplace.push({ ...extra, name: p.name, description: p.description ?? extra.description, ...(p.version ? { version: p.version } : {}), category: (p.category ?? "").toLowerCase() || undefined, source: p.install.upstream });
         }
       } else {
-        entry.files = files;
-        entry.fetch = pl.origin === "registry" ? { base: "registry", repo: REGISTRY_REPO, commit, path: pl.regPath } : { base: "upstream", ...pl.up };
+        entry.files = files.map((f, i) => (pl.files[i].from ? { ...f, from: pl.files[i].from } : f));
+        entry.fetch = { base: "upstream", ...pl.up };
+        if (p.default) entry.default = true;
       }
     }
   }
-  if (!it.ours && p.vendor) {
-    third.push(`| \`${it.id}\` | [${p.from!.repo}](https://github.com/${p.from!.repo}/tree/${p.from!.commit}${p.from!.path ? `/${p.from!.path}` : ""}) | \`${p.from!.commit.slice(0, 7)}\` | ${p.license} | ${p.license_file ? `\`${it.dir.slice(ROOT.length + 1)}/${p.license_file}\`` : "-"} |`);
+  if (p.from && ["ok", "blocked"].includes(p.status)) {
+    const where = p.from.path ?? p.from.file ?? "";
+    third.push(`| \`${it.id}\` | [${p.from.repo}](https://github.com/${p.from.repo}/tree/${p.from.commit}${where ? `/${where}` : ""}) | \`${p.from.commit.slice(0, 7)}\` | ${p.license ?? "none published"} | ${p.license_from ? `\`${p.license_from}\` (installed as ${p.kind === "agent" ? "LICENSE" : "UPSTREAM-LICENSE"})` : p.kind === "mcp" ? "server config only" : "in the item's folder"} |`);
   }
   items.push(entry);
 }
@@ -96,7 +99,7 @@ const counts = {
   picks: kept.length,
   ok: items.filter(i => i.status === "ok" && !i.owner).length,
   vendored: kept.filter(i => i.vendor).length,
-  link_only: kept.filter(i => !i.vendor).length,
+  from_upstream: kept.filter(i => !i.vendor).length,
   blocked: items.filter(i => i.status === "blocked").length,
   replaced: items.filter(i => i.status === "replace").length,
   excluded: items.filter(i => i.status === "exclude").length,
@@ -122,12 +125,10 @@ writeFileSync(join(ROOT, "THIRD_PARTY.md"), `# Third-party material
 
 Generated by \`index/build.ts\`; do not edit by hand.
 
-Everything below was copied ("vendored") from its upstream at the pinned commit, under the upstream licence, which is kept next to the copy. All credit belongs to the upstream authors. Picks marked link-only in the index are **not** copied here: agenticode installs them straight from upstream at the pinned commit and checks every file's sha256 against the signed index.
+**Nothing is copied into this repository.** Every pick below is installed by agenticode straight from its upstream at the pinned commit, and agenticode checks every file against the sha256 recorded in the signed index before anything lands. The upstream licence goes into the installed skill folder (from the item's own folder, or fetched from the repo as \`UPSTREAM-LICENSE\`), together with our attribution note \`UPSTREAM.md\`. All credit belongs to the upstream authors.
 
-| Item | Upstream | Commit | Licence | Licence file here |
+| Item | Upstream | Commit | Licence | Licence file installed |
 | --- | --- | --- | --- | --- |
 ${third.sort().join("\n")}
-
-Some vendored items carry further notices of their own (for example the OFL font licences inside \`skills/canvas-design/canvas-fonts/\` and \`plugins/aws-core/plugin/UPSTREAM-NOTICE\`); those files are kept unchanged.
 `);
 console.log(`index ${version} @ ${commit.slice(0, 7)}: ${JSON.stringify(counts)}`);

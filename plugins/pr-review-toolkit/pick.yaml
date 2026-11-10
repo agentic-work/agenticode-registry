@@ -9,9 +9,8 @@ from:
   path: plugins/pr-review-toolkit
   follows: main
 license: Apache-2.0
-license_file: plugin/LICENSE
-vendor: true
-vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: 124273
 description: Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification
@@ -19,4 +18,8 @@ why: Comprehensive PR review agents specializing in comments, tests, error handl
 install:
   type: plugin
   marketplace: agenticode-registry
-  path: plugins/pr-review-toolkit/plugin
+  upstream:
+    source: git-subdir
+    url: https://github.com/anthropics/claude-plugins-official.git
+    path: plugins/pr-review-toolkit
+    sha: dceb15d50832e6adf380bedc26dde03d251324b9

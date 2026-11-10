@@ -1,0 +1,24 @@
+kind: skill
+name: simplify
+owner: agentic-work
+source: agentic-work
+category: Coding
+from:
+  source: agentic-work
+  repo: agentic-work/agenticode-skills
+  commit: 3aa55cab59eb6b315d8d3b0c9f9922bf8bd1f3f6
+  path: skills/simplify
+  follows: main
+license: MIT
+license_from: LICENSE
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
+status: ok
+default: true
+installs: null
+version: "1.0.0"
+description: "Review changed code for reuse, quality, and efficiency, then fix any issues found."
+why: "Ours. Used to be compiled into agenticode; now installed by default on first run from the signed index."
+install:
+  type: skill
+  dir: simplify

@@ -33,7 +33,7 @@ for (const it of selected(loadItems()).filter(installable)) {
     for (const t of tools[it.id]?.tools ?? []) texts.push([`tool:${t.name}`, `${t.name}: ${t.description ?? ""}`]);
   } else {
     const pl = payload(it)!;
-    for (const f of pl.files) if (/\.(md|mdc|txt|ya?ml)$/i.test(f) && !/(^|\/)(LICEN[CS]E|UPSTREAM-LICENSE|CHANGELOG|NOTICE)/i.test(f)) texts.push([f, readFileSync(join(pl.base, f), "utf8")]);
+    for (const f of pl.files) if (f.p !== "UPSTREAM.md" && /\.(md|mdc|txt|ya?ml)$/i.test(f.p) && !/(^|\/)(LICEN[CS]E|UPSTREAM-LICENSE|CHANGELOG|NOTICE)/i.test(f.p)) texts.push([f.p, readFileSync(f.abs, "utf8")]);
   }
   const declared = new Set((p.hosts ?? []).map(h => h.toLowerCase()));
   const hits: { file: string; rule: string; sev: string; line: number; text: string; allowed?: string }[] = [];

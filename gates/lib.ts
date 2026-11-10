@@ -1,6 +1,6 @@
 // Shared helpers for the registry scripts (bun, no dependencies).
 import { createHash } from "crypto";
-import { existsSync, mkdirSync, readFileSync, readdirSync, statSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "fs";
 import { tmpdir } from "os";
 import { dirname, join, resolve } from "path";
 
@@ -20,7 +20,7 @@ export const COPYLEFT = /GPL|AGPL|LGPL|MPL|EUPL|CDDL|SSPL/;
 export type Pick = {
   kind: Kind; name: string; type?: string; source: string; category?: string; group?: string;
   from?: { source: string; repo: string; commit: string; path?: string; file?: string; follows?: string };
-  license?: string | null; license_file?: string; vendor?: boolean; vendor_reason?: string;
+  license?: string | null; license_file?: string; license_from?: string; vendor?: boolean; vendor_reason?: string; default?: boolean;
   status: "ok" | "blocked" | "replace" | "exclude" | "built-in" | "planned";
   blocked_reason?: string; replaced_by?: string | null; yanked?: string | null;
   installs?: number | null; version?: string; description?: string; why?: string; note?: string;
@@ -74,39 +74,74 @@ export function treeHash(files: FileEntry[]): string {
 export function hashDir(dir: string, files = listFiles(dir)): FileEntry[] {
   return files.map(p => { const b = readFileSync(join(dir, p)); return { p, sha256: sha256(b), size: b.length }; });
 }
-
-/** Download repo@commit once (codeload tarball) and return the extracted folder. */
-export function upstreamTree(repo: string, commit: string): string {
-  const d = join(CACHE, `${repo.replace("/", "__")}-${commit.slice(0, 12)}`);
-  if (existsSync(join(d, ".complete"))) return d;
-  mkdirSync(d, { recursive: true });
-  const r = Bun.spawnSync(["bash", "-c", `set -o pipefail; curl -sfL https://codeload.github.com/${repo}/tar.gz/${commit} | tar -xz --strip-components=1 -C "$0" && touch "$0/.complete"`, d]);
-  if (r.exitCode) throw new Error(`could not fetch ${repo}@${commit}: ${r.stderr.toString().trim()}`);
-  return d;
+export function hashPayload(files: { p: string; abs: string }[]): FileEntry[] {
+  return files.map(f => { const b = readFileSync(f.abs); return { p: f.p, sha256: sha256(b), size: b.length }; });
 }
 
 /**
- * Where an installable item's payload lives and which files it has.
- * Vendored: in this repo. Link-only: upstream at the pinned commit.
+ * A sparse, blobless git checkout of repo@commit holding only `paths`
+ * (directories or files, repo-relative; none = the whole repo). Repeated calls
+ * widen the same checkout. Git, not a tarball: export-ignore rules do not
+ * apply, so the files are exactly what agenticode's git-based installs see.
  */
-export function payload(item: Item): { base: string; files: string[]; origin: "registry" | "upstream"; regPath?: string; up?: { repo: string; commit: string; path: string } } | null {
+export function upstreamTree(repo: string, commit: string, paths?: string[]): string {
+  const d = join(CACHE, `${repo.replace("/", "__")}-${commit.slice(0, 12)}`);
+  const git = (...a: string[]) => {
+    const r = Bun.spawnSync(["git", "-C", d, ...a], { env: { ...process.env, GIT_TERMINAL_PROMPT: "0" } });
+    if (r.exitCode) throw new Error(`git ${a[0]} ${repo}@${commit.slice(0, 7)}: ${r.stderr.toString().trim().split("\n").pop()}`);
+    return r.stdout.toString();
+  };
+  const want = join(d, ".git", "registry-paths");
+  if (!existsSync(join(d, ".git"))) {
+    mkdirSync(d, { recursive: true });
+    git("init", "-q");
+    git("remote", "add", "origin", `https://github.com/${repo}.git`);
+    git("fetch", "-q", "--depth", "1", "--filter=blob:none", "origin", commit);
+    Bun.write(want, "");
+  }
+  const have = new Set(readFileSync(want, "utf8").split("\n").filter(Boolean));
+  const add = paths === undefined ? ["/*"] : paths.map(p => (p ? `/${p.replace(/^\/+|\/+$/g, "")}` : "/*"));
+  const before = have.size;
+  for (const a of add) have.add(a);
+  if (have.size !== before || !existsSync(join(d, ".git", "registry-checked-out"))) {
+    git("sparse-checkout", "set", "--no-cone", ...[...have]);
+    git("checkout", "-q", commit);
+    writeFileSync(want, [...have].join("\n") + "\n");
+    writeFileSync(join(d, ".git", "registry-checked-out"), commit);
+  }
+  return d;
+}
+
+export type PayloadFile = { p: string; abs: string; from?: { base: "registry" | "upstream"; path: string } };
+export type Payload = { base: string; files: PayloadFile[]; up: { repo: string; commit: string; path: string } };
+
+/**
+ * What agenticode installs for a pick, file by file. Nothing is copied into
+ * this repo: every file comes from the pick's upstream at the pinned commit,
+ * plus the upstream licence when it lives outside the item's folder
+ * (UPSTREAM-LICENSE) and our attribution note (UPSTREAM.md, from this repo).
+ * MCP picks have no files (their config is the payload).
+ */
+export function payload(item: Item): Payload | null {
   const p = item.pick;
-  if (p.kind === "mcp") return null;
-  if (item.ours) {
-    if (p.status !== "ok") return null;
-    return { base: item.dir, files: p.kind === "agent" ? [p.install.file] : listFiles(item.dir).filter(f => f !== "README.md"), origin: "registry", regPath: relPath(item.dir) };
-  }
-  if (p.status === "replace" || p.status === "exclude") return null;
-  if (p.vendor) {
-    const base = p.kind === "plugin" ? join(item.dir, "plugin") : item.dir;
-    const files = p.kind === "agent" ? [p.install.file] : listFiles(base, p.kind !== "plugin");
-    return { base, files, origin: "registry", regPath: relPath(base) };
-  }
+  if (p.kind === "mcp" || item.ours || ["replace", "exclude", "planned", "built-in"].includes(p.status)) return null;
   const f = p.from!;
-  const tree = upstreamTree(f.repo, f.commit);
-  if (p.kind === "agent") return { base: dirname(join(tree, f.file!)), files: [f.file!.split("/").pop()!], origin: "upstream", up: { repo: f.repo, commit: f.commit, path: dirname(f.file!) } };
+  const lic = p.license_from;
+  if (p.kind === "agent") {
+    const tree = upstreamTree(f.repo, f.commit, [f.file!, ...(lic ? [lic] : [])]);
+    const files: PayloadFile[] = [{ p: p.install.file, abs: join(tree, f.file!), from: { base: "upstream", path: f.file! } }];
+    if (lic) files.push({ p: "LICENSE", abs: join(tree, lic), from: { base: "upstream", path: lic } });
+    files.push({ p: "UPSTREAM.md", abs: join(item.dir, "UPSTREAM.md"), from: { base: "registry", path: `${relPath(item.dir)}/UPSTREAM.md` } });
+    return { base: dirname(join(tree, f.file!)), files, up: { repo: f.repo, commit: f.commit, path: dirname(f.file!) === "." ? "" : dirname(f.file!) } };
+  }
+  const tree = upstreamTree(f.repo, f.commit, f.path ? [f.path, ...(lic ? [lic] : [])] : undefined);
   const base = f.path ? join(tree, f.path) : tree;
-  return { base, files: listFiles(base, false).filter(x => x !== ".complete"), origin: "upstream", up: { repo: f.repo, commit: f.commit, path: f.path ?? "" } };
+  const files: PayloadFile[] = listFiles(base, false).map(x => ({ p: x, abs: join(base, x) }));
+  if (p.kind === "skill") {
+    if (lic) files.push({ p: "UPSTREAM-LICENSE", abs: join(tree, lic), from: { base: "upstream", path: lic } });
+    files.push({ p: "UPSTREAM.md", abs: join(item.dir, "UPSTREAM.md"), from: { base: "registry", path: `${relPath(item.dir)}/UPSTREAM.md` } });
+  }
+  return { base, files, up: { repo: f.repo, commit: f.commit, path: f.path ?? "" } };
 }
 
 export const relPath = (abs: string) => abs.slice(ROOT.length + 1);

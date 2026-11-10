@@ -85,7 +85,6 @@ out.push("", "## Overlap", "", ...(overlap.length ? overlap : ["Nothing obvious.
 
 // --- Watch: what we rewrote instead of copying
 const watch = [
-  { what: "office-docs", repo: "anthropics/skills", paths: ["skills/docx", "skills/pdf", "skills/pptx", "skills/xlsx"] },
   { what: "figma-bridge", repo: "figma/mcp-server-guide", paths: [""] },
   { what: "agenticode-setup", repo: "anthropics/claude-plugins-official", paths: ["plugins/claude-code-setup"] },
   { what: "brainbow", repo: "microsoft/playwright-mcp", paths: [""] },

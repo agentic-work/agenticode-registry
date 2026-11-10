@@ -9,9 +9,8 @@ from:
   path: skills/.curated/notion-spec-to-implementation
   follows: main
 license: MIT
-license_file: LICENSE.txt
-vendor: true
-vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: null
 description: "Turn Notion specs into implementation plans, tasks, and progress tracking; use when implementing PRDs/feature specs and creating Notion plans + tasks from them."

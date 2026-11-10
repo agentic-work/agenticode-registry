@@ -9,9 +9,9 @@ from:
   path: skills/creative/p5js
   follows: main
 license: MIT
-license_file: UPSTREAM-LICENSE
-vendor: true
-vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+license_from: LICENSE
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: null
 version: "1.0.0"

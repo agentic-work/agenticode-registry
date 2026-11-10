@@ -1,7 +1,7 @@
 {
   "gate": "install",
-  "ran_at": "2026-11-10T14:31:02.329Z",
-  "agenticode": "agenticode v1.0.52",
+  "ran_at": "2026-11-10T15:17:46.720Z",
+  "agenticode": "agenticode v1.0.53",
   "platform": "darwin-arm64",
   "results": {
     "agent/code-simplifier": {
@@ -600,8 +600,8 @@
       "detail": "handshake reached the server; it needs a sign-in to list tools · mcp list: ! Needs authentication"
     },
     "mcp/postgres": {
-      "status": "fail",
-      "detail": "handshake failed: MCP error -32000: Connection closed"
+      "status": "needs-env",
+      "detail": "needs POSTGRES_URL (MCP error -32000: Connection closed)"
     },
     "mcp/posthog": {
       "status": "needs-auth",
@@ -685,8 +685,8 @@
       "detail": "handshake reached the server; it needs a sign-in to list tools · mcp list: ! Needs authentication"
     },
     "plugin/aws-core": {
-      "status": "pass",
-      "detail": "installed and enabled (sha256 matched)"
+      "status": "skip",
+      "detail": "blocked (lint), so it is not in the marketplace"
     },
     "plugin/clangd-lsp": {
       "status": "pass",
@@ -729,8 +729,8 @@
       "detail": "installed and enabled (sha256 matched)"
     },
     "plugin/huggingface-skills": {
-      "status": "pass",
-      "detail": "installed and enabled (sha256 matched)"
+      "status": "skip",
+      "detail": "blocked (lint), so it is not in the marketplace"
     },
     "plugin/jdtls-lsp": {
       "status": "pass",
@@ -844,6 +844,10 @@
       "status": "pass",
       "detail": "installed; agenticode lists the skill"
     },
+    "skill/docx": {
+      "status": "pass",
+      "detail": "installed; agenticode lists the skill"
+    },
     "skill/frontend-design": {
       "status": "pass",
       "detail": "installed; agenticode lists the skill"
@@ -900,7 +904,15 @@
       "status": "pass",
       "detail": "installed; agenticode lists the skill"
     },
+    "skill/pdf": {
+      "status": "pass",
+      "detail": "installed; agenticode lists the skill"
+    },
     "skill/playground": {
+      "status": "pass",
+      "detail": "installed; agenticode lists the skill"
+    },
+    "skill/pptx": {
       "status": "pass",
       "detail": "installed; agenticode lists the skill"
     },
@@ -925,6 +937,10 @@
       "detail": "installed; agenticode lists the skill"
     },
     "skill/security-threat-model": {
+      "status": "pass",
+      "detail": "installed; agenticode lists the skill"
+    },
+    "skill/simplify": {
       "status": "pass",
       "detail": "installed; agenticode lists the skill"
     },
@@ -973,6 +989,10 @@
       "detail": "installed; agenticode lists the skill"
     },
     "skill/weekly-review-planning": {
+      "status": "pass",
+      "detail": "installed; agenticode lists the skill"
+    },
+    "skill/xlsx": {
       "status": "pass",
       "detail": "installed; agenticode lists the skill"
     }

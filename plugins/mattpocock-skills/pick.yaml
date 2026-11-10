@@ -9,9 +9,8 @@ from:
   commit: "49dd158d1076134a641b33efb035946536778336"
   follows: main
 license: MIT
-license_file: plugin/LICENSE
-vendor: true
-vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
 status: ok
 installs: 74123
 description: "Matt Pocock's agent skills for real engineering — grilling, spec/ticket flows, TDD, code review, domain modelling and more. Plug-and-play, not vibe coding."
@@ -19,6 +18,9 @@ why: "Matt Pocock's agent skills for real engineering — grilling, spec/ticket 
 install:
   type: plugin
   marketplace: agenticode-registry
-  path: plugins/mattpocock-skills/plugin
+  upstream:
+    source: url
+    url: https://github.com/mattpocock/skills.git
+    sha: 49dd158d1076134a641b33efb035946536778336
 lint_allow:
   "skills/in-progress/writing-fragments/SKILL.md#skip-approvals": "about not interrupting the user while appending to their own fragments file; agenticode still enforces write permissions (reviewed 2026-11-10)"

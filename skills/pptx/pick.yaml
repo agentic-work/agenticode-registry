@@ -2,9 +2,19 @@ kind: skill
 name: pptx
 source: Claude
 category: Office
-status: replace
-replaced_by: office-docs
+from:
+  source: claude
+  repo: anthropics/skills
+  commit: 2c5958ecac7cee2b583967a2c4981d0f4a75c579
+  path: skills/pptx
+  follows: main
+license: Apache-2.0
 vendor: false
+vendor_reason: "installed from upstream at the pinned commit; agenticode checks every file against the sha256 in the signed index"
+status: ok
 installs: null
-note: "replaced by our office-docs rewrite. Upstream moved these skills to Apache-2.0 on 2026-11-06 (anthropics/skills 2c5958e), so copying would now be allowed; kept as a rewrite until agentic-work decides"
-why: "Covered by our own office-docs (planned); nothing is copied or installed from upstream."
+description: "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx…"
+why: "Anthropic's PowerPoint decks skill; Apache-2.0 since 2026-11-06 (anthropics/skills 2c5958e), so it is taken from upstream instead of rewritten."
+install:
+  type: skill
+  dir: pptx

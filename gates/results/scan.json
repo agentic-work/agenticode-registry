@@ -1,200 +1,9 @@
 {
   "gate": "scan",
-  "ran_at": "2026-11-10T14:28:42.400Z",
+  "ran_at": "2026-11-10T15:11:14.152Z",
   "tools": "gitleaks not installed: skipped (built-in secret patterns ran instead); osv-scanner not installed: skipped (pinned MCP packages were checked against api.osv.dev instead)",
   "offline": false,
   "results": {
-    "skill/algorithmic-art": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/apple-notes": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/apple-reminders": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/architecture-diagram": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/arxiv": {
-      "status": "warn",
-      "detail": "scripts reach hosts the pick does not declare: export.arxiv.org, a9.com, arxiv.org",
-      "hosts": [
-        "export.arxiv.org",
-        "a9.com",
-        "arxiv.org"
-      ]
-    },
-    "skill/canvas-design": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/cli-creator": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/codebase-inspection": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/define-goal": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/diagram-maker": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/doc-coauthoring": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/frontend-design": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/gh-address-comments": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/gh-fix-ci": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/gh-issues": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/grounded-citations": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/humanizer": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/jupyter-notebook": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/manim-video": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/mcp-builder": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/meeting-action-items": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/netlify-deploy": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/notion-spec-to-implementation": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/obsidian": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/p5js": {
-      "status": "warn",
-      "detail": "scripts reach hosts the pick does not declare: nodejs.org",
-      "hosts": [
-        "nodejs.org"
-      ]
-    },
-    "skill/playground": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/render-deploy": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/requesting-code-review": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/sdlc-review": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/security-best-practices": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/security-ownership-map": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/security-threat-model": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/skill-creator": {
-      "status": "warn",
-      "detail": "scripts reach hosts the pick does not declare: fonts.googleapis.com, fonts.gstatic.com",
-      "hosts": [
-        "fonts.googleapis.com",
-        "fonts.gstatic.com"
-      ]
-    },
-    "skill/spike": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/summarize": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/systematic-debugging": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/test-driven-development": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/theme-factory": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/things-mac": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/tmux": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/transcribe": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/trello": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
-    "skill/web-artifacts-builder": {
-      "status": "warn",
-      "detail": "scripts reach hosts the pick does not declare: ui.shadcn.com",
-      "hosts": [
-        "ui.shadcn.com"
-      ]
-    },
-    "skill/weekly-review-planning": {
-      "status": "pass",
-      "detail": "no secrets, no install scripts"
-    },
     "agent/code-simplifier": {
       "status": "pass",
       "detail": "no secrets, no install scripts"
@@ -481,6 +290,231 @@
     "plugin/typescript-lsp": {
       "status": "pass",
       "detail": "no secrets, no install scripts"
+    },
+    "skill/algorithmic-art": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/apple-notes": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/apple-reminders": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/architecture-diagram": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/arxiv": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: export.arxiv.org, a9.com, arxiv.org",
+      "hosts": [
+        "export.arxiv.org",
+        "a9.com",
+        "arxiv.org"
+      ]
+    },
+    "skill/canvas-design": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/cli-creator": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/codebase-inspection": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/define-goal": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/diagram-maker": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/doc-coauthoring": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/docx": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: openoffice.org, schemas.openxmlformats.org, schemas.microsoft.com",
+      "hosts": [
+        "openoffice.org",
+        "schemas.openxmlformats.org",
+        "schemas.microsoft.com"
+      ]
+    },
+    "skill/frontend-design": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/gh-address-comments": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/gh-fix-ci": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/gh-issues": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/grounded-citations": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/humanizer": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/jupyter-notebook": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/manim-video": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/mcp-builder": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/meeting-action-items": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/netlify-deploy": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/notion-spec-to-implementation": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/obsidian": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/p5js": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: nodejs.org",
+      "hosts": [
+        "nodejs.org"
+      ]
+    },
+    "skill/pdf": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/playground": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/pptx": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: schemas.openxmlformats.org, schemas.microsoft.com",
+      "hosts": [
+        "schemas.openxmlformats.org",
+        "schemas.microsoft.com"
+      ]
+    },
+    "skill/render-deploy": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/requesting-code-review": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/sdlc-review": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/security-best-practices": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/security-ownership-map": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/security-threat-model": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/simplify": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/skill-creator": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: fonts.googleapis.com, fonts.gstatic.com",
+      "hosts": [
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    "skill/spike": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/summarize": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/systematic-debugging": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/test-driven-development": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/theme-factory": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/things-mac": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/tmux": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/transcribe": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/trello": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/web-artifacts-builder": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: ui.shadcn.com",
+      "hosts": [
+        "ui.shadcn.com"
+      ]
+    },
+    "skill/weekly-review-planning": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/xlsx": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: schemas.openxmlformats.org, schemas.microsoft.com, openoffice.org",
+      "hosts": [
+        "schemas.openxmlformats.org",
+        "schemas.microsoft.com",
+        "openoffice.org"
+      ]
     }
   }
 }
