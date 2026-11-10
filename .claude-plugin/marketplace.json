@@ -1,0 +1,429 @@
+{
+  "name": "agenticode-registry",
+  "description": "agenticode Registry: curated, pinned and gated plugins (generated from the picks; do not edit)",
+  "owner": {
+    "name": "agentic-work",
+    "url": "https://github.com/agentic-work"
+  },
+  "plugins": [
+    {
+      "description": "C/C++ language server (clangd) for code intelligence",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "strict": false,
+      "lspServers": {
+        "clangd": {
+          "command": "clangd",
+          "args": [
+            "--background-index"
+          ],
+          "extensionToLanguage": {
+            ".c": "c",
+            ".h": "c",
+            ".cpp": "cpp",
+            ".cc": "cpp",
+            ".cxx": "cpp",
+            ".hpp": "cpp",
+            ".hxx": "cpp",
+            ".C": "cpp",
+            ".H": "cpp"
+          }
+        }
+      },
+      "name": "clangd-lsp",
+      "category": "languages",
+      "source": "./plugins/clangd-lsp/plugin"
+    },
+    {
+      "description": "Automated code review for pull requests using multiple specialized agents with confidence-based scoring to filter false positives",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/code-review",
+      "name": "code-review",
+      "category": "coding",
+      "source": "./plugins/code-review/plugin"
+    },
+    {
+      "description": "Your code review partner. CodeRabbit provides external validation using a specialized AI architecture and 40+ integrated static analyzers—offering a different perspective that catches bugs, security vulnerabilities,…",
+      "homepage": "https://github.com/coderabbitai/skills",
+      "name": "coderabbit",
+      "category": "coding",
+      "source": "./plugins/coderabbit/plugin"
+    },
+    {
+      "description": "Commands for git commit workflows including commit, push, and PR creation",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/commit-commands",
+      "name": "commit-commands",
+      "category": "coding",
+      "source": "./plugins/commit-commands/plugin"
+    },
+    {
+      "description": "C# language server for code intelligence",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "strict": false,
+      "lspServers": {
+        "csharp-ls": {
+          "command": "csharp-ls",
+          "extensionToLanguage": {
+            ".cs": "csharp"
+          }
+        }
+      },
+      "name": "csharp-lsp",
+      "category": "languages",
+      "source": "./plugins/csharp-lsp/plugin"
+    },
+    {
+      "description": "Data engineering plugin - warehouse exploration, pipeline authoring, Airflow integration",
+      "homepage": "https://github.com/astronomer/agents",
+      "name": "data-engineering",
+      "category": "data",
+      "source": "./plugins/data-engineering/plugin"
+    },
+    {
+      "description": "Adds educational insights about implementation choices and codebase patterns (mimics the deprecated Explanatory output style)",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/explanatory-output-style",
+      "name": "explanatory-output-style",
+      "category": "coding",
+      "source": "./plugins/explanatory-output-style/plugin"
+    },
+    {
+      "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/feature-dev",
+      "name": "feature-dev",
+      "category": "coding",
+      "source": "./plugins/feature-dev/plugin"
+    },
+    {
+      "description": "Go language server for code intelligence and refactoring",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "strict": false,
+      "lspServers": {
+        "gopls": {
+          "command": "gopls",
+          "extensionToLanguage": {
+            ".go": "go"
+          }
+        }
+      },
+      "name": "gopls-lsp",
+      "category": "languages",
+      "source": "./plugins/gopls-lsp/plugin"
+    },
+    {
+      "description": "Easily create custom hooks to prevent unwanted behaviors by analyzing conversation patterns or from explicit instructions. Define rules via simple markdown files.",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/hookify",
+      "name": "hookify",
+      "category": "authoring",
+      "source": "./plugins/hookify/plugin"
+    },
+    {
+      "description": "Java language server (Eclipse JDT.LS) for code intelligence",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "strict": false,
+      "lspServers": {
+        "jdtls": {
+          "command": "jdtls",
+          "extensionToLanguage": {
+            ".java": "java"
+          },
+          "startupTimeout": 120000
+        }
+      },
+      "name": "jdtls-lsp",
+      "category": "languages",
+      "source": "./plugins/jdtls-lsp/plugin"
+    },
+    {
+      "description": "Kotlin language server for code intelligence",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "strict": false,
+      "lspServers": {
+        "kotlin-lsp": {
+          "command": "kotlin-lsp",
+          "args": [
+            "--stdio"
+          ],
+          "extensionToLanguage": {
+            ".kt": "kotlin",
+            ".kts": "kotlin"
+          },
+          "startupTimeout": 120000
+        }
+      },
+      "name": "kotlin-lsp",
+      "category": "languages",
+      "source": "./plugins/kotlin-lsp/plugin"
+    },
+    {
+      "description": "Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/learning-output-style",
+      "name": "learning-output-style",
+      "category": "coding",
+      "source": "./plugins/learning-output-style/plugin"
+    },
+    {
+      "description": "Lua language server for code intelligence",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "strict": false,
+      "lspServers": {
+        "lua": {
+          "command": "lua-language-server",
+          "extensionToLanguage": {
+            ".lua": "lua"
+          }
+        }
+      },
+      "name": "lua-lsp",
+      "category": "languages",
+      "source": "./plugins/lua-lsp/plugin"
+    },
+    {
+      "description": "Matt Pocock's agent skills for real engineering — grilling, spec/ticket flows, TDD, code review, domain modelling and more. Plug-and-play, not vibe coding.",
+      "author": {
+        "name": "Matt Pocock"
+      },
+      "homepage": "https://github.com/mattpocock/skills",
+      "name": "mattpocock-skills",
+      "category": "coding",
+      "source": "./plugins/mattpocock-skills/plugin"
+    },
+    {
+      "description": "Skills for designing and building MCP servers that work seamlessly with Claude. Guides you through deployment models (remote HTTP, MCPB, local), tool design patterns, auth, and interactive MCP apps.",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/mcp-server-dev",
+      "name": "mcp-server-dev",
+      "category": "authoring",
+      "source": "./plugins/mcp-server-dev/plugin"
+    },
+    {
+      "description": "PHP language server (Intelephense) for code intelligence",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "strict": false,
+      "lspServers": {
+        "intelephense": {
+          "command": "intelephense",
+          "args": [
+            "--stdio"
+          ],
+          "extensionToLanguage": {
+            ".php": "php"
+          }
+        }
+      },
+      "name": "php-lsp",
+      "category": "languages",
+      "source": "./plugins/php-lsp/plugin"
+    },
+    {
+      "description": "Comprehensive toolkit for developing Claude Code plugins. Includes 7 expert skills covering hooks, MCP integration, commands, agents, and best practices. AI-assisted plugin creation and validation.",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/plugin-dev",
+      "name": "plugin-dev",
+      "category": "authoring",
+      "source": "./plugins/plugin-dev/plugin"
+    },
+    {
+      "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/pr-review-toolkit",
+      "name": "pr-review-toolkit",
+      "category": "coding",
+      "source": "./plugins/pr-review-toolkit/plugin"
+    },
+    {
+      "description": "Python language server (Pyright) for type checking and code intelligence",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "strict": false,
+      "lspServers": {
+        "pyright": {
+          "command": "pyright-langserver",
+          "args": [
+            "--stdio"
+          ],
+          "extensionToLanguage": {
+            ".py": "python",
+            ".pyi": "python"
+          }
+        }
+      },
+      "name": "pyright-lsp",
+      "category": "languages",
+      "source": "./plugins/pyright-lsp/plugin"
+    },
+    {
+      "description": "Interactive self-referential AI loops for iterative development, implementing the Ralph Wiggum technique. Claude works on the same task repeatedly, seeing its previous work, until completion.",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/ralph-loop",
+      "name": "ralph-loop",
+      "category": "coding",
+      "source": "./plugins/ralph-loop/plugin"
+    },
+    {
+      "description": "Rust language server for code intelligence and analysis",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "strict": false,
+      "lspServers": {
+        "rust-analyzer": {
+          "command": "rust-analyzer",
+          "extensionToLanguage": {
+            ".rs": "rust"
+          }
+        }
+      },
+      "name": "rust-analyzer-lsp",
+      "category": "languages",
+      "source": "./plugins/rust-analyzer-lsp/plugin"
+    },
+    {
+      "description": "Security review for Claude-generated code. Pattern-based warnings on edits, LLM-powered diff review on Stop, and an agentic commit reviewer that catches injection, XSS, SSRF, hardcoded secrets, and 25+ other…",
+      "version": "2.0.19",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance",
+      "name": "security-guidance",
+      "category": "security",
+      "source": "./plugins/security-guidance/plugin"
+    },
+    {
+      "description": "Semgrep catches security vulnerabilities in real-time and guides Claude to write secure code from the start.",
+      "homepage": "https://github.com/semgrep/mcp-marketplace.git",
+      "name": "semgrep",
+      "category": "security",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/semgrep/mcp-marketplace.git",
+        "path": "plugin",
+        "sha": "b58f407c6ac0f5fe47dee8301602f2e290a8ecfb"
+      }
+    },
+    {
+      "description": "Superpowers teaches Claude brainstorming, subagent driven development with built in code review, systematic debugging, and red/green TDD. Additionally, it teaches Claude how to author and test new skills.",
+      "homepage": "https://github.com/obra/superpowers.git",
+      "name": "superpowers",
+      "category": "coding",
+      "source": "./plugins/superpowers/plugin"
+    },
+    {
+      "description": "Swift language server (SourceKit-LSP) for code intelligence",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "strict": false,
+      "lspServers": {
+        "sourcekit-lsp": {
+          "command": "sourcekit-lsp",
+          "extensionToLanguage": {
+            ".swift": "swift"
+          }
+        }
+      },
+      "name": "swift-lsp",
+      "category": "languages",
+      "source": "./plugins/swift-lsp/plugin"
+    },
+    {
+      "description": "TypeScript/JavaScript language server for enhanced code intelligence",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "strict": false,
+      "lspServers": {
+        "typescript": {
+          "command": "typescript-language-server",
+          "args": [
+            "--stdio"
+          ],
+          "extensionToLanguage": {
+            ".ts": "typescript",
+            ".tsx": "typescriptreact",
+            ".js": "javascript",
+            ".jsx": "javascriptreact",
+            ".mts": "typescript",
+            ".cts": "typescript",
+            ".mjs": "javascript",
+            ".cjs": "javascript"
+          }
+        }
+      },
+      "name": "typescript-lsp",
+      "category": "languages",
+      "source": "./plugins/typescript-lsp/plugin"
+    }
+  ]
+}
