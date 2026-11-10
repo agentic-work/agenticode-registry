@@ -1,0 +1,26 @@
+kind: plugin
+name: data-engineering
+type: bundle
+source: Claude
+category: Data
+from:
+  source: claude
+  repo: astronomer/agents
+  commit: "35b9610bb2710c37ca11326c4cbf7818b6725fec"
+  follows: main
+license: Apache-2.0
+license_file: plugin/LICENSE
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: 20705
+description: Data engineering plugin - warehouse exploration, pipeline authoring, Airflow integration
+why: Data engineering plugin - warehouse exploration, pipeline authoring, Airflow integration
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  path: plugins/data-engineering/plugin
+scan_allow:
+  skills/analyzing-data/scripts/tests/test_connectors.py: "test fixture: the 'private key' is the literal text 'test' between PEM markers (reviewed 2026-11-10)"
+lint_allow:
+  "skills/delegating-to-otto/SKILL.md#skip-approvals": "describes another agent's permission modes and says to avoid them unless the user asks (reviewed 2026-11-10)"

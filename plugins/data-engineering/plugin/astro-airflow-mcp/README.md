@@ -1,0 +1,778 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Airflow MCP Server](#airflow-mcp-server)
+  - [Quickstart](#quickstart)
+    - [IDEs](#ides)
+    - [CLI Tools](#cli-tools)
+    - [Desktop Apps](#desktop-apps)
+    - [Other MCP Clients](#other-mcp-clients)
+    - [Configuration](#configuration)
+  - [Features](#features)
+  - [Available Tools](#available-tools)
+    - [Consolidated Tools (Agent-Optimized)](#consolidated-tools-agent-optimized)
+    - [Core Tools](#core-tools)
+    - [MCP Resources](#mcp-resources)
+    - [MCP Prompts](#mcp-prompts)
+  - [Airflow CLI Tool](#airflow-cli-tool)
+    - [Installation](#installation)
+    - [Quick Reference](#quick-reference)
+    - [Instance Management](#instance-management)
+    - [Configuration scopes](#configuration-scopes)
+    - [Instance Discovery](#instance-discovery)
+    - [Direct API Access](#direct-api-access)
+    - [Configuration](#configuration-1)
+    - [Registry Caching](#registry-caching)
+  - [Advanced Usage](#advanced-usage)
+    - [Running as Standalone Server](#running-as-standalone-server)
+    - [Airflow Plugin Mode](#airflow-plugin-mode)
+    - [CLI Options](#cli-options)
+    - [Telemetry](#telemetry)
+  - [Architecture](#architecture)
+    - [Core Components](#core-components)
+    - [Version Handling Strategy](#version-handling-strategy)
+    - [Deployment Modes](#deployment-modes)
+  - [Development](#development)
+  - [Contributing](#contributing)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# Airflow MCP Server
+
+[![CI](https://github.com/astronomer/astro-airflow-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/astronomer/astro-airflow-mcp/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![PyPI - Version](https://img.shields.io/pypi/v/astro-airflow-mcp.svg?color=blue)](https://pypi.org/project/astro-airflow-mcp)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://github.com/astronomer/astro-airflow-mcp/blob/main/LICENSE)
+
+A [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server for Apache Airflow that provides AI assistants with access to Airflow's REST API. Built with [FastMCP](https://github.com/jlowin/fastmcp).
+
+## Quickstart
+
+### IDEs
+
+<a href="https://insiders.vscode.dev/redirect?url=vscode://ms-vscode.vscode-mcp/install?%7B%22name%22%3A%22astro-airflow-mcp%22%2C%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22astro-airflow-mcp%22%2C%22--transport%22%2C%22stdio%22%5D%7D"><img src="https://img.shields.io/badge/VS_Code-Install_Server-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white" alt="Install in VS Code" height="32"></a>
+<a href="https://cursor.com/en-US/install-mcp?name=astro-airflow-mcp&config=eyJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJhc3Ryby1haXJmbG93LW1jcCIsIi0tdHJhbnNwb3J0Iiwic3RkaW8iXX0"><img src="https://cursor.com/deeplink/mcp-install-dark.svg" alt="Add to Cursor" height="32"></a>
+
+<details>
+<summary>Manual configuration</summary>
+
+Add to your MCP settings (Cursor: `~/.cursor/mcp.json`, VS Code: `.vscode/mcp.json`):
+
+```json
+{
+  "mcpServers": {
+    "airflow": {
+      "command": "uvx",
+      "args": ["astro-airflow-mcp", "--transport", "stdio"]
+    }
+  }
+}
+```
+
+</details>
+
+### CLI Tools
+
+<details>
+<summary>Claude Code</summary>
+
+```bash
+claude mcp add airflow -- uvx astro-airflow-mcp --transport stdio
+```
+
+</details>
+
+<details>
+<summary>Gemini CLI</summary>
+
+```bash
+gemini mcp add airflow -- uvx astro-airflow-mcp --transport stdio
+```
+
+</details>
+
+<details>
+<summary>Codex CLI</summary>
+
+```bash
+codex mcp add airflow -- uvx astro-airflow-mcp --transport stdio
+```
+
+</details>
+
+### Desktop Apps
+
+<details>
+<summary>Claude Desktop</summary>
+
+Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
+
+```json
+{
+  "mcpServers": {
+    "airflow": {
+      "command": "uvx",
+      "args": ["astro-airflow-mcp", "--transport", "stdio"]
+    }
+  }
+}
+```
+
+</details>
+
+### Other MCP Clients
+
+<details>
+<summary>Manual JSON Configuration</summary>
+
+Add to your MCP configuration file:
+
+```json
+{
+  "mcpServers": {
+    "airflow": {
+      "command": "uvx",
+      "args": ["astro-airflow-mcp", "--transport", "stdio"]
+    }
+  }
+}
+```
+
+Or connect to a running HTTP server: `"url": "http://localhost:8000/mcp"`
+
+</details>
+
+> **Note:** No installation required - `uvx` runs directly from PyPI. The `--transport stdio` flag is required because the server defaults to HTTP mode.
+
+### Configuration
+
+By default, the server connects to `http://localhost:8080` (Airflow default; also used by Astro CLI). Set environment variables for custom Airflow instances:
+
+| Variable | Description |
+|----------|-------------|
+| `AIRFLOW_API_URL` | Airflow webserver URL |
+| `AIRFLOW_USERNAME` | Username (Airflow 3.x uses OAuth2 token exchange) |
+| `AIRFLOW_PASSWORD` | Password |
+| `AIRFLOW_AUTH_TOKEN` | Bearer token (alternative to username/password) |
+| `AIRFLOW_VERIFY_SSL` | Set to `false` to disable SSL certificate verification |
+| `AIRFLOW_CA_CERT` | Path to custom CA certificate bundle |
+| `AF_READ_ONLY` | Set to `true` to block all write operations |
+| `ASTRO_MCP_ALLOWED_TOOLS` | Comma-separated MCP tool names to expose; unset to expose all tools |
+
+Example with auth (Claude Code):
+
+```bash
+claude mcp add airflow -e AIRFLOW_API_URL=https://your-airflow.example.com -e AIRFLOW_USERNAME=admin -e AIRFLOW_PASSWORD=admin -- uvx astro-airflow-mcp --transport stdio
+```
+
+**Selecting MCP tools**
+
+Set `ASTRO_MCP_ALLOWED_TOOLS` in the environment of the process running the MCP server to expose only selected [tools](#available-tools). For example, to allow DAG and DAG-run inspection in a standalone HTTP server:
+
+```bash
+ASTRO_MCP_ALLOWED_TOOLS="list_dags,get_dag_details,list_dag_runs,get_dag_run" \
+  uvx astro-airflow-mcp --transport http
+```
+
+The server advertises only those tools through `tools/list`. Direct `tools/call` requests for excluded tools are rejected before the tool executes.
+
+- Unset the variable to keep the default behavior of exposing all tools.
+- Names are exact and case-sensitive. Surrounding whitespace and duplicate names are ignored; wildcards are not supported.
+- Configuration errors do not stop the server. An empty value, an empty entry (such as `list_dags,`), or an unknown tool name makes the server start, expose no tools, and log an error that describes the problem. Fix the value and restart. A configuration error never falls back to exposing all tools.
+- The allowlist applies to every client of that server. It does not select tools per user or Slack channel.
+
+For [Airflow plugin mode](#airflow-plugin-mode), set the variable on the Airflow API server (Airflow 3) or webserver (Airflow 2) processes that host the plugin. Setting it only on a remote MCP client or agent does not configure the server.
+
+The setting is read once, when the server starts. After changing it, restart or redeploy all processes hosting that MCP endpoint, then refresh the client's tool discovery. Reconnecting a client alone does not reload the server's setting.
+
+To confirm the result, check the server logs after the restart. A `Tool allowlist active: exposing N of M tools` line means the policy applied. An error line naming `ASTRO_MCP_ALLOWED_TOOLS` means the server is running but exposes no tools; the line says what to fix. Neither line means the variable is unset and all tools are exposed.
+
+On Airflow 2 plugin mode, the webserver starts the MCP server when the first request reaches `/mcp/v1/`, separately in each webserver worker. These lines therefore appear after the first MCP request, not at restart. Send one MCP request (for example, connect a client and list tools) before you read the logs.
+
+The allowlist limits which tools a client can call. It does not restrict the arguments of an allowed tool, and an allowed tool still performs every operation its implementation contains. MCP resources and prompts stay available: excluding `get_airflow_config` does not remove the `airflow://config` resource. Airflow permissions and `AF_READ_ONLY` apply independently.
+
+## Features
+
+- **Airflow 2.x and 3.x Support**: Automatic version detection with adapter pattern
+- **MCP Tools** for accessing Airflow data:
+  - DAG management (list, get details, get source code, stats, warnings, import errors, trigger, pause/unpause)
+  - DAG run management (list, get, trigger, trigger and wait, delete, clear)
+  - Task management (list, get details, get task instances, get logs, clear task instances)
+  - Pool management (list, get details)
+  - Variable management (list, get specific variables)
+  - Connection management (list connections with credentials excluded)
+  - Asset/Dataset management (unified naming across versions, data lineage)
+  - Plugin and provider information
+  - Configuration and version details
+- **Consolidated Tools** for agent workflows:
+  - `explore_dag`: Get comprehensive DAG information in one call
+  - `diagnose_dag_run`: Debug failed DAG runs with task instance details
+  - `get_system_health`: System overview with health, errors, and warnings
+- **MCP Resources**: Static Airflow info exposed as resources (version, providers, plugins, config)
+- **MCP Prompts**: Guided workflows for common tasks (troubleshooting, health checks, onboarding)
+- **Dual deployment modes**:
+  - **Standalone server**: Run as an independent MCP server
+  - **Airflow plugin**: Integrate directly into Airflow 2.x (Flask) or 3.x (FastAPI) webserver
+- **Flexible Authentication**:
+  - Bearer token (Airflow 2.x and 3.x)
+  - Username/password with automatic OAuth2 token exchange (Airflow 3.x)
+  - Basic auth (Airflow 2.x)
+
+
+## Available Tools
+
+### Consolidated Tools (Agent-Optimized)
+
+| Tool | Description |
+|------|-------------|
+| `explore_dag` | Get comprehensive DAG info: metadata, tasks, recent runs, source code |
+| `diagnose_dag_run` | Debug a DAG run: run details, complete task-state counts and failed task instances |
+| `get_system_health` | System overview: health status, import errors, warnings, DAG stats |
+
+`diagnose_dag_run` and `af runs diagnose` paginate through task instances before
+building their summaries. `summary.total_tasks`, `summary.state_counts`, and
+`summary.failed_tasks` cover the complete listing; failed instances include
+`map_index` so mapped failures can be distinguished. The full `task_instances`
+details are limited to 100 instances, prioritizing `failed`, then `upstream_failed`,
+then other states. `task_instances_returned` and `task_instances_truncated`
+describe that sample. Missing or null states count as `unknown`. Use `get_task_logs`
+with the reported `task_id`, `try_number`, and `map_index` to investigate a failure.
+
+Failed-task retrieval for `trigger_dag_and_wait` and `af runs trigger-wait` also
+uses pagination. Retrieval errors, invalid totals, duplicate task instances, or
+the 1,000-page safety limit produce an explicit error instead of a partial failure
+list. Diagnostics omit the summary on failure; trigger-wait retains the final run
+status and adds `failed_tasks_error`. Pagination works with both Airflow 2 and 3.
+Overlapping pages are rejected; pagination does not provide an atomic snapshot
+of a changing run.
+
+### Core Tools
+
+| Tool | Description |
+|------|-------------|
+| `list_dags` | Get all DAGs and their metadata |
+| `get_dag_details` | Get detailed info about a specific DAG |
+| `get_dag_source` | Get the source code of a DAG |
+| `get_dag_stats` | Get DAG run statistics (Airflow 3.x only) |
+| `list_dag_warnings` | Get DAG import warnings |
+| `list_import_errors` | Get import errors from DAG files that failed to parse |
+| `list_dag_runs` | Get DAG run history |
+| `get_dag_run` | Get specific DAG run details |
+| `trigger_dag` | Trigger a new DAG run (start a workflow execution) |
+| `trigger_dag_and_wait` | Trigger a DAG run and wait for completion |
+| `delete_dag_run` | Permanently delete a specific DAG run |
+| `clear_dag_run` | Clear a DAG run to allow re-execution of all its tasks |
+| `pause_dag` | Pause a DAG to prevent new scheduled runs |
+| `unpause_dag` | Unpause a DAG to resume scheduled runs |
+| `list_tasks` | Get all tasks in a DAG |
+| `get_task` | Get details about a specific task |
+| `get_task_instance` | Get task instance execution details |
+| `get_task_logs` | Get logs for a specific task instance execution |
+| `clear_task_instances` | Clear task instances to allow re-execution |
+| `list_pools` | Get all resource pools |
+| `get_pool` | Get details about a specific pool |
+| `list_variables` | Get all Airflow variables |
+| `get_variable` | Get a specific variable by key |
+| `list_connections` | Get all connections (credentials excluded for security) |
+| `list_assets` | Get assets/datasets (unified naming across versions) |
+| `list_asset_events` | Get asset/dataset events |
+| `get_upstream_asset_events` | Get asset events that triggered a specific DAG run |
+| `list_plugins` | Get installed Airflow plugins |
+| `list_providers` | Get installed provider packages |
+| `get_airflow_config` | Get Airflow configuration |
+| `get_airflow_version` | Get Airflow version information |
+
+### MCP Resources
+
+| Resource URI | Description |
+|--------------|-------------|
+| `airflow://version` | Airflow version information |
+| `airflow://providers` | Installed provider packages |
+| `airflow://plugins` | Installed Airflow plugins |
+| `airflow://config` | Airflow configuration |
+
+### MCP Prompts
+
+| Prompt | Description |
+|--------|-------------|
+| `troubleshoot_failed_dag` | Guided workflow for diagnosing DAG failures |
+| `daily_health_check` | Morning health check routine |
+| `onboard_new_dag` | Guide for understanding a new DAG |
+
+## Airflow CLI Tool
+
+This package also includes `af`, a command-line tool for interacting with Airflow instances directly from your terminal.
+
+### Installation
+
+```bash
+# Install with uv
+uv tool install astro-airflow-mcp
+
+# Or use uvx to run without installing
+uvx --from astro-airflow-mcp@latest af --help
+```
+
+### Quick Reference
+
+```bash
+# System health check
+af health
+
+# DAG operations
+af dags list
+af dags get <dag_id>
+af dags explore <dag_id>      # Full investigation (metadata + tasks + source)
+af dags source <dag_id>
+af dags stats                  # DAG run statistics by state
+af dags pause <dag_id>
+af dags unpause <dag_id>
+af dags errors                 # Import errors
+af dags warnings
+
+# Run operations
+af runs list --dag-id <dag_id>
+af runs get <dag_id> <run_id>
+af runs trigger <dag_id>
+af runs trigger-wait <dag_id>  # Trigger and wait for completion
+af runs delete <dag_id> <run_id>   # Permanently delete a run
+af runs clear <dag_id> <run_id>    # Clear a run for re-execution
+af runs diagnose <dag_id> <run_id>
+
+# Task operations
+af tasks list <dag_id>
+af tasks get <dag_id> <task_id>
+af tasks instance <dag_id> <run_id> <task_id>  # Task execution details
+af tasks logs <dag_id> <run_id> <task_id>
+af tasks clear <dag_id> <run_id> <task_ids>    # Clear task instances
+
+# Asset operations
+af assets list                 # List assets/datasets
+af assets events               # List asset events
+
+# Config operations
+af config show                 # Full Airflow configuration
+af config version
+af config connections
+af config variables
+af config variable <key>       # Get specific variable
+af config pools
+af config pool <name>          # Get specific pool
+af config plugins              # List installed plugins
+af config providers            # List installed providers
+
+# Provider Registry (no Airflow instance required)
+af registry providers                         # List all providers
+af registry modules amazon                    # Operators, hooks, sensors
+af registry modules amazon --version 9.22.0   # Pinned version
+af registry parameters ftp                    # Constructor parameters
+af registry connections amazon                # Connection types
+af registry modules amazon --no-cache         # Bypass cache, fetch fresh
+
+# Direct API access (any endpoint)
+af api ls                             # List all available endpoints
+af api ls --filter variable           # Filter endpoints by pattern
+af api dags                           # GET /api/v{1,2}/dags
+af api dags -F limit=10               # With query parameters
+af api variables -X POST -F key=x -f value=y  # Create variable
+af api variables/x -X DELETE          # Delete variable
+```
+
+### Instance Management
+
+Manage multiple Airflow instances with persistent configuration:
+
+```bash
+# Add instances (auth is optional for open instances)
+af instance add local --url http://localhost:8080
+af instance add staging --url https://staging.example.com --username admin --password secret
+af instance add prod --url https://prod.example.com --token '${AIRFLOW_PROD_TOKEN}'
+
+# SSL options for self-signed or corporate CA certificates
+af instance add corp --url https://airflow.corp.example.com --no-verify-ssl --username admin --password secret
+af instance add corp --url https://airflow.corp.example.com --ca-cert /path/to/ca-bundle.pem --token '${TOKEN}'
+
+# List and switch instances
+af instance list                # All instances, with scope and current marker
+af instance use prod            # Switch to prod
+af instance current             # Show current instance
+af instance show prod           # Show instance details + which file it came from
+af instance delete old-instance
+af instance reset               # Reset global config to default
+```
+
+### Configuration scopes
+
+`af` reads and writes config across three scopes, co-located with the Astro CLI's `~/.astro/` directory and any project's `.astro/` directory. The model mirrors `git config` (system / global / local).
+
+| Scope | File | Committed? | Use for |
+|---|---|---|---|
+| Global | `~/.astro/config.yaml` | n/a (per-user) | Personal default deployments, localhost |
+| Project shared | `<root>/.astro/config.yaml` | yes (recommended) | The team's deployment inventory for this project |
+| Project local | `<root>/.astro/config.local.yaml` | no (gitignored) | Personal `current-instance` and per-developer overrides |
+
+`<root>` is found by walking up from `cwd` looking for a `.astro/` directory. Once you're in a project, `af instance discover` populates the team's deployment list directly into the committed file, so a fresh clone + `astro login` gets every teammate working immediately.
+
+**Read precedence (most-specific wins):** `current-instance` from project-local, then global. Instance lookup: project-local → project-shared → global; same-named entries in narrower scopes shadow.
+
+**Write routing** (default, no flags):
+- `add`: project-shared inside a project, else global
+- `use`: project-local (each developer can target a different deployment without touching the committed file)
+- `delete`: most-specific scope that has the name (rerun to peel scopes)
+- `discover`: project-shared inside a project, else global
+
+Override with mutually-exclusive flags on `add` / `use` / `delete` / `discover`:
+
+```bash
+af instance add local-dev --url http://localhost:8080 --global
+af instance use prod --local                                  # implicit, but explicit works
+af instance delete prod --global                              # only delete the global copy
+af instance discover --project                                # populate the team inventory
+```
+
+**Project-shared is committed by default**, so prefer `astro_pat` (which stores no secret on disk) or `${ENV_VAR}` interpolation when adding token/basic auth there. For literal credentials you don't want in git, use `--local` (gitignored) or `--global`. `af` does not police what you put where — gitignore is the contract.
+
+Use `AF_CONFIG=<path>` (or `--config <path>`) to bypass layering entirely and read/write a single file — preserves the `astro otto` wrapper's `AF_CONFIG=/dev/null` neutralize-config sentinel.
+
+#### Migrating from `~/.af/config.yaml`
+
+Older versions of `af` stored config at `~/.af/config.yaml`. On first read, that file is honored as a one-time fallback (with a stderr deprecation note). Run `af migrate` to move it explicitly:
+
+```bash
+af migrate
+# {"status": "migrated", "from": "/Users/julian/.af/config.yaml",
+#  "to": "/Users/julian/.astro/config.yaml",
+#  "backup": "/Users/julian/.af/config.yaml.bak"}
+```
+
+The migration preserves any astro-cli content already in `~/.astro/config.yaml` (the `save` merge keeps unknown top-level keys like `project`, `cloud`, `contexts`). Re-runs are idempotent.
+
+### Instance Discovery
+
+Auto-discover Airflow instances from Astro Cloud or local Docker environments:
+
+```bash
+# Preview discoverable instances (safe, read-only)
+af instance discover --dry-run
+
+# Discover from all backends (Astro Cloud + local)
+af instance discover
+
+# Discover Astro deployments only
+af instance discover astro
+
+# Include all accessible workspaces
+af instance discover astro --all-workspaces
+
+# Discover local Airflow instances (scans common ports)
+af instance discover local
+
+# Deep scan all ports for local instances
+af instance discover local --scan
+
+# Force a specific scope
+af instance discover --global              # personal global config, even when in a project
+af instance discover astro --project       # explicit (this is also the default in a project)
+```
+
+Discovered Astro instances use `astro_pat` auth — they store only the deployment ID and the active `astro` context, not a token. Tokens are resolved from the user's `astro login` session at request time, so `.astro/config.yaml` is safe to commit.
+
+### Direct API Access
+
+The `af api` command provides direct access to any Airflow REST API endpoint, similar to `gh api` for GitHub:
+
+```bash
+# Discover available endpoints
+af api ls
+af api ls --filter variable
+
+# GET requests (default)
+af api dags
+af api dags -F limit=10 -F only_active=true
+af api dags/my_dag
+
+# POST/PATCH/DELETE requests
+af api variables -X POST -F key=my_var -f value="my value"
+af api dags/my_dag -X PATCH -F is_paused=false
+af api variables/old_var -X DELETE
+
+# With JSON body
+af api connections -X POST --body '{"connection_id": "x", "conn_type": "postgres"}'
+
+# Include response headers
+af api dags -i
+
+# Access non-versioned endpoints
+af api health --raw
+
+# Get full OpenAPI spec
+af api spec
+```
+
+**Field syntax:**
+- `-F key=value`: Auto-converts types (numbers, booleans, null)
+- `-f key=value`: Keeps value as raw string
+- `--body '{}'`: Raw JSON body for complex objects
+
+#### Config file format
+
+Each scope file (global / project-shared / project-local) shares the same schema. `af` rewrites only its own top-level keys (`instances`, `current-instance`); other keys (e.g. astro-cli's `project`, `cloud`, `contexts`) are preserved untouched on round-trip. Example:
+
+```yaml
+instances:
+- name: local
+  url: http://localhost:8080
+  auth: null
+- name: staging
+  url: https://staging.example.com
+  auth:
+    username: admin
+    password: secret
+- name: prod
+  url: https://prod.example.com
+  auth:
+    token: ${AIRFLOW_PROD_TOKEN}  # Env-var interpolation; safe to commit
+- name: prod-astro
+  url: https://prod.astronomer.run/dXYZ
+  auth:
+    kind: astro_pat                # Resolves from `astro login` at request time
+    context: astronomer.io
+    deployment_id: clXYZ123        # Diagnostic only; tokens are not stored
+- name: corporate
+  url: https://airflow.corp.example.com
+  auth:
+    username: admin
+    password: secret
+  verify-ssl: false               # Disable SSL verification (self-signed certs)
+  # ca-cert: /path/to/ca.pem     # Or provide a custom CA bundle
+current-instance: local
+```
+
+Project-shared (`.astro/config.yaml`) is committed by default, so prefer `astro_pat` or `${VAR}` interpolation for credentials there. Put literal secrets in project-local (`.astro/config.local.yaml`, gitignored) instead.
+
+### Configuration
+
+Configure connections via environment variables:
+
+```bash
+# Environment variables
+export AIRFLOW_API_URL=http://localhost:8080
+export AIRFLOW_USERNAME=admin
+export AIRFLOW_PASSWORD=admin
+
+# Or inline for one-off commands
+AIRFLOW_API_URL=http://localhost:5500 af dags list
+```
+
+When `AIRFLOW_API_URL` is unset and no current instance is configured, the CLI falls back to `http://localhost:8080`. To explicitly signal "no Airflow is configured right now" (useful for automation / agent frameworks that don't want to risk querying a stale localhost service), set `AIRFLOW_API_URL=""`. The CLI will exit with a clear error instead of defaulting.
+
+```bash
+AIRFLOW_API_URL="" af dags list
+# Error: AIRFLOW_API_URL is set but empty. No Airflow instance is configured.
+```
+
+All commands output JSON (except `instance` commands which use human-readable tables), making them easy to use with tools like `jq`:
+
+```bash
+# Find failed runs
+af runs list | jq '.dag_runs[] | select(.state == "failed")'
+
+# Get DAG IDs only
+af dags list | jq '.dags[].dag_id'
+
+# List all hooks in the amazon provider
+af registry modules amazon | jq '.modules[] | select(.type == "hook") | .name'
+```
+
+### Registry Caching
+
+Registry responses are cached locally in `~/.af/.registry_cache/` to avoid repeated network calls:
+
+- **Unversioned requests** (e.g. `af registry modules amazon`) — cached for **1 hour**, since they point to the latest version which changes on new releases.
+- **Versioned requests** (e.g. `af registry modules amazon --version 9.22.0`) — cached for **30 days**, since version snapshots are immutable.
+
+Use `--no-cache` to bypass the cache and fetch fresh data. To clear all cached data, delete the cache directory:
+
+```bash
+rm -rf ~/.af/.registry_cache/
+```
+
+## Advanced Usage
+
+### Running as Standalone Server
+
+For HTTP-based integrations or connecting multiple clients to one server:
+
+```bash
+# Run server (HTTP mode is default)
+# Configure via environment variables
+AIRFLOW_API_URL=https://my-airflow.example.com AIRFLOW_USERNAME=admin AIRFLOW_PASSWORD=admin uvx astro-airflow-mcp
+```
+
+Connect MCP clients to: `http://localhost:8000/mcp`
+
+### Airflow Plugin Mode
+
+Install into your Airflow environment to expose an MCP endpoint directly on the webserver. This lets AI tools connect to your Airflow instance remotely via the MCP protocol — no standalone server needed.
+
+The plugin runs inside Airflow's webserver process and forwards your auth token to internal API calls. On Airflow 3, it uses stateless HTTP transport so it works with multiple API server replicas without session affinity.
+
+**Requirements:** Airflow 2.4+ or Airflow 3.x. The plugin reads `airflow.__version__` at import time and registers the matching integration:
+- **Airflow 3.x**: Mounts as a FastAPI app via the `fastapi_apps` plugin attribute
+- **Airflow 2.x**: Registers as a Flask blueprint via the `flask_blueprints` plugin attribute (bridges the MCP ASGI app to Flask via a background asyncio loop)
+
+#### Install
+
+Add `astro-airflow-mcp` to your `requirements.txt`:
+
+```
+astro-airflow-mcp
+```
+
+The package auto-registers as an Airflow plugin. No Dockerfile changes or configuration needed.
+
+#### Environment variables
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `AF_READ_ONLY` | Recommended | `false` | Set to `true` to block all write operations (trigger, pause, clear, delete) at the MCP server level, regardless of token permissions |
+| `ASTRO_MCP_ALLOWED_TOOLS` | Optional | unset (all tools) | Expose only the listed MCP tools and reject calls to excluded tools; see [Configuration](#configuration). Restart the hosting processes after changes |
+| `FASTMCP_STATELESS_HTTP` | Standalone HTTP server only | `false` | Disables stateful sessions when running the MCP server standalone. Not used in plugin mode — the plugin always runs FastMCP in stateless HTTP mode so Claude Code works out of the box |
+| `AIRFLOW_API_URL` | Optional | auto-detected | Override the internal API URL. On AF2 the default includes any `webserver.base_url` path prefix (e.g. `http://localhost:8080/d<deployment-id>`) |
+
+#### Connect your MCP client
+
+The MCP endpoint is available at `https://<your-airflow-url>/mcp/v1/`. Configure your client with an auth header that matches your Airflow's auth backend:
+- **Airflow 3 / Astro**: Bearer token (deployment JWT or session token)
+- **Airflow 2 / open-source**: Basic auth or Bearer token, depending on the configured API auth backend
+
+```json
+{
+  "mcpServers": {
+    "airflow": {
+      "url": "https://<your-airflow-url>/mcp/v1/",
+      "headers": {
+        "Authorization": "Bearer <TOKEN>"
+      }
+    }
+  }
+}
+```
+
+For Claude Code, use `-t http` (not `-t sse`):
+
+```bash
+claude mcp add -t http -s user \
+  -H "Authorization: Bearer <TOKEN>" \
+  -- airflow \
+  "https://<your-airflow-url>/mcp/v1/"
+```
+
+#### Astro deployments
+
+For full setup instructions on Astronomer Astro — including authentication, custom deployment roles, and troubleshooting — see the [Airflow MCP Plugin guide](https://www.astronomer.io/docs/astro/astro-mcp-server#airflow-mcp-plugin) in the Astro documentation.
+
+On Astro Airflow 2 deployments, the plugin reads `webserver.base_url` at request time to resolve the deployment path prefix (e.g. `/d<short-name>`) when making internal API calls. No extra config is required.
+
+#### Open-source Airflow
+
+For open-source Airflow, the plugin inherits Airflow's native RBAC. A user with the Viewer role can use all read tools. Set environment variables in your deployment configuration and pass a Bearer token (AF3) or basic auth (AF2) via your MCP client config.
+
+#### Airflow 2.x notes
+
+- The plugin registers a Flask blueprint at `/mcp/v1/` on the webserver. It is exempt from CSRF (MCP clients authenticate via `Authorization` header, not session cookies).
+- FastMCP's ASGI lifespan is started lazily on the first MCP request in each gunicorn worker — this adds a small one-time latency to the first call per worker.
+- Per-request auth (bearer token or basic auth) is extracted from the incoming `Authorization` header and forwarded to internal API calls to `localhost`.
+
+### CLI Options
+
+**MCP Server Options:**
+
+| Flag | Environment Variable | Default | Description |
+|------|---------------------|---------|-------------|
+| `--transport` | `MCP_TRANSPORT` | `stdio` | Transport mode (`stdio` or `http`) |
+| `--host` | `MCP_HOST` | `localhost` | Host to bind to (HTTP mode only) |
+| `--port` | `MCP_PORT` | `8000` | Port to bind to (HTTP mode only) |
+| `--airflow-project-dir` | `AIRFLOW_PROJECT_DIR` | `$PWD` | Astro project directory for auto-discovering Airflow URL |
+| `--no-verify-ssl` | `AIRFLOW_VERIFY_SSL=false` | off | Disable SSL certificate verification |
+| `--ca-cert` | `AIRFLOW_CA_CERT` | `None` | Path to custom CA certificate bundle |
+
+**Airflow Connection (Environment Variables):**
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `AIRFLOW_API_URL` | `http://localhost:8080` | Airflow webserver URL |
+| `AIRFLOW_AUTH_TOKEN` | `None` | Bearer token for authentication |
+| `AIRFLOW_USERNAME` | `None` | Username for authentication |
+| `AIRFLOW_PASSWORD` | `None` | Password for authentication |
+| `AIRFLOW_VERIFY_SSL` | `true` | Set to `false` to disable SSL verification |
+| `AIRFLOW_CA_CERT` | `None` | Path to custom CA certificate bundle |
+
+**af CLI Options:**
+
+| Flag | Environment Variable | Description |
+|------|---------------------|-------------|
+| `--config`, `-c` | `AF_CONFIG` | Single-file mode: bypass layered config and use this file as the entire config (default layering reads `~/.astro/config.yaml` and any project `.astro/config.{yaml,local.yaml}` it walks up to) |
+| `--version`, `-v` | | Show version and exit |
+
+### Telemetry
+
+The `af` CLI collects anonymous usage telemetry to help improve the tool. Only the command name is collected (e.g., `dags list`), never the arguments or their values. No personally identifiable information is collected.
+
+To opt out:
+
+```bash
+af telemetry disable
+```
+
+You can also disable telemetry by setting the `AF_TELEMETRY_DISABLED=1` environment variable.
+
+## Architecture
+
+The server is built using [FastMCP](https://github.com/jlowin/fastmcp) with an adapter pattern for Airflow version compatibility:
+
+### Core Components
+
+- **Adapters** (`adapters/`): Version-specific API implementations
+  - `AirflowAdapter` (base): Abstract interface for all Airflow API operations
+  - `AirflowV2Adapter`: Airflow 2.x API (`/api/v1`) with basic auth
+  - `AirflowV3Adapter`: Airflow 3.x API (`/api/v2`) with OAuth2 token exchange
+- **Version Detection**: Automatic detection at startup by probing API endpoints
+- **Models** (`models.py`): Pydantic models for type-safe API responses
+
+### Version Handling Strategy
+
+1. **Major versions (2.x vs 3.x)**: Adapter pattern with runtime version detection
+2. **Minor versions (3.1 vs 3.2)**: Runtime feature detection with graceful fallbacks
+3. **New API parameters**: Pass-through `**kwargs` for forward compatibility
+
+### Deployment Modes
+
+- **Standalone**: Independent ASGI application with HTTP/SSE transport
+- **Plugin (Airflow 3.x)**: Mounted into Airflow's FastAPI webserver via `fastapi_apps`
+- **Plugin (Airflow 2.x)**: Registered as a Flask blueprint via `flask_blueprints`, bridging to FastMCP's ASGI app through a background asyncio loop
+
+## Development
+
+```bash
+# Setup development environment
+make install-dev
+
+# Run tests
+make test
+
+# Run all checks
+make check
+
+# Local testing with Astro CLI
+astro dev start  # Start Airflow
+make run         # Run MCP server (connects to localhost:8080)
+```
+
+## Contributing
+
+Contributions welcome! Please ensure:
+- All tests pass (`make test`)
+- Code passes linting (`make check`)
+- prek hooks pass (`make prek`)

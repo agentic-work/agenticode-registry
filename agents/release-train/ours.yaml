@@ -1,0 +1,8 @@
+kind: agent
+name: release-train
+owner: agentic-work
+source: agentic-work
+status: planned
+license: null
+description: "Signed and notarized releases for all 7 CLIs, the DMG and the phone apps."
+where: "Not built as an agent yet; today releases run from scripts/release.sh in agentic-work/agenticode."

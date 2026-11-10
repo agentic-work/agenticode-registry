@@ -1,0 +1,24 @@
+kind: plugin
+name: clangd-lsp
+type: lsp
+source: Claude
+category: Languages
+from:
+  source: claude
+  repo: anthropics/claude-plugins-official
+  commit: dceb15d50832e6adf380bedc26dde03d251324b9
+  path: plugins/clangd-lsp
+  follows: main
+license: Apache-2.0
+license_file: plugin/LICENSE
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: 32274
+version: "1.0.0"
+description: C/C++ language server (clangd) for code intelligence
+why: C/C++ language server (clangd) for code intelligence
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  path: plugins/clangd-lsp/plugin

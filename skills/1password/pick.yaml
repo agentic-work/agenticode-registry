@@ -1,0 +1,10 @@
+kind: skill
+name: "1password"
+source: OpenClaw
+category: Secrets
+status: exclude
+replaced_by: null
+vendor: false
+installs: null
+note: agents never handle credentials
+why: "Excluded: agents never handle credentials."

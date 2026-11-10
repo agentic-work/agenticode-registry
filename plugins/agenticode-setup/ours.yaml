@@ -1,0 +1,9 @@
+kind: plugin
+name: agenticode-setup
+owner: agentic-work
+source: agentic-work
+status: planned
+license: null
+description: "First-run setup: providers, MCPs, a project AGENTS.md."
+where: "Not built yet."
+replaces: [claude-code-setup]

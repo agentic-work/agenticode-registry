@@ -1,0 +1,21 @@
+kind: skill
+name: security-ownership-map
+source: Codex
+category: Security
+from:
+  source: codex
+  repo: openai/skills
+  commit: "49f948faa9258a0c61caceaf225e179651397431"
+  path: skills/.curated/security-ownership-map
+  follows: main
+license: Apache-2.0
+license_file: LICENSE.txt
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: "Analyze git repositories to build a security ownership topology (people-to-file), compute bus factor and sensitive-code ownership, and export CSV/JSON for graph databases and visualization. Trigger only when the user…"
+why: "Analyze git repositories to build a security ownership topology (people-to-file), compute bus factor and sensitive-code ownership, and export CSV/JSON for graph databases and…"
+install:
+  type: skill
+  dir: security-ownership-map

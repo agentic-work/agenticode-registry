@@ -1,0 +1,21 @@
+kind: skill
+name: security-threat-model
+source: Codex
+category: Security
+from:
+  source: codex
+  repo: openai/skills
+  commit: "49f948faa9258a0c61caceaf225e179651397431"
+  path: skills/.curated/security-threat-model
+  follows: main
+license: Apache-2.0
+license_file: LICENSE.txt
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: "Repository-grounded threat modeling that enumerates trust boundaries, assets, attacker capabilities, abuse paths, and mitigations, and writes a concise Markdown threat model. Trigger only when the user explicitly asks…"
+why: "Repository-grounded threat modeling that enumerates trust boundaries, assets, attacker capabilities, abuse paths, and mitigations, and writes a concise Markdown threat model.…"
+install:
+  type: skill
+  dir: security-threat-model

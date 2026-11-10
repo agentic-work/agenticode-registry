@@ -1,0 +1,16 @@
+# Every PR: licence, scan, lint and the real install test on macOS, Linux and Windows.
+# Blocked by billing for now; the Mac runs scripts/registry/gate.sh instead.
+name: gate
+on: { pull_request: {}, workflow_dispatch: {} }
+permissions: { contents: read }
+jobs:
+  gate:
+    strategy: { fail-fast: false, matrix: { os: [macos-latest, ubuntu-latest, windows-latest] } }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - uses: astral-sh/setup-uv@v6
+      - run: curl -fsSL https://raw.githubusercontent.com/agentic-work/agenticode-releases/main/install.sh | sh
+      - run: bash scripts/registry/gate.sh
+        env: { AGENTICODE_BIN: agenticode, REGISTRY_SIGNING_KEY: "${{ runner.temp }}/draft.key" }

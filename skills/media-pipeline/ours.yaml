@@ -1,0 +1,9 @@
+kind: skill
+name: media-pipeline
+type: bundle
+owner: agentic-work
+source: agentic-work
+status: planned
+license: null
+description: "Voiceover, captions and video assembly (the FrisyDisk pipeline)."
+where: "Not built yet."

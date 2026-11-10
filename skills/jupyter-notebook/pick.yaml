@@ -1,0 +1,21 @@
+kind: skill
+name: jupyter-notebook
+source: Codex
+category: Data
+from:
+  source: codex
+  repo: openai/skills
+  commit: "49f948faa9258a0c61caceaf225e179651397431"
+  path: skills/.curated/jupyter-notebook
+  follows: main
+license: Apache-2.0
+license_file: LICENSE.txt
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: "Use when the user asks to create, scaffold, or edit Jupyter notebooks (`.ipynb`) for experiments, explorations, or tutorials; prefer the bundled templates and run the helper script `new_notebook.py` to generate a clean…"
+why: "Use when the user asks to create, scaffold, or edit Jupyter notebooks (`.ipynb`) for experiments, explorations, or tutorials; prefer the bundled templates and run the helper…"
+install:
+  type: skill
+  dir: jupyter-notebook

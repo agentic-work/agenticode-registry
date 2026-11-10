@@ -1,0 +1,9 @@
+{
+ "anthropics/skills/skills/docx": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+ "anthropics/skills/skills/pdf": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+ "anthropics/skills/skills/pptx": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+ "anthropics/skills/skills/xlsx": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+ "figma/mcp-server-guide/": "9d296d0768c3e29c813922b3b11e390f1e47d8aa",
+ "anthropics/claude-plugins-official/plugins/claude-code-setup": "fc49e6815f5562bbfd692e65ab6a9b4d7edb0a5f",
+ "microsoft/playwright-mcp/": "3afdae855f62998c87644144d4f7dc705ac24dcf"
+}

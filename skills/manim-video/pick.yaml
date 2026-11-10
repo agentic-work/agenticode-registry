@@ -1,0 +1,22 @@
+kind: skill
+name: manim-video
+source: Hermes
+category: Media
+from:
+  source: hermes
+  repo: NousResearch/hermes-agent
+  commit: c382971c9fd649938937422ad937a3954a9f1128
+  path: skills/creative/manim-video
+  follows: main
+license: MIT
+license_file: UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+version: "1.0.0"
+description: "Manim CE animations: 3Blue1Brown math/algo videos."
+why: "Manim CE animations: 3Blue1Brown math/algo videos."
+install:
+  type: skill
+  dir: manim-video

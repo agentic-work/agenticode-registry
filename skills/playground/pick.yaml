@@ -1,0 +1,22 @@
+kind: skill
+name: playground
+source: Claude
+category: Design
+from:
+  source: claude
+  repo: anthropics/claude-plugins-official
+  commit: dceb15d50832e6adf380bedc26dde03d251324b9
+  path: plugins/playground/skills/playground
+  follows: main
+license: Apache-2.0
+license_file: UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: 69797
+description: "Creates interactive HTML playgrounds — self-contained single-file explorers with visual controls, live preview, and prompt output with copy button. Includes templates for design playgrounds, data explorers, concept…"
+why: "Creates interactive HTML playgrounds — self-contained single-file explorers with visual controls, live preview, and prompt output with… (backfill: next-best non-overlapping by installs)"
+note: "backfill: next-best non-overlapping by installs"
+install:
+  type: skill
+  dir: playground

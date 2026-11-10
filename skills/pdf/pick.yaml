@@ -1,0 +1,10 @@
+kind: skill
+name: pdf
+source: Claude
+category: Office
+status: replace
+replaced_by: office-docs
+vendor: false
+installs: null
+note: "replaced by our office-docs rewrite. Upstream moved these skills to Apache-2.0 on 2026-11-06 (anthropics/skills 2c5958e), so copying would now be allowed; kept as a rewrite until agentic-work decides"
+why: "Covered by our own office-docs (planned); nothing is copied or installed from upstream."

@@ -1,0 +1,15 @@
+# Merge to main: rebuild index/, sign it with minisign, publish a GitHub Release.
+# Blocked by billing for now; the Mac runs scripts/registry/publish.sh (the key
+# lives only on that Mac; a repository secret would replace it here).
+name: publish
+on: { push: { branches: [main], paths-ignore: ["index/**", "THIRD_PARTY.md", ".claude-plugin/**"] }, workflow_dispatch: {} }
+permissions: { contents: write }
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: sudo apt-get install -y minisign jq
+      - run: printf '%s' "$REGISTRY_KEY" > "$RUNNER_TEMP/registry.key" && REGISTRY_SIGNING_KEY="$RUNNER_TEMP/registry.key" scripts/registry/publish.sh
+        env: { REGISTRY_KEY: "${{ secrets.REGISTRY_MINISIGN_KEY }}", GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }

@@ -1,0 +1,22 @@
+kind: skill
+name: weekly-review-planning
+source: Hermes
+category: Productivity
+from:
+  source: hermes
+  repo: NousResearch/hermes-agent
+  commit: c382971c9fd649938937422ad937a3954a9f1128
+  path: skills/productivity/weekly-review-planning
+  follows: main
+license: MIT
+license_file: UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+version: "0.1.0"
+description: "Weekly reset: commitments, stalled work, next-week plan."
+why: "Weekly reset: commitments, stalled work, next-week plan."
+install:
+  type: skill
+  dir: weekly-review-planning

@@ -1,0 +1,21 @@
+kind: skill
+name: gh-fix-ci
+source: Codex
+category: Coding
+from:
+  source: codex
+  repo: openai/skills
+  commit: "49f948faa9258a0c61caceaf225e179651397431"
+  path: skills/.curated/gh-fix-ci
+  follows: main
+license: Apache-2.0
+license_file: LICENSE.txt
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: "Use when a user asks to debug or fix failing GitHub PR checks that run in GitHub Actions; use `gh` to inspect checks and logs, summarize failure context, draft a fix plan, and implement only after explicit approval.…"
+why: "Use when a user asks to debug or fix failing GitHub PR checks that run in GitHub Actions; use `gh` to inspect checks and logs, summarize failure context, draft a fix plan, and…"
+install:
+  type: skill
+  dir: gh-fix-ci

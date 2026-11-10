@@ -1,0 +1,22 @@
+kind: plugin
+name: coderabbit
+source: Claude
+category: Coding
+from:
+  source: claude
+  repo: coderabbitai/skills
+  commit: "3e8763d24d543b48615b82535d02288de3ddae40"
+  follows: main
+license: MIT
+license_file: plugin/LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: 34833
+description: "Your code review partner. CodeRabbit provides external validation using a specialized AI architecture and 40+ integrated static analyzers—offering a different perspective that catches bugs, security vulnerabilities,…"
+why: "Your code review partner. CodeRabbit provides external validation using a specialized AI architecture and 40+ integrated static… (skills + review agent (needs the CodeRabbit CLI); upstream ships no MCP)"
+note: "skills + review agent (needs the CodeRabbit CLI); upstream ships no MCP"
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  path: plugins/coderabbit/plugin

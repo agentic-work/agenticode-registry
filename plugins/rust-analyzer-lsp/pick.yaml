@@ -1,0 +1,24 @@
+kind: plugin
+name: rust-analyzer-lsp
+type: lsp
+source: Claude
+category: Languages
+from:
+  source: claude
+  repo: anthropics/claude-plugins-official
+  commit: dceb15d50832e6adf380bedc26dde03d251324b9
+  path: plugins/rust-analyzer-lsp
+  follows: main
+license: Apache-2.0
+license_file: plugin/LICENSE
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: 39257
+version: "1.0.0"
+description: Rust language server for code intelligence and analysis
+why: Rust language server for code intelligence and analysis
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  path: plugins/rust-analyzer-lsp/plugin

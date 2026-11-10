@@ -1,0 +1,21 @@
+kind: skill
+name: gh-address-comments
+source: Codex
+category: Coding
+from:
+  source: codex
+  repo: openai/skills
+  commit: "49f948faa9258a0c61caceaf225e179651397431"
+  path: skills/.curated/gh-address-comments
+  follows: main
+license: Apache-2.0
+license_file: LICENSE.txt
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: "Help address review/issue comments on the open GitHub PR for the current branch using gh CLI; verify gh auth first and prompt the user to authenticate if not logged in."
+why: "Help address review/issue comments on the open GitHub PR for the current branch using gh CLI; verify gh auth first and prompt the user to authenticate if not logged in."
+install:
+  type: skill
+  dir: gh-address-comments

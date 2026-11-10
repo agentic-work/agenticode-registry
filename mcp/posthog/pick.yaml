@@ -1,0 +1,23 @@
+kind: mcp
+name: posthog
+source: Claude
+category: Data
+from:
+  source: claude
+  repo: PostHog/ai-plugin
+  commit: e0fbf5e742fb4242c4ea509b395b2e343642f0b7
+  follows: main
+license: LicenseRef-hosted-service
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 14862
+description: Access PostHog analytics, feature flags, experiments, error tracking, and insights directly from Claude Code.
+why: Access PostHog analytics, feature flags, experiments, error tracking, and insights directly from Claude Code.
+install:
+  type: http
+  url: https://mcp.posthog.com/mcp
+  headers:
+    x-posthog-mcp-consumer: plugin
+expects:
+  tools_min: 1

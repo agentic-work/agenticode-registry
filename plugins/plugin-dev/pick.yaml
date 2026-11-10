@@ -1,0 +1,22 @@
+kind: plugin
+name: plugin-dev
+source: Claude
+category: Authoring
+from:
+  source: claude
+  repo: anthropics/claude-plugins-official
+  commit: dceb15d50832e6adf380bedc26dde03d251324b9
+  path: plugins/plugin-dev
+  follows: main
+license: Apache-2.0
+license_file: plugin/LICENSE
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: 71543
+description: Comprehensive toolkit for developing Claude Code plugins. Includes 7 expert skills covering hooks, MCP integration, commands, agents, and best practices. AI-assisted plugin creation and validation.
+why: "Comprehensive toolkit for developing Claude Code plugins. Includes 7 expert skills covering hooks, MCP integration, commands, agents, and best practices. AI-assisted plugin…"
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  path: plugins/plugin-dev/plugin

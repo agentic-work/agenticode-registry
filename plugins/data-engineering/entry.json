@@ -1,0 +1,4 @@
+{
+  "description": "Data engineering plugin - warehouse exploration, pipeline authoring, Airflow integration",
+  "homepage": "https://github.com/astronomer/agents"
+}

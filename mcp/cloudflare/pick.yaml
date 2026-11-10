@@ -1,0 +1,21 @@
+kind: mcp
+name: cloudflare
+source: Claude
+category: Deploy
+from:
+  source: claude
+  repo: cloudflare/skills
+  commit: b052c32bab7dd493513260228a36c88294f343f1
+  follows: main
+license: Apache-2.0
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 25908
+description: "Skills for the Cloudflare developer platform: Workers, Durable Objects, Agents SDK, MCP servers, Wrangler CLI, and web performance."
+why: "Skills for the Cloudflare developer platform: Workers, Durable Objects, Agents SDK, MCP servers, Wrangler CLI, and web performance."
+install:
+  type: http
+  url: https://mcp.cloudflare.com/mcp
+expects:
+  tools_min: 1

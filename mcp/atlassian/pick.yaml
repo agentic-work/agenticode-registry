@@ -1,0 +1,22 @@
+kind: mcp
+name: atlassian
+source: Claude
+category: Integrations
+from:
+  source: claude
+  repo: atlassian/atlassian-mcp-server
+  commit: b74220d41142fae52b4f680c805b2ab81050991a
+  follows: main
+license: Apache-2.0
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 105977
+description: "Connect to Atlassian products including Jira and Confluence. Search and create issues, access documentation, manage sprints, and integrate your development workflow with Atlassian's collaboration tools."
+why: "Connect to Atlassian products including Jira and Confluence. Search and create issues, access documentation, manage sprints, and integrate… (Jira, Confluence)"
+note: Jira, Confluence
+install:
+  type: http
+  url: https://mcp.atlassian.com/v2/mcp
+expects:
+  tools_min: 1

@@ -1,0 +1,26 @@
+kind: mcp
+name: memory
+source: MCP Registry
+category: Reference
+group: "memory · sequential-thinking"
+from:
+  source: mcp-registry
+  repo: modelcontextprotocol/servers
+  commit: "36380287ed3b15d115b55f546617d723072b1296"
+  path: src/memory
+  follows: main
+license: MIT OR Apache-2.0
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: null
+description: Knowledge-graph memory kept in a local file (reference server).
+why: Knowledge-graph memory kept in a local file (reference server).
+install:
+  type: stdio
+  command: npx
+  args:
+    - "-y"
+    - "@modelcontextprotocol/server-memory@2.1.0"
+expects:
+  tools_min: 1

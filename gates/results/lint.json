@@ -1,0 +1,607 @@
+{
+  "gate": "lint",
+  "ran_at": "2026-11-10T14:31:12.419Z",
+  "results": {
+    "agent/code-simplifier": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "agent/registry-scout": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "mcp/atlassian": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/aws-knowledge": {
+      "status": "pass",
+      "detail": "5 text file(s)"
+    },
+    "mcp/cloudflare": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/context7": {
+      "status": "pass",
+      "detail": "2 text file(s)"
+    },
+    "mcp/datadog": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/expo": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/fetch": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "mcp/firebase": {
+      "status": "pass",
+      "detail": "19 text file(s)"
+    },
+    "mcp/firecrawl": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/git": {
+      "status": "pass",
+      "detail": "14 text file(s)"
+    },
+    "mcp/github": {
+      "status": "pass",
+      "detail": "49 text file(s)"
+    },
+    "mcp/gitlab": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/greptile": {
+      "status": "pass",
+      "detail": "21 text file(s)"
+    },
+    "mcp/linear": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/memory": {
+      "status": "pass",
+      "detail": "9 text file(s)"
+    },
+    "mcp/microsoft-docs": {
+      "status": "pass",
+      "detail": "3 text file(s)"
+    },
+    "mcp/notion": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/postgres": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/posthog": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/postman": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/sentry": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/sequential-thinking": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "mcp/serena": {
+      "status": "pass",
+      "detail": "3 text file(s)"
+    },
+    "mcp/slack": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/sourcegraph": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/stripe": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/supabase": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "mcp/time": {
+      "status": "pass",
+      "detail": "3 text file(s)"
+    },
+    "mcp/vercel": {
+      "status": "skip",
+      "detail": "no tool descriptions captured yet (needs the install gate)"
+    },
+    "plugin/aws-core": {
+      "status": "fail",
+      "detail": "skip-approvals skills/aws-iam/references/aws-iam-policy-generation.md:221 \"- If unavailable, proceed with the `curl` and `jq` fallback automatically — do NOT ask the user for permission to proceed\" | skip-approvals skills/aws-iam/references/aws-iam-role-management.md:7 \"When the prompt provides sufficient context (resource names, service types), proceed directly with role creation. Do not ask for confirmation or additional para\"",
+      "hits": [
+        {
+          "file": "skills/aws-ai-ml/references/model-deployment/overview.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 53,
+          "text": "2. **State your intent, don't re-ask.** When information is already available — from the conversation, from session/artifact lookups you can perform yourself (e",
+          "allowed": "the opposite: says a user's 'skip confirmation' does not count as licence acceptance (reviewed 2026-11-10)"
+        },
+        {
+          "file": "skills/aws-ai-ml/references/model-deployment/overview.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 183,
+          "text": "**A user instruction to \"proceed without asking\", \"skip confirmation\", \"deploy now\", or similar does NOT constitute license acceptance.** Such instructions waiv",
+          "allowed": "the opposite: says a user's 'skip confirmation' does not count as licence acceptance (reviewed 2026-11-10)"
+        },
+        {
+          "file": "skills/aws-ai-ml/references/model-deployment/references/deploy-jumpstart-sagemaker.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 219,
+          "text": "> **A user instruction to \"proceed without asking\", \"skip confirmation\", \"deploy now\", or similar",
+          "allowed": "same licence-acceptance safeguard (reviewed 2026-11-10)"
+        },
+        {
+          "file": "skills/aws-ai-ml/references/model-evaluation/references/custom-scorer-evaluation.md",
+          "rule": "hidden-text",
+          "sev": "fail",
+          "line": 112,
+          "text": "<!-- TODO: Add guidance for helping the user find their JumpStart model ID. -->",
+          "allowed": "a TODO comment for maintainers (reviewed 2026-11-10)"
+        },
+        {
+          "file": "skills/aws-ai-ml/references/model-evaluation/references/llmaaj-evaluation.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 211,
+          "text": "This is a legal agreement gate, not a conversational confirmation. Even if the user has said \"skip confirmations\", \"just generate the code\", or \"I don't need co",
+          "allowed": "same licence-acceptance safeguard (reviewed 2026-11-10)"
+        },
+        {
+          "file": "skills/aws-ai-ml/references/model-evaluation/references/llmaaj-evaluation.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 211,
+          "text": "This is a legal agreement gate, not a conversational confirmation. Even if the user has said \"skip confirmations\", \"just generate the code\", or \"I don't need co",
+          "allowed": "same licence-acceptance safeguard (reviewed 2026-11-10)"
+        },
+        {
+          "file": "skills/aws-ai-ml/references/model-evaluation/references/llmaaj-evaluation.md",
+          "rule": "hidden-text",
+          "sev": "fail",
+          "line": 127,
+          "text": "<!-- TODO: Add guidance for helping the user find their JumpStart model ID (e.g., list_hub_contents API, or looking at training job tags). See model-selection r",
+          "allowed": "a TODO comment for maintainers (reviewed 2026-11-10)"
+        },
+        {
+          "file": "skills/aws-auth/references/lambda-triggers.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 23,
+          "text": "(letting the user skip the confirmation code) is fine for trusted flows. Auto-*verifying* the email",
+          "allowed": "describes a Cognito sign-up option for end users, not agent approvals (reviewed 2026-11-10)"
+        },
+        {
+          "file": "skills/aws-cloudformation/SKILL.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 114,
+          "text": "Use the [CloudFormation validation workflow guide](references/validation-tool-selection.md) to choose and sequence local validation, cfn-guard security and comp",
+          "allowed": "points at a guide about validation-tool conditions (reviewed 2026-11-10)"
+        },
+        {
+          "file": "skills/aws-iam/references/aws-iam-policy-generation.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 221,
+          "text": "- If unavailable, proceed with the `curl` and `jq` fallback automatically — do NOT ask the user for permission to proceed"
+        },
+        {
+          "file": "skills/aws-iam/references/aws-iam-role-management.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 7,
+          "text": "When the prompt provides sufficient context (resource names, service types), proceed directly with role creation. Do not ask for confirmation or additional para"
+        },
+        {
+          "file": "skills/aws-observability/references/cloudwatch-omni/agent-evaluation.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 473,
+          "text": "- **Refuses to write without confirmation** — `--mode create`/`add` exit non-zero before any AWS call unless `--i-have-confirmed` is passed. A request that tell",
+          "allowed": "the opposite: a tool that refuses to write without confirmation (reviewed 2026-11-10)"
+        }
+      ]
+    },
+    "plugin/clangd-lsp": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/code-review": {
+      "status": "pass",
+      "detail": "2 text file(s)"
+    },
+    "plugin/coderabbit": {
+      "status": "pass",
+      "detail": "23 text file(s)"
+    },
+    "plugin/commit-commands": {
+      "status": "pass",
+      "detail": "4 text file(s)"
+    },
+    "plugin/csharp-lsp": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/data-engineering": {
+      "status": "pass",
+      "detail": "76 text file(s), 3 reviewed exception(s)",
+      "hits": [
+        {
+          "file": "skills/delegating-to-otto/SKILL.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 115,
+          "text": "| `bypassPermissions` | Allows everything except bypass-immune safety checks (see below). |",
+          "allowed": "describes another agent's permission modes and says to avoid them unless the user asks (reviewed 2026-11-10)"
+        },
+        {
+          "file": "skills/delegating-to-otto/SKILL.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 119,
+          "text": "`--skip-permissions` is sticky for the whole session and stronger than `--permission-mode bypassPermissions`. Avoid unless the user explicitly asks.",
+          "allowed": "describes another agent's permission modes and says to avoid them unless the user asks (reviewed 2026-11-10)"
+        },
+        {
+          "file": "skills/delegating-to-otto/SKILL.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 123,
+          "text": "These fire **even in `bypassPermissions` mode and even with `--skip-permissions`**:",
+          "allowed": "describes another agent's permission modes and says to avoid them unless the user asks (reviewed 2026-11-10)"
+        }
+      ]
+    },
+    "plugin/explanatory-output-style": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/feature-dev": {
+      "status": "pass",
+      "detail": "5 text file(s)"
+    },
+    "plugin/gopls-lsp": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/hookify": {
+      "status": "pass",
+      "detail": "11 text file(s)"
+    },
+    "plugin/huggingface-skills": {
+      "status": "fail",
+      "detail": "read-credentials skills/hf-cloud-aws-context-discovery/SKILL.md:64 \"`aws configure list` handles env-var overrides and shows the resolved effective values. Prefer it over parsing `~/.aws/config` yourself. If you need to read raw\"",
+      "hits": [
+        {
+          "file": "skills/hf-cloud-aws-context-discovery/SKILL.md",
+          "rule": "read-credentials",
+          "sev": "fail",
+          "line": 64,
+          "text": "`aws configure list` handles env-var overrides and shows the resolved effective values. Prefer it over parsing `~/.aws/config` yourself. If you need to read raw"
+        }
+      ]
+    },
+    "plugin/jdtls-lsp": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/kotlin-lsp": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/learning-output-style": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/lua-lsp": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/mattpocock-skills": {
+      "status": "pass",
+      "detail": "174 text file(s), 1 reviewed exception(s)",
+      "hits": [
+        {
+          "file": "skills/in-progress/writing-fragments/SKILL.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 73,
+          "text": "Append silently. Don't ask permission for each fragment. Mention what you added in passing (\"adding that\"), but don't interrupt the conversation with save dialo",
+          "allowed": "about not interrupting the user while appending to their own fragments file; agenticode still enforces write permissions (reviewed 2026-11-10)"
+        }
+      ]
+    },
+    "plugin/mcp-server-dev": {
+      "status": "pass",
+      "detail": "20 text file(s)"
+    },
+    "plugin/php-lsp": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/plugin-dev": {
+      "status": "pass",
+      "detail": "45 text file(s)"
+    },
+    "plugin/pr-review-toolkit": {
+      "status": "pass",
+      "detail": "8 text file(s)"
+    },
+    "plugin/pyright-lsp": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/ralph-loop": {
+      "status": "pass",
+      "detail": "4 text file(s)"
+    },
+    "plugin/rust-analyzer-lsp": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/security-guidance": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/semgrep": {
+      "status": "pass",
+      "detail": "3 text file(s)"
+    },
+    "plugin/superpowers": {
+      "status": "pass",
+      "detail": "133 text file(s), 4 reviewed exception(s)",
+      "hits": [
+        {
+          "file": ".github/ISSUE_TEMPLATE/bug_report.md",
+          "rule": "hidden-text",
+          "sev": "fail",
+          "line": 29,
+          "text": "<!-- Superpowers is a plugin. Some reported \"bugs\" are actually issues",
+          "allowed": "GitHub issue-template comment, not model-facing (reviewed 2026-11-10)"
+        },
+        {
+          "file": ".github/PULL_REQUEST_TEMPLATE.md",
+          "rule": "hidden-text",
+          "sev": "fail",
+          "line": 25,
+          "text": "<!-- Describe the specific problem you encountered. If this was a session",
+          "allowed": "GitHub PR-template comment, not model-facing (reviewed 2026-11-10)"
+        },
+        {
+          "file": "docs/superpowers/plans/2026-03-23-codex-app-compatibility.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 566,
+          "text": "Note: these tests require Claude Code with `--dangerously-skip-permissions`. If not available, document that regression tests should be run manually.",
+          "allowed": "maintainers' test plan noting their regression tests need that flag; not a skill instruction (reviewed 2026-11-10)"
+        },
+        {
+          "file": "docs/superpowers/plans/2026-07-15-sdd-fix-loop-redesign.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 1553,
+          "text": "`--dangerously-skip-permissions`, need `ANTHROPIC_API_KEY` and",
+          "allowed": "maintainers' design doc, same as above (reviewed 2026-11-10)"
+        }
+      ]
+    },
+    "plugin/swift-lsp": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "plugin/typescript-lsp": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/algorithmic-art": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/apple-notes": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/apple-reminders": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/architecture-diagram": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/arxiv": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/canvas-design": {
+      "status": "pass",
+      "detail": "28 text file(s)"
+    },
+    "skill/cli-creator": {
+      "status": "pass",
+      "detail": "3 text file(s)"
+    },
+    "skill/codebase-inspection": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/define-goal": {
+      "status": "pass",
+      "detail": "2 text file(s)"
+    },
+    "skill/diagram-maker": {
+      "status": "pass",
+      "detail": "3 text file(s)"
+    },
+    "skill/doc-coauthoring": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/frontend-design": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/gh-address-comments": {
+      "status": "pass",
+      "detail": "2 text file(s)"
+    },
+    "skill/gh-fix-ci": {
+      "status": "pass",
+      "detail": "2 text file(s)"
+    },
+    "skill/gh-issues": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/grounded-citations": {
+      "status": "pass",
+      "detail": "3 text file(s)"
+    },
+    "skill/humanizer": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/jupyter-notebook": {
+      "status": "pass",
+      "detail": "6 text file(s)"
+    },
+    "skill/manim-video": {
+      "status": "pass",
+      "detail": "16 text file(s)"
+    },
+    "skill/mcp-builder": {
+      "status": "pass",
+      "detail": "7 text file(s)"
+    },
+    "skill/meeting-action-items": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/netlify-deploy": {
+      "status": "pass",
+      "detail": "5 text file(s), 1 reviewed exception(s)",
+      "hits": [
+        {
+          "file": "references/cli-commands.md",
+          "rule": "skip-approvals",
+          "sev": "fail",
+          "line": 157,
+          "text": "- `--force` - Skip confirmation prompts",
+          "allowed": "documents the Netlify CLI's own --force flag; does not tell the model to skip agenticode approvals (reviewed 2026-11-10)"
+        }
+      ]
+    },
+    "skill/notion-spec-to-implementation": {
+      "status": "pass",
+      "detail": "14 text file(s)"
+    },
+    "skill/obsidian": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/p5js": {
+      "status": "pass",
+      "detail": "12 text file(s)"
+    },
+    "skill/playground": {
+      "status": "pass",
+      "detail": "7 text file(s)"
+    },
+    "skill/render-deploy": {
+      "status": "pass",
+      "detail": "18 text file(s)"
+    },
+    "skill/requesting-code-review": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/sdlc-review": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/security-best-practices": {
+      "status": "pass",
+      "detail": "12 text file(s)"
+    },
+    "skill/security-ownership-map": {
+      "status": "pass",
+      "detail": "3 text file(s)"
+    },
+    "skill/security-threat-model": {
+      "status": "pass",
+      "detail": "4 text file(s)"
+    },
+    "skill/skill-creator": {
+      "status": "pass",
+      "detail": "5 text file(s)"
+    },
+    "skill/spike": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/summarize": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/systematic-debugging": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/test-driven-development": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/theme-factory": {
+      "status": "pass",
+      "detail": "11 text file(s)"
+    },
+    "skill/things-mac": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/tmux": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/transcribe": {
+      "status": "pass",
+      "detail": "3 text file(s)"
+    },
+    "skill/trello": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/web-artifacts-builder": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    },
+    "skill/weekly-review-planning": {
+      "status": "pass",
+      "detail": "1 text file(s)"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+kind: skill
+name: summarize
+source: OpenClaw
+category: Productivity
+from:
+  source: openclaw
+  repo: openclaw/openclaw
+  commit: c321c038b59c1e67f4729023b5e680d3c061c9ca
+  path: skills/summarize
+  follows: main
+license: MIT
+license_file: UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: Summarize or transcribe URLs, YouTube/videos, podcasts, articles, transcripts, PDFs, and local files.
+why: Summarize or transcribe URLs, YouTube/videos, podcasts, articles, transcripts, PDFs, and local files.
+install:
+  type: skill
+  dir: summarize

@@ -1,0 +1,157 @@
+"""Unified adapter management for CLI and MCP server."""
+
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+from astro_airflow_mcp.adapters import AirflowAdapter, create_adapter
+from astro_airflow_mcp.astro_pat import AstroPATAuth, AstroPATResolver
+from astro_airflow_mcp.auth import TokenManager
+from astro_airflow_mcp.constants import DEFAULT_AIRFLOW_URL
+from astro_airflow_mcp.logging import get_logger
+
+if TYPE_CHECKING:
+    import httpx
+
+    from astro_airflow_mcp.config.models import AuthKind
+
+logger = get_logger(__name__)
+
+
+class AdapterManager:
+    """Manages Airflow adapter lifecycle and authentication.
+
+    This class provides a unified interface for adapter management
+    used by both the CLI and MCP server. It handles:
+    - Lazy initialization of the adapter
+    - Token-based, basic, and Astro-PAT authentication
+    - Adapter reset when configuration changes
+    """
+
+    def __init__(self):
+        self._adapter: AirflowAdapter | None = None
+        self._token_manager: TokenManager | None = None
+        self._auth_token: str | None = None
+        self._auth_handler: httpx.Auth | None = None
+        self._airflow_url: str = DEFAULT_AIRFLOW_URL
+        self._verify: bool | str = True
+
+    @property
+    def airflow_url(self) -> str:
+        """Get the configured Airflow URL."""
+        return self._airflow_url
+
+    def configure(
+        self,
+        url: str | None = None,
+        auth_token: str | None = None,
+        username: str | None = None,
+        password: str | None = None,
+        auth_kind: AuthKind | None = None,
+        astro_context: str | None = None,
+        verify: bool | str = True,
+    ) -> None:
+        """Configure adapter connection settings.
+
+        Args:
+            url: Base URL of Airflow webserver
+            auth_token: Direct bearer token for authentication (takes precedence
+                except over an explicit ``auth_kind="astro_pat"``)
+            username: Username for token-based authentication
+            password: Password for token-based authentication
+            auth_kind: Optional explicit auth kind (``"astro_pat"``, ``"token"``,
+                ``"basic"``). When ``"astro_pat"``, the manager constructs an
+                ``AstroPATAuth`` against the user's astro session.
+            astro_context: Astro domain (eg ``"astronomer.io"``) for PAT auth.
+                When omitted, the resolver uses the active context from
+                ``~/.astro/config.yaml``.
+            verify: SSL verification setting. True (default) enables verification,
+                    False disables it, or a string path to a CA bundle file.
+
+        Note:
+            Precedence: astro_pat > auth_token > username/password > credential-less.
+        """
+        if url:
+            self._airflow_url = url
+
+        self._verify = verify
+
+        # Reset all auth state before re-applying.
+        self._auth_token = None
+        self._auth_handler = None
+        self._token_manager = None
+
+        if auth_kind == "astro_pat":
+            resolver = AstroPATResolver(domain=astro_context, verify=self._verify)
+            self._auth_handler = AstroPATAuth(resolver)
+            logger.debug(
+                "Configured adapter with AstroPATAuth (context=%s)", astro_context or "active"
+            )
+        elif auth_token:
+            self._auth_token = auth_token
+        elif username or password:
+            self._token_manager = TokenManager(
+                airflow_url=self._airflow_url,
+                username=username,
+                password=password,
+                verify=self._verify,
+            )
+        else:
+            # Credential-less: try the token endpoint anyway (eg all_admins).
+            self._token_manager = TokenManager(
+                airflow_url=self._airflow_url,
+                username=None,
+                password=None,
+                verify=self._verify,
+            )
+
+        # Reset adapter so it will be re-created with new config
+        self._reset_adapter()
+
+    def get_adapter(self) -> AirflowAdapter:
+        """Get or create the adapter instance.
+
+        The adapter is lazy-initialized on first use and will automatically
+        detect the Airflow version and create the appropriate adapter type.
+
+        Returns:
+            Version-specific AirflowAdapter instance
+        """
+        if self._adapter is None:
+            logger.info("Initializing adapter for %s", self._airflow_url)
+            self._adapter = create_adapter(
+                airflow_url=self._airflow_url,
+                token_getter=self._get_auth_token,
+                basic_auth_getter=self._get_basic_auth,
+                auth_handler=self._auth_handler,
+                verify=self._verify,
+            )
+            logger.info("Created adapter for Airflow %s", self._adapter.version)
+        return self._adapter
+
+    def _reset_adapter(self) -> None:
+        """Reset the adapter (e.g., when config changes)."""
+        self._adapter = None
+
+    def _get_auth_token(self) -> str | None:
+        """Get the current authentication token, or None if unconfigured."""
+        if self._auth_token:
+            return self._auth_token
+        if self._token_manager:
+            return self._token_manager.get_token()
+        return None
+
+    def _get_basic_auth(self) -> tuple[str, str] | None:
+        """Get basic auth credentials for Airflow 2.x fallback.
+
+        Returns:
+            Tuple of (username, password) if available, None otherwise
+        """
+        if self._token_manager:
+            return self._token_manager.get_basic_auth()
+        return None
+
+    def invalidate_token(self) -> None:
+        """Invalidate the current token to force refresh on next request."""
+        if self._token_manager:
+            self._token_manager.invalidate()

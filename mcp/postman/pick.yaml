@@ -1,0 +1,22 @@
+kind: mcp
+name: postman
+source: Claude
+category: Integrations
+from:
+  source: claude
+  repo: postmanlabs/postman-plugin
+  commit: "1fdd3f1e2736c7cb83780a221cb9f83641215ab7"
+  follows: main
+license: Apache-2.0
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+note: "the upstream plugin sends headers naming itself (postman-factory-plugin); agenticode connects as itself"
+installs: 24740
+description: "Work with Postman from your agent: bootstrap a repo's Postman setup, mock an API before it's implemented, run collection and governance checks in CI, monitor a live endpoint, deploy and debug Postman Flows, and publish…"
+why: "Work with Postman from your agent: bootstrap a repo's Postman setup, mock an API before it's implemented, run collection and governance checks in CI, monitor a live endpoint,…"
+install:
+  type: http
+  url: https://mcp.postman.com/mcp
+expects:
+  tools_min: 1

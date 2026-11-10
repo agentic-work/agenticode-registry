@@ -1,0 +1,22 @@
+{
+  "name": "astronomer",
+  "owner": {
+    "name": "Astronomer",
+    "email": "support@astronomer.io"
+  },
+  "plugins": [
+    {
+      "name": "astronomer-data",
+      "source": "./",
+      "strict": false,
+      "description": "Data engineering plugin - warehouse exploration, pipeline authoring, Airflow integration",
+      "author": {
+        "name": "Astronomer",
+        "email": "support@astronomer.io"
+      },
+      "homepage": "https://github.com/astronomer/agents",
+      "repository": "https://github.com/astronomer/agents",
+      "keywords": ["data-engineering", "airflow", "snowflake", "bigquery", "jupyter", "astronomer"]
+    }
+  ]
+}

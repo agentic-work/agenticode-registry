@@ -1,0 +1,10 @@
+kind: plugin
+name: claude-md-management
+source: Claude
+category: Authoring
+status: replace
+replaced_by: agents-md
+vendor: false
+installs: 315328
+note: agents-md (AGENTS.md / CLAUDE.md)
+why: "Covered by our own agents-md; nothing is copied or installed from upstream."

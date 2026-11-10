@@ -1,0 +1,529 @@
+"""Tests for af CLI telemetry."""
+
+from __future__ import annotations
+
+import json
+import subprocess
+import sys
+from unittest.mock import MagicMock, patch
+
+import pytest
+
+from astro_airflow_mcp import telemetry as shared_telemetry
+from astro_airflow_mcp.cli import telemetry
+from astro_airflow_mcp.config import ConfigManager
+from astro_airflow_mcp.config.models import Telemetry
+
+
+class TestGetAnonymousId:
+    """Tests for _get_anonymous_id."""
+
+    def test_creates_new_id_in_config(self, tmp_path):
+        """Test generates a new UUID and persists to config."""
+        config_path = tmp_path / "config.yaml"
+        manager = ConfigManager(config_path=config_path)
+        manager.save(manager.load())  # create default config
+
+        with patch("astro_airflow_mcp.config.loader.ConfigManager", return_value=manager):
+            result = shared_telemetry._get_anonymous_id()
+
+        assert len(result) == 36
+        # Verify it was saved to config
+        config = manager.load()
+        assert config.telemetry.anonymous_id == result
+
+    def test_reads_existing_id_from_config(self, tmp_path):
+        """Test returns existing UUID from config."""
+        existing_id = "12345678-1234-1234-1234-123456789abc"
+        config_path = tmp_path / "config.yaml"
+        manager = ConfigManager(config_path=config_path)
+        config = manager.load()
+        config.telemetry.anonymous_id = existing_id
+        manager.save(config)
+
+        with patch("astro_airflow_mcp.config.loader.ConfigManager", return_value=manager):
+            result = shared_telemetry._get_anonymous_id()
+
+        assert result == existing_id
+
+    def test_fallback_on_config_error(self):
+        """Test returns a UUID even if config operations fail."""
+        with patch(
+            "astro_airflow_mcp.config.loader.ConfigManager",
+            side_effect=Exception("config broken"),
+        ):
+            result = shared_telemetry._get_anonymous_id()
+
+        assert len(result) == 36
+
+
+class TestIsTelemetryDisabled:
+    """Tests for _is_telemetry_disabled."""
+
+    @pytest.mark.parametrize("value", ["1", "true", "yes", "TRUE", "Yes"])
+    def test_disabled_by_env_var(self, monkeypatch, value):
+        """Test telemetry disabled via environment variable."""
+        monkeypatch.setenv("AF_TELEMETRY_DISABLED", value)
+        assert shared_telemetry._is_telemetry_disabled() is True
+
+    def test_enabled_by_default(self, monkeypatch):
+        """Test telemetry enabled when env var is not set."""
+        monkeypatch.delenv("AF_TELEMETRY_DISABLED", raising=False)
+        with patch("astro_airflow_mcp.config.loader.ConfigManager") as mock_cm:
+            mock_cm.return_value.load.return_value.telemetry = Telemetry(enabled=True)
+            assert shared_telemetry._is_telemetry_disabled() is False
+
+    def test_disabled_by_config(self, monkeypatch):
+        """Test telemetry disabled via config file."""
+        monkeypatch.delenv("AF_TELEMETRY_DISABLED", raising=False)
+        with patch("astro_airflow_mcp.config.loader.ConfigManager") as mock_cm:
+            mock_cm.return_value.load.return_value.telemetry = Telemetry(enabled=False)
+            assert shared_telemetry._is_telemetry_disabled() is True
+
+
+class TestDetectInvocationContext:
+    """Tests for _detect_invocation_context."""
+
+    @pytest.fixture(autouse=True)
+    def clean_env(self, monkeypatch):
+        """Clear all agent/CI env vars so tests control the environment."""
+        for var in (
+            "OTTO",
+            "CLAUDECODE",
+            "CLAUDE_CODE_ENTRYPOINT",
+            "CURSOR_TRACE_ID",
+            "CURSOR_AGENT",
+            "AIDER_MODEL",
+            "CONTINUE_GLOBAL_DIR",
+            "CORTEX_SESSION_ID",
+            "GEMINI_CLI",
+            "OPENCODE",
+            "CODEX_API_KEY",
+            "COPILOT_CLI",
+            "COPILOT_AGENT",
+            "AI_AGENT",
+            "GITHUB_ACTIONS",
+            "GITLAB_CI",
+            "JENKINS_URL",
+            "HUDSON_URL",
+            "CIRCLECI",
+            "TF_BUILD",
+            "BITBUCKET_BUILD_NUMBER",
+            "CODEBUILD_BUILD_ID",
+            "TEAMCITY_VERSION",
+            "BUILDKITE",
+            "CF_BUILD_ID",
+            "TRAVIS",
+            "CI",
+        ):
+            monkeypatch.delenv(var, raising=False)
+
+    def test_detects_claude_code(self, monkeypatch):
+        """Test detects Claude Code agent."""
+        monkeypatch.setenv("CLAUDECODE", "1")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "claude-code"
+
+    def test_detects_otto(self, monkeypatch):
+        """Test detects Otto agent."""
+        monkeypatch.setenv("OTTO", "1")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "otto"
+
+    def test_otto_wins_over_inherited_marker(self, monkeypatch):
+        """Otto passes its environment through to every command it runs, so an
+        Otto session started from inside another agent still carries that
+        agent's marker. Otto is the proximate caller and must win."""
+        monkeypatch.setenv("CLAUDECODE", "1")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "claude-code"
+
+        monkeypatch.setenv("OTTO", "1")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "otto"
+
+    def test_detects_copilot_cli(self, monkeypatch):
+        """Test detects the GitHub Copilot CLI harness."""
+        monkeypatch.setenv("COPILOT_CLI", "1")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "github-copilot"
+
+    def test_detects_copilot_vscode_agent_mode(self, monkeypatch):
+        """Test detects Copilot agent mode terminals in VS Code."""
+        monkeypatch.setenv("COPILOT_AGENT", "1")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "github-copilot"
+
+    @pytest.mark.parametrize("value", ["github_copilot_vscode_agent", "github_copilot_app_agent"])
+    def test_detects_copilot_via_ai_agent_convention(self, monkeypatch, value):
+        """Test the cross-vendor AI_AGENT convention, where the value names the agent."""
+        monkeypatch.setenv("AI_AGENT", value)
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "github-copilot"
+
+    def test_ignores_unrecognised_ai_agent_value(self, monkeypatch):
+        """Unknown AI_AGENT values are not passed through — some carry a version,
+        which would spray one agent across many distinct telemetry values."""
+        monkeypatch.setenv("AI_AGENT", "some_other_agent")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent is None
+
+    def test_specific_marker_beats_ai_agent(self, monkeypatch):
+        """AI_AGENT is the fallback, so a specific marker still decides. VS Code
+        sets both AI_AGENT and COPILOT_AGENT, and Otto inside a VS Code agent
+        terminal carries both plus its own."""
+        monkeypatch.setenv("AI_AGENT", "github_copilot_vscode_agent")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "github-copilot"
+
+        monkeypatch.setenv("OTTO", "1")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "otto"
+
+    def test_detects_cursor(self, monkeypatch):
+        """Test detects Cursor agent."""
+        monkeypatch.setenv("CURSOR_TRACE_ID", "abc")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "cursor"
+
+    def test_detects_snowflake_cortex(self, monkeypatch):
+        """Test detects Snowflake Cortex agent."""
+        monkeypatch.setenv("CORTEX_SESSION_ID", "session-123")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "snowflake-cortex"
+
+    def test_detects_gemini_cli(self, monkeypatch):
+        """Test detects Gemini CLI agent."""
+        monkeypatch.setenv("GEMINI_CLI", "1")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "gemini-cli"
+
+    def test_detects_opencode(self, monkeypatch):
+        """Test detects OpenCode agent."""
+        monkeypatch.setenv("OPENCODE", "1")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "opencode"
+
+    def test_detects_codex(self, monkeypatch):
+        """Test detects Codex agent."""
+        monkeypatch.setenv("CODEX_API_KEY", "sk-test")
+        _, agent, _ = telemetry._detect_invocation_context()
+        assert agent == "codex"
+
+    def test_detects_github_actions(self, monkeypatch):
+        """Test detects GitHub Actions CI."""
+        monkeypatch.setenv("GITHUB_ACTIONS", "true")
+        _, _, ci_system = telemetry._detect_invocation_context()
+        assert ci_system == "github-actions"
+
+    def test_detects_azure_devops(self, monkeypatch):
+        """Test detects Azure DevOps CI."""
+        monkeypatch.setenv("TF_BUILD", "True")
+        _, _, ci_system = telemetry._detect_invocation_context()
+        assert ci_system == "azure-devops"
+
+    def test_detects_buildkite(self, monkeypatch):
+        """Test detects Buildkite CI."""
+        monkeypatch.setenv("BUILDKITE", "true")
+        _, _, ci_system = telemetry._detect_invocation_context()
+        assert ci_system == "buildkite"
+
+    def test_detects_travis_ci(self, monkeypatch):
+        """Test detects Travis CI."""
+        monkeypatch.setenv("TRAVIS", "true")
+        _, _, ci_system = telemetry._detect_invocation_context()
+        assert ci_system == "travis-ci"
+
+    def test_agent_in_ci(self, monkeypatch):
+        """Test detects both agent and CI system simultaneously."""
+        monkeypatch.setenv("CLAUDECODE", "1")
+        monkeypatch.setenv("GITHUB_ACTIONS", "true")
+        with patch.object(sys.stdin, "isatty", return_value=False):
+            context, agent, ci_system = telemetry._detect_invocation_context()
+        assert agent == "claude-code"
+        assert ci_system == "github-actions"
+        assert context == "non-interactive"
+
+    def test_interactive_tty(self):
+        """Test detects interactive terminal."""
+        with (
+            patch.object(sys.stdin, "isatty", return_value=True),
+            patch.object(sys.stdout, "isatty", return_value=True),
+        ):
+            context, agent, ci_system = telemetry._detect_invocation_context()
+            assert context == "interactive"
+            assert agent is None
+            assert ci_system is None
+
+    def test_non_interactive(self):
+        """Test detects non-interactive context."""
+        with patch.object(sys.stdin, "isatty", return_value=False):
+            context, _, _ = telemetry._detect_invocation_context()
+            assert context == "non-interactive"
+
+
+class TestGetCommandFromArgv:
+    """Tests for _get_command_from_argv."""
+
+    def test_simple_command(self):
+        """Test extracts simple subcommand."""
+        with patch.object(sys, "argv", ["af", "dags", "list"]):
+            assert telemetry._get_command_from_argv() == "dags list"
+
+    def test_filters_flags(self):
+        """Test filters out flag-style arguments."""
+        with patch.object(sys, "argv", ["af", "dags", "list", "--verbose"]):
+            assert telemetry._get_command_from_argv() == "dags list"
+
+    def test_filters_config_option(self):
+        """Test filters --config and its value."""
+        with patch.object(sys, "argv", ["af", "--config", "/path", "dags", "list"]):
+            assert telemetry._get_command_from_argv() == "dags list"
+
+    def test_no_args_returns_root(self):
+        """Test returns 'root' when no subcommand given."""
+        with patch.object(sys, "argv", ["af"]):
+            assert telemetry._get_command_from_argv() == "root"
+
+    def test_option_with_equals(self):
+        """Test handles --option=value format."""
+        with patch.object(sys, "argv", ["af", "--config=/path", "dags", "list"]):
+            assert telemetry._get_command_from_argv() == "dags list"
+
+    def test_filters_file_paths(self):
+        """Test filters out file path arguments."""
+        with patch.object(sys, "argv", ["af", "tests/integration/"]):
+            assert telemetry._get_command_from_argv() == "root"
+
+    def test_filters_dotted_args(self):
+        """Test filters out arguments containing dots (filenames, IDs)."""
+        with patch.object(sys, "argv", ["af", "dags", "trigger", "my_dag.v2"]):
+            assert telemetry._get_command_from_argv() == "dags trigger"
+
+
+class TestSend:
+    """Tests for _send subprocess dispatch."""
+
+    def test_spawns_detached_subprocess(self, mocker):
+        """Test spawns a fire-and-forget subprocess in normal mode."""
+        mock_stdin = MagicMock()
+        mock_proc = MagicMock()
+        mock_proc.stdin = mock_stdin
+        mock_popen = mocker.patch("subprocess.Popen", return_value=mock_proc)
+
+        telemetry._send("https://example.com/telemetry", {"event": "test"})
+
+        mock_popen.assert_called_once()
+        call_kwargs = mock_popen.call_args[1]
+        assert call_kwargs["start_new_session"] is True
+        assert call_kwargs["stderr"] == subprocess.DEVNULL
+        mock_stdin.write.assert_called_once()
+        mock_stdin.close.assert_called_once()
+        mock_proc.wait.assert_not_called()
+
+    def test_passes_payload_as_json(self, mocker):
+        """Test sends correct JSON payload to subprocess stdin."""
+        mock_stdin = MagicMock()
+        mock_proc = MagicMock()
+        mock_proc.stdin = mock_stdin
+        mocker.patch("subprocess.Popen", return_value=mock_proc)
+
+        body = {"source": "test", "event": "CLI Command"}
+        telemetry._send("https://example.com/telemetry", body)
+
+        written = mock_stdin.write.call_args[0][0]
+        payload = json.loads(written.decode())
+        assert payload["api_url"] == "https://example.com/telemetry"
+        assert payload["body"] == body
+        assert payload["debug"] is False
+
+    def test_debug_mode_waits_and_inherits_stderr(self, mocker):
+        """Test debug mode waits for subprocess and inherits stderr."""
+        mock_stdin = MagicMock()
+        mock_proc = MagicMock()
+        mock_proc.stdin = mock_stdin
+        mock_popen = mocker.patch("subprocess.Popen", return_value=mock_proc)
+
+        telemetry._send("https://example.com/telemetry", {"event": "test"}, debug=True)
+
+        call_kwargs = mock_popen.call_args[1]
+        assert call_kwargs["start_new_session"] is False
+        assert call_kwargs["stderr"] is None  # inherits parent stderr
+        mock_proc.wait.assert_called_once()
+
+    def test_debug_mode_logs_request_to_stderr(self, mocker, capsys):
+        """Test debug mode prints request details to stderr."""
+        mock_proc = MagicMock()
+        mock_proc.stdin = MagicMock()
+        mocker.patch("subprocess.Popen", return_value=mock_proc)
+
+        body = {"source": "af-cli", "event": "CLI Command"}
+        telemetry._send("https://example.com/telemetry", body, debug=True)
+
+        captured = capsys.readouterr()
+        assert "[telemetry] POST https://example.com/telemetry" in captured.err
+        assert '"source": "af-cli"' in captured.err
+
+    def test_debug_payload_includes_debug_flag(self, mocker):
+        """Test debug flag is passed through in the payload."""
+        mock_stdin = MagicMock()
+        mock_proc = MagicMock()
+        mock_proc.stdin = mock_stdin
+        mocker.patch("subprocess.Popen", return_value=mock_proc)
+
+        telemetry._send("https://example.com/telemetry", {"event": "test"}, debug=True)
+
+        written = mock_stdin.write.call_args[0][0]
+        payload = json.loads(written.decode())
+        assert payload["debug"] is True
+
+    def test_suppresses_exceptions(self, mocker):
+        """Test silently handles subprocess errors."""
+        mocker.patch("subprocess.Popen", side_effect=OSError("spawn failed"))
+        # Should not raise
+        telemetry._send("https://example.com/telemetry", {"event": "test"})
+
+
+class TestSendScript:
+    """Tests for _SEND_SCRIPT executed as a subprocess."""
+
+    def test_script_posts_to_api(self):
+        """Test the subprocess script sends correct HTTP request."""
+        script = shared_telemetry._SEND_SCRIPT.replace(
+            "__TIMEOUT__", str(shared_telemetry.TELEMETRY_TIMEOUT_SECONDS)
+        )
+        payload = json.dumps(
+            {
+                "api_url": "http://localhost:9999/telemetry",
+                "body": {"source": "test", "event": "Test Event", "anonymousId": "abc"},
+                "debug": True,
+            }
+        )
+
+        # Run the actual script in a subprocess with a fake server that will refuse
+        # the connection - we verify the script runs and reports the error in debug mode.
+        proc = subprocess.run(
+            [sys.executable, "-c", script],
+            input=payload.encode(),
+            capture_output=True,
+            timeout=10,
+        )
+
+        stderr = proc.stderr.decode()
+        # Should get a connection refused or similar error in debug output
+        assert "[telemetry] error:" in stderr
+
+    def test_script_is_valid_python(self):
+        """Test the subprocess script compiles without syntax errors."""
+        script = shared_telemetry._SEND_SCRIPT.replace("__TIMEOUT__", "3")
+        compile(script, "<send_script>", "exec")
+
+    def test_script_silent_without_debug(self):
+        """Test the subprocess script produces no output when debug is off."""
+        script = shared_telemetry._SEND_SCRIPT.replace(
+            "__TIMEOUT__", str(shared_telemetry.TELEMETRY_TIMEOUT_SECONDS)
+        )
+        payload = json.dumps(
+            {
+                "api_url": "http://localhost:9999/telemetry",
+                "body": {"source": "test", "event": "Test Event", "anonymousId": "abc"},
+                "debug": False,
+            }
+        )
+
+        proc = subprocess.run(
+            [sys.executable, "-c", script],
+            input=payload.encode(),
+            capture_output=True,
+            timeout=10,
+        )
+
+        assert proc.stderr.decode() == ""
+
+
+class TestTrackCommand:
+    """Tests for track_command integration."""
+
+    @pytest.fixture(autouse=True)
+    def reset_tracked(self):
+        """Reset the global _tracked flag between tests."""
+        telemetry._tracked = False
+        yield
+        telemetry._tracked = False
+
+    def test_idempotent(self, mocker, monkeypatch):
+        """Test only tracks once per invocation."""
+        monkeypatch.delenv("AF_TELEMETRY_DISABLED", raising=False)
+        mock_send = mocker.patch("astro_airflow_mcp.cli.telemetry._send")
+        mocker.patch("astro_airflow_mcp.cli.telemetry._is_telemetry_disabled", return_value=False)
+        mocker.patch("astro_airflow_mcp.cli.telemetry._get_anonymous_id", return_value="test-id")
+        mocker.patch(
+            "astro_airflow_mcp.cli.telemetry._get_command_from_argv", return_value="dags list"
+        )
+        mocker.patch(
+            "astro_airflow_mcp.cli.telemetry._detect_invocation_context",
+            return_value=("interactive", None, None),
+        )
+
+        telemetry.track_command()
+        telemetry.track_command()
+
+        mock_send.assert_called_once()
+
+    def test_skips_when_disabled(self, mocker, monkeypatch):
+        """Test does not send when telemetry is disabled."""
+        mock_send = mocker.patch("astro_airflow_mcp.cli.telemetry._send")
+        mocker.patch("astro_airflow_mcp.cli.telemetry._is_telemetry_disabled", return_value=True)
+
+        telemetry.track_command()
+
+        mock_send.assert_not_called()
+
+    def test_sends_correct_payload(self, mocker, monkeypatch):
+        """Test sends expected event body."""
+        monkeypatch.delenv("AF_TELEMETRY_DISABLED", raising=False)
+        monkeypatch.delenv("AF_TELEMETRY_API_URL", raising=False)
+        monkeypatch.delenv("AF_TELEMETRY_DEBUG", raising=False)
+        mock_send = mocker.patch("astro_airflow_mcp.cli.telemetry._send")
+        mocker.patch("astro_airflow_mcp.cli.telemetry._is_telemetry_disabled", return_value=False)
+        mocker.patch("astro_airflow_mcp.cli.telemetry._get_anonymous_id", return_value="test-id")
+        mocker.patch(
+            "astro_airflow_mcp.cli.telemetry._get_command_from_argv", return_value="dags list"
+        )
+        mocker.patch(
+            "astro_airflow_mcp.cli.telemetry._detect_invocation_context",
+            return_value=("non-interactive", "claude-code", "github-actions"),
+        )
+
+        telemetry.track_command()
+
+        mock_send.assert_called_once()
+        api_url, body = mock_send.call_args[0]
+        assert api_url == telemetry.TELEMETRY_API_URL
+        assert body["event"] == "CLI Command"
+        assert body["anonymousId"] == "test-id"
+        assert body["properties"]["command"] == "dags list"
+        assert body["properties"]["agent"] == "claude-code"
+        assert body["properties"]["ci_system"] == "github-actions"
+        assert body["properties"]["context"] == "non-interactive"
+
+    def test_api_url_override(self, mocker, monkeypatch):
+        """Test API URL can be overridden via env var."""
+        monkeypatch.setenv("AF_TELEMETRY_API_URL", "https://custom.example.com/telemetry")
+        monkeypatch.delenv("AF_TELEMETRY_DISABLED", raising=False)
+        monkeypatch.delenv("AF_TELEMETRY_DEBUG", raising=False)
+        mock_send = mocker.patch("astro_airflow_mcp.cli.telemetry._send")
+        mocker.patch("astro_airflow_mcp.cli.telemetry._is_telemetry_disabled", return_value=False)
+        mocker.patch("astro_airflow_mcp.cli.telemetry._get_anonymous_id", return_value="test-id")
+        mocker.patch(
+            "astro_airflow_mcp.cli.telemetry._get_command_from_argv", return_value="health"
+        )
+        mocker.patch(
+            "astro_airflow_mcp.cli.telemetry._detect_invocation_context",
+            return_value=("interactive", None, None),
+        )
+
+        telemetry.track_command()
+
+        api_url = mock_send.call_args[0][0]
+        assert api_url == "https://custom.example.com/telemetry"

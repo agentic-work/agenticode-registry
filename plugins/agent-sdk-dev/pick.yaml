@@ -1,0 +1,10 @@
+kind: plugin
+name: agent-sdk-dev
+source: Claude
+category: Authoring
+status: replace
+replaced_by: agenticode-sdk-dev
+vendor: false
+installs: 67983
+note: agenticode-sdk-dev
+why: "Covered by our own agenticode-sdk-dev; nothing is copied or installed from upstream."

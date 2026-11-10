@@ -1,0 +1,10 @@
+kind: plugin
+name: claude-code-setup
+source: Claude
+category: Setup
+status: replace
+replaced_by: agenticode-setup
+vendor: false
+installs: 225034
+note: agenticode-setup
+why: "Covered by our own agenticode-setup; nothing is copied or installed from upstream."

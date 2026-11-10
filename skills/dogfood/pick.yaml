@@ -1,0 +1,10 @@
+kind: skill
+name: dogfood
+source: Hermes
+category: Browser
+status: replace
+replaced_by: brainbow
+vendor: false
+installs: null
+note: Brainbow (exploratory web-app QA in a browser)
+why: "Covered by our own brainbow; nothing is copied or installed from upstream."

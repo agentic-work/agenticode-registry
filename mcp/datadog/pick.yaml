@@ -1,0 +1,28 @@
+kind: mcp
+name: datadog
+source: Claude
+category: Ops
+from:
+  source: claude
+  repo: datadog-labs/claude-code-plugin
+  commit: "195f570c002beab3d7bd342739034d0019aa4863"
+  follows: main
+license: Apache-2.0
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 32231
+description: Use Datadog directly in Claude Code through a preconfigured Datadog MCP server. Query logs, metrics, traces, dashboards, and more through natural conversation. This plugin is in preview.
+why: "Use Datadog directly in Claude Code through a preconfigured Datadog MCP server. Query logs, metrics, traces, dashboards, and more through natural conversation. This plugin is in…"
+install:
+  type: http
+  url: "https://${DD_MCP_DOMAIN}/v1/mcp"
+  headers:
+    DD_API_KEY: "${DD_API_KEY}"
+    DD_APPLICATION_KEY: "${DD_APPLICATION_KEY}"
+  env:
+    - DD_MCP_DOMAIN
+    - DD_API_KEY
+    - DD_APPLICATION_KEY
+expects:
+  tools_min: 1

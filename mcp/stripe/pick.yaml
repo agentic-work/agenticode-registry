@@ -1,0 +1,22 @@
+kind: mcp
+name: stripe
+source: Claude
+category: Integrations
+from:
+  source: claude
+  repo: stripe/ai
+  commit: deae744bc0cbf6034b4b6f22f51c690b71a4e779
+  path: providers/claude/plugin
+  follows: main
+license: MIT
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 93815
+description: Stripe development plugin for Claude
+why: Stripe development plugin for Claude
+install:
+  type: http
+  url: https://mcp.stripe.com
+expects:
+  tools_min: 1

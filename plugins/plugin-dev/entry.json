@@ -1,0 +1,8 @@
+{
+  "description": "Comprehensive toolkit for developing Claude Code plugins. Includes 7 expert skills covering hooks, MCP integration, commands, agents, and best practices. AI-assisted plugin creation and validation.",
+  "author": {
+    "name": "Anthropic",
+    "email": "support@anthropic.com"
+  },
+  "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/plugin-dev"
+}

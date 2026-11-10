@@ -1,0 +1,22 @@
+kind: mcp
+name: linear
+source: Claude
+category: Integrations
+from:
+  source: claude
+  repo: anthropics/claude-plugins-official
+  commit: dceb15d50832e6adf380bedc26dde03d251324b9
+  path: external_plugins/linear
+  follows: main
+license: LicenseRef-hosted-service
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 52928
+description: "Linear issue tracking integration. Create issues, manage projects, update statuses, search across workspaces, and streamline your software development workflow with Linear's modern issue tracker."
+why: "Linear issue tracking integration. Create issues, manage projects, update statuses, search across workspaces, and streamline your software development workflow with Linear's…"
+install:
+  type: http
+  url: https://mcp.linear.app/mcp
+expects:
+  tools_min: 1

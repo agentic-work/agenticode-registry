@@ -1,0 +1,21 @@
+kind: mcp
+name: notion
+source: Claude
+category: Integrations
+from:
+  source: claude
+  repo: makenotion/claude-code-notion-plugin
+  commit: "9847f2aa1a15f25df35ed1fb7b4557dbb60cd651"
+  follows: main
+license: LicenseRef-hosted-service
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: null
+description: "Notion workspace integration. Search pages, create and update documents, manage databases, and access your team's knowledge base directly from Claude Code for seamless documentation workflows."
+why: "Notion workspace integration. Search pages, create and update documents, manage databases, and access your team's knowledge base directly from Claude Code for seamless…"
+install:
+  type: http
+  url: https://mcp.notion.com/mcp
+expects:
+  tools_min: 1

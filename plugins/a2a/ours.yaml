@@ -1,0 +1,9 @@
+kind: plugin
+name: a2a
+type: built-in
+owner: agentic-work
+source: agentic-work
+status: built-in
+license: MIT
+description: "Local and cloud agent-to-agent, signed in with each cloud's own CLI."
+where: "agentic-work/agenticode (the /a2a command and the SendMessage A2A transport)."

@@ -1,0 +1,13 @@
+# Daily: report picks whose upstream moved, with the files that changed.
+# Blocked by billing for now; the Mac runs scripts/registry/bump.sh.
+name: bump
+on: { schedule: [{ cron: "0 13 * * *" }], workflow_dispatch: {} }
+permissions: { contents: write, pull-requests: write }
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: scripts/registry/bump.sh
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }

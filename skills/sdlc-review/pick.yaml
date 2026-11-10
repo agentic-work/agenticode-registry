@@ -1,0 +1,22 @@
+kind: skill
+name: sdlc-review
+source: Hermes
+category: Coding
+from:
+  source: hermes
+  repo: NousResearch/hermes-agent
+  commit: c382971c9fd649938937422ad937a3954a9f1128
+  path: skills/devops/sdlc-review
+  follows: main
+license: MIT
+license_file: UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+version: "1.1.0"
+description: Review Kanban handoffs and route verified outcomes.
+why: Review Kanban handoffs and route verified outcomes.
+install:
+  type: skill
+  dir: sdlc-review

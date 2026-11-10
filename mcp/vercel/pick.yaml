@@ -1,0 +1,21 @@
+kind: mcp
+name: vercel
+source: Claude
+category: Deploy
+from:
+  source: claude
+  repo: vercel/vercel-plugin
+  commit: "882e66c2698689324c341b7bb8fd8beb92c27bf6"
+  follows: main
+license: LicenseRef-hosted-service
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 310340
+description: Vercel deployment platform integration. Manage deployments, check build status, access logs, configure domains, and control your frontend infrastructure directly from Claude Code.
+why: Vercel deployment platform integration. Manage deployments, check build status, access logs, configure domains, and control your frontend infrastructure directly from Claude Code.
+install:
+  type: http
+  url: https://mcp.vercel.com
+expects:
+  tools_min: 1

@@ -1,0 +1,8 @@
+{
+  "description": "Interactive self-referential AI loops for iterative development, implementing the Ralph Wiggum technique. Claude works on the same task repeatedly, seeing its previous work, until completion.",
+  "author": {
+    "name": "Anthropic",
+    "email": "support@anthropic.com"
+  },
+  "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/ralph-loop"
+}

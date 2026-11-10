@@ -1,0 +1,10 @@
+kind: skill
+name: peekaboo
+source: OpenClaw
+category: Desktop
+status: replace
+replaced_by: brainbow
+vendor: false
+installs: null
+note: Brainbow desktop
+why: "Covered by our own brainbow; nothing is copied or installed from upstream."

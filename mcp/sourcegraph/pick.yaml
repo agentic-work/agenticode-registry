@@ -1,0 +1,26 @@
+kind: mcp
+name: sourcegraph
+source: Claude
+category: Coding
+from:
+  source: claude
+  repo: sourcegraph-community/sourcegraph-claudecode-plugin
+  commit: "674a05e2e28677fc3fdce7491063459455ded573"
+  follows: main
+license: LicenseRef-hosted-service
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 15325
+description: "Code search and understanding across codebases. Search, read, and trace references across repositories; analyze refactor impact; investigate incidents via commit and diff search; run targeted security sweeps."
+why: "Code search and understanding across codebases. Search, read, and trace references across repositories; analyze refactor impact; investigate incidents via commit and diff search;…"
+install:
+  type: http
+  url: "${SOURCEGRAPH_ENDPOINT}/.api/mcp/all"
+  headers:
+    Authorization: "token ${SOURCEGRAPH_ACCESS_TOKEN}"
+  env:
+    - SOURCEGRAPH_ENDPOINT
+    - SOURCEGRAPH_ACCESS_TOKEN
+expects:
+  tools_min: 1

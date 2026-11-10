@@ -1,0 +1,54 @@
+{
+  "gate": "cost",
+  "ran_at": "2026-11-10T14:31:02.329Z",
+  "results": {
+    "mcp/aws-knowledge": {
+      "status": "pass",
+      "tokens_idle": 1976
+    },
+    "mcp/context7": {
+      "status": "pass",
+      "tokens_idle": 1304
+    },
+    "mcp/fetch": {
+      "status": "pass",
+      "tokens_idle": 362
+    },
+    "mcp/firebase": {
+      "status": "pass",
+      "tokens_idle": 6417
+    },
+    "mcp/git": {
+      "status": "pass",
+      "tokens_idle": 1885
+    },
+    "mcp/github": {
+      "status": "pass",
+      "tokens_idle": 34039
+    },
+    "mcp/greptile": {
+      "status": "pass",
+      "tokens_idle": 11529
+    },
+    "mcp/memory": {
+      "status": "pass",
+      "tokens_idle": 3476
+    },
+    "mcp/microsoft-docs": {
+      "status": "pass",
+      "tokens_idle": 1214
+    },
+    "mcp/sequential-thinking": {
+      "status": "pass",
+      "tokens_idle": 700
+    },
+    "mcp/serena": {
+      "status": "pass",
+      "tokens_idle": 1055
+    },
+    "mcp/time": {
+      "status": "pass",
+      "tokens_idle": 1090
+    }
+  }
+}

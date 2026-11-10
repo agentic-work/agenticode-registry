@@ -1,0 +1,9 @@
+kind: skill
+name: brand-studio
+type: bundle
+owner: agentic-work
+source: agentic-work
+status: planned
+license: null
+description: "Icons and brand art on the Windows PC's ComfyUI (4090)."
+where: "Not built yet."

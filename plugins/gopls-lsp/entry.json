@@ -1,0 +1,17 @@
+{
+  "description": "Go language server for code intelligence and refactoring",
+  "version": "1.0.0",
+  "author": {
+    "name": "Anthropic",
+    "email": "support@anthropic.com"
+  },
+  "strict": false,
+  "lspServers": {
+    "gopls": {
+      "command": "gopls",
+      "extensionToLanguage": {
+        ".go": "go"
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+kind: mcp
+name: figma
+source: Claude
+category: Design
+status: replace
+replaced_by: figma-bridge
+vendor: false
+installs: 188556
+note: figma-bridge (Figma refuses unknown clients)
+why: "Covered by our own figma-bridge; nothing is copied or installed from upstream."

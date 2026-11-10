@@ -1,0 +1,20 @@
+kind: skill
+name: doc-coauthoring
+source: Claude
+category: Writing
+from:
+  source: claude
+  repo: anthropics/skills
+  commit: "2c5958ecac7cee2b583967a2c4981d0f4a75c579"
+  path: skills/doc-coauthoring
+  follows: main
+license: null
+vendor: false
+vendor_reason: "no licence file for this item (and no repo-wide licence): link-only, installed from upstream at the pinned commit"
+status: ok
+installs: null
+description: "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users…"
+why: "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar…"
+install:
+  type: skill
+  dir: doc-coauthoring

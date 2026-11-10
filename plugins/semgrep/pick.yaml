@@ -1,0 +1,26 @@
+kind: plugin
+name: semgrep
+source: Claude
+category: Security
+from:
+  source: claude
+  repo: semgrep/mcp-marketplace
+  commit: b58f407c6ac0f5fe47dee8301602f2e290a8ecfb
+  path: plugin
+  follows: main
+license: null
+vendor: false
+vendor_reason: "no licence file for this item (and no repo-wide licence): link-only, installed from upstream at the pinned commit"
+status: ok
+installs: 21223
+description: Semgrep catches security vulnerabilities in real-time and guides Claude to write secure code from the start.
+why: Semgrep catches security vulnerabilities in real-time and guides Claude to write secure code from the start. (its MCP runs a script inside the plugin, so it installs as a plugin)
+note: its MCP runs a script inside the plugin, so it installs as a plugin
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  upstream:
+    source: git-subdir
+    url: https://github.com/semgrep/mcp-marketplace.git
+    path: plugin
+    sha: b58f407c6ac0f5fe47dee8301602f2e290a8ecfb

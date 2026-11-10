@@ -1,0 +1,22 @@
+kind: mcp
+name: slack
+source: Claude
+category: Integrations
+from:
+  source: claude
+  repo: slackapi/slack-mcp-plugin
+  commit: ad6be88096678812c448b0279390b4d25bce0164
+  follows: main
+license: MIT
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: blocked
+blocked_reason: "install: handshake failed: Incompatible auth server: does not support dynamic client registration"
+installs: 115277
+description: "Slack workspace integration. Search messages, access channels, read threads, and stay connected with your team's communications while coding. Find relevant discussions and context quickly."
+why: "Slack workspace integration. Search messages, access channels, read threads, and stay connected with your team's communications while coding. Find relevant discussions and…"
+install:
+  type: http
+  url: https://mcp.slack.com/mcp
+expects:
+  tools_min: 1

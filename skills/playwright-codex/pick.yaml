@@ -1,0 +1,10 @@
+kind: skill
+name: playwright-codex
+source: Codex
+category: Browser
+status: replace
+replaced_by: brainbow
+vendor: false
+installs: null
+note: Brainbow (openai/skills playwright)
+why: "Covered by our own brainbow; nothing is copied or installed from upstream."

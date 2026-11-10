@@ -1,0 +1,21 @@
+kind: skill
+name: mcp-builder
+source: Claude
+category: Authoring
+from:
+  source: claude
+  repo: anthropics/skills
+  commit: "2c5958ecac7cee2b583967a2c4981d0f4a75c579"
+  path: skills/mcp-builder
+  follows: main
+license: Apache-2.0
+license_file: LICENSE.txt
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or…"
+why: "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP…"
+install:
+  type: skill
+  dir: mcp-builder

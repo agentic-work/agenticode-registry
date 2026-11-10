@@ -1,0 +1,21 @@
+kind: skill
+name: web-artifacts-builder
+source: Claude
+category: Design
+from:
+  source: claude
+  repo: anthropics/skills
+  commit: "2c5958ecac7cee2b583967a2c4981d0f4a75c579"
+  path: skills/web-artifacts-builder
+  follows: main
+license: Apache-2.0
+license_file: LICENSE.txt
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or…"
+why: "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts…"
+install:
+  type: skill
+  dir: web-artifacts-builder

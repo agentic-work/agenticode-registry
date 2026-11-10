@@ -1,0 +1,22 @@
+kind: mcp
+name: expo
+source: Claude
+category: Mobile
+from:
+  source: claude
+  repo: expo/skills
+  commit: d4f484024fec15196bfd3c272e953e3f983972cf
+  path: plugins/expo
+  follows: main
+license: MIT
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 21625
+description: "Official Expo skills for building, deploying, upgrading, and debugging React Native apps with Expo. Covers UI development with Expo Router, SwiftUI and Jetpack Compose components, Tailwind CSS setup, API routes, data…"
+why: "Official Expo skills for building, deploying, upgrading, and debugging React Native apps with Expo. Covers UI development with Expo Router, SwiftUI and Jetpack Compose…"
+install:
+  type: http
+  url: https://mcp.expo.dev/mcp
+expects:
+  tools_min: 1

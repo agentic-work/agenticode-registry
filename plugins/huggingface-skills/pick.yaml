@@ -1,0 +1,23 @@
+kind: plugin
+name: huggingface-skills
+type: bundle
+source: Claude
+category: AI/ML
+from:
+  source: claude
+  repo: huggingface/skills
+  commit: c3ff942be3e07116b475253f0a8fc4f54682c1a8
+  follows: main
+license: Apache-2.0
+license_file: plugin/LICENSE
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: blocked
+blocked_reason: "lint: read-credentials skills/hf-cloud-aws-context-discovery/SKILL.md:64 \"`aws configure list` handles env-var overrides and shows the resolved effective values. Prefer it over parsing `~/.aws/config` yourself. If you need to "
+installs: 36876
+description: Build, train, evaluate, and use open source AI models, datasets, and spaces.
+why: Build, train, evaluate, and use open source AI models, datasets, and spaces.
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  path: plugins/huggingface-skills/plugin

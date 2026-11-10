@@ -1,0 +1,21 @@
+kind: mcp
+name: sentry
+source: Claude
+category: Ops
+from:
+  source: claude
+  repo: getsentry/plugin-claude
+  commit: "73e53541d7af21672e27428c7067f4264b8a3d65"
+  follows: main
+license: MIT
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 42193
+description: Sentry error monitoring integration. Access error reports, analyze stack traces, search issues by fingerprint, and debug production errors directly from your development environment.
+why: "Sentry error monitoring integration. Access error reports, analyze stack traces, search issues by fingerprint, and debug production errors directly from your development…"
+install:
+  type: http
+  url: "https://mcp.sentry.dev/mcp?utm_source=plugin"
+expects:
+  tools_min: 1

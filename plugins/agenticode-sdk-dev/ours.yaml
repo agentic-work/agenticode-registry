@@ -1,0 +1,9 @@
+kind: plugin
+name: agenticode-sdk-dev
+owner: agentic-work
+source: agentic-work
+status: planned
+license: null
+description: "Build on the agenticode SDK."
+where: "Not built yet."
+replaces: [agent-sdk-dev]

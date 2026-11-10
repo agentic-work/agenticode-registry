@@ -1,0 +1,22 @@
+kind: skill
+name: requesting-code-review
+source: Hermes
+category: Coding
+from:
+  source: hermes
+  repo: NousResearch/hermes-agent
+  commit: c382971c9fd649938937422ad937a3954a9f1128
+  path: skills/software-development/requesting-code-review
+  follows: main
+license: MIT
+license_file: UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+version: "2.1.0"
+description: "Pre-commit review: security scan, quality gates, auto-fix."
+why: "Pre-commit review: security scan, quality gates, auto-fix."
+install:
+  type: skill
+  dir: requesting-code-review

@@ -1,0 +1,22 @@
+kind: skill
+name: humanizer
+source: Hermes
+category: Writing
+from:
+  source: hermes
+  repo: NousResearch/hermes-agent
+  commit: c382971c9fd649938937422ad937a3954a9f1128
+  path: skills/creative/humanizer
+  follows: main
+license: MIT
+license_file: LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+version: "2.5.1"
+description: "Humanize text: strip AI-isms and add real voice."
+why: "Humanize text: strip AI-isms and add real voice."
+install:
+  type: skill
+  dir: humanizer

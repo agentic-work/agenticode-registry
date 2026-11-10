@@ -1,0 +1,10 @@
+kind: plugin
+name: imessage
+source: Claude
+category: Messaging
+status: replace
+replaced_by: relay
+vendor: false
+installs: 17678
+note: Relay + phone
+why: "Covered by our own relay; nothing is copied or installed from upstream."

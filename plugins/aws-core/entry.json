@@ -1,0 +1,7 @@
+{
+  "description": "Build, deploy, and operate applications on AWS. Skills to author infrastructure-as-code, use core services, and complete common tasks.",
+  "author": {
+    "name": "Amazon Web Services"
+  },
+  "homepage": "https://github.com/aws/agent-toolkit-for-aws"
+}

@@ -1,0 +1,10 @@
+kind: mcp
+name: figma-bridge
+owner: agentic-work
+source: agentic-work
+status: built-in
+license: MIT
+description: "Create and edit Figma Design, FigJam and Slides files through the agenticode plugin."
+where: "agentic-work/agenticode, src/figma (served by `agenticode figma-mcp`)."
+use: "Built in; listed for discovery."
+replaces: [figma]

@@ -1,0 +1,10 @@
+kind: skill
+name: office-docs
+type: bundle
+owner: agentic-work
+source: agentic-work
+status: planned
+license: null
+description: "docx / pdf / pptx / xlsx, written from scratch, no copied text."
+where: "Not built yet."
+replaces: [docx, pdf, pptx, xlsx]

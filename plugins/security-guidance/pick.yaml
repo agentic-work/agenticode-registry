@@ -1,0 +1,26 @@
+kind: plugin
+name: security-guidance
+source: Claude
+category: Security
+from:
+  source: claude
+  repo: anthropics/claude-plugins-official
+  commit: dceb15d50832e6adf380bedc26dde03d251324b9
+  path: plugins/security-guidance
+  follows: main
+license: Apache-2.0
+license_file: plugin/LICENSE
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: 272066
+version: "2.0.19"
+description: "Security review for Claude-generated code. Pattern-based warnings on edits, LLM-powered diff review on Stop, and an agentic commit reviewer that catches injection, XSS, SSRF, hardcoded secrets, and 25+ other…"
+why: "Security review for Claude-generated code. Pattern-based warnings on edits, LLM-powered diff review on Stop, and an agentic commit reviewer that catches injection, XSS, SSRF,…"
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  path: plugins/security-guidance/plugin
+scan_allow:
+  tests/test_patterns_file_shape.py: "test fixture for the plugin's own secret detector: AKIAABCDEFGHIJKLMNOP is a fake key (reviewed 2026-11-10)"
+  tests/test_secret_shaped_paths.py: "test fixture writes only a PEM header line to a temp file to exercise the detector (reviewed 2026-11-10)"

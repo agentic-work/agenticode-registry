@@ -1,0 +1,16 @@
+# Mondays: re-rank the sources and open one "candidates" issue.
+# GitHub Actions on agentic-work is blocked by billing; until then this runs on
+# the Mac as scripts/registry/scout.sh --issue. Kept here to move over unchanged.
+name: scout
+on:
+  schedule: [{ cron: "0 14 * * 1" }]
+  workflow_dispatch: {}
+permissions: { contents: read, issues: write }
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: scripts/registry/scout.sh --issue
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "datadog": {
+      "type": "http",
+      "url": "https://${DD_MCP_DOMAIN}/v1/mcp",
+      "headers": {
+        "DD_API_KEY": "${DD_API_KEY}",
+        "DD_APPLICATION_KEY": "${DD_APPLICATION_KEY}"
+      }
+    }
+  }
+}

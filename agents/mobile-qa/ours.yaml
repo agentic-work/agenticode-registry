@@ -1,0 +1,8 @@
+kind: agent
+name: mobile-qa
+owner: agentic-work
+source: agentic-work
+status: planned
+license: null
+description: "Builds and tests on Android and iOS emulators and real devices."
+where: "Not built yet."

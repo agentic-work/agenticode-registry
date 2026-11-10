@@ -1,0 +1,10 @@
+kind: plugin
+name: relay
+type: built-in
+owner: agentic-work
+source: agentic-work
+status: built-in
+license: MIT
+description: "Your phone drives any session, end-to-end encrypted."
+where: "agentic-work/agenticode, src/relay."
+replaces: [telegram, discord, imessage]

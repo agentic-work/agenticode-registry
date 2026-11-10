@@ -1,0 +1,29 @@
+kind: mcp
+name: postgres
+source: MCP Registry
+category: Data
+from:
+  source: mcp-registry
+  repo: modelcontextprotocol/servers-archived
+  commit: "9be4674d1ddf8c469e6461a27a337eeb65f76c2e"
+  path: src/postgres
+  follows: main
+license: MIT
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: blocked
+blocked_reason: "scan: npm marks @modelcontextprotocol/server-postgres@0.6.2 deprecated: Archived and unmaintained | install: handshake failed: MCP error -32000: Connection closed"
+installs: null
+description: Read-only SQL against a Postgres database (archived reference server).
+why: Read-only SQL against a Postgres database (archived reference server).
+install:
+  type: stdio
+  command: npx
+  args:
+    - "-y"
+    - "@modelcontextprotocol/server-postgres@0.6.2"
+    - "${POSTGRES_URL}"
+  env:
+    - POSTGRES_URL
+expects:
+  tools_min: 1

@@ -1,0 +1,10 @@
+kind: plugin
+name: remember
+source: Claude
+category: Memory
+status: replace
+replaced_by: built-in memory
+vendor: false
+installs: 65028
+note: built-in memory
+why: "Covered by our own built-in memory; nothing is copied or installed from upstream."

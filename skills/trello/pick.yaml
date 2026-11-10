@@ -1,0 +1,21 @@
+kind: skill
+name: trello
+source: OpenClaw
+category: Integrations
+from:
+  source: openclaw
+  repo: openclaw/openclaw
+  commit: c321c038b59c1e67f4729023b5e680d3c061c9ca
+  path: skills/trello
+  follows: main
+license: MIT
+license_file: UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: Manage Trello boards, lists, and cards via the Trello REST API.
+why: Manage Trello boards, lists, and cards via the Trello REST API.
+install:
+  type: skill
+  dir: trello

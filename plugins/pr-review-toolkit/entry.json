@@ -1,0 +1,8 @@
+{
+  "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification",
+  "author": {
+    "name": "Anthropic",
+    "email": "support@anthropic.com"
+  },
+  "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/pr-review-toolkit"
+}

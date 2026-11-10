@@ -1,0 +1,26 @@
+kind: mcp
+name: firebase
+source: Claude
+category: Data
+from:
+  source: claude
+  repo: anthropics/claude-plugins-official
+  commit: dceb15d50832e6adf380bedc26dde03d251324b9
+  path: external_plugins/firebase
+  follows: main
+license: MIT
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 28078
+description: Google Firebase MCP integration. Manage Firestore databases, authentication, cloud functions, hosting, and storage. Build and manage your Firebase backend directly from your development workflow.
+why: "Google Firebase MCP integration. Manage Firestore databases, authentication, cloud functions, hosting, and storage. Build and manage your Firebase backend directly from your…"
+install:
+  type: stdio
+  command: npx
+  args:
+    - "-y"
+    - firebase-tools@15.35.0
+    - mcp
+expects:
+  tools_min: 1

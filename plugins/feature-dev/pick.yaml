@@ -1,0 +1,22 @@
+kind: plugin
+name: feature-dev
+source: Claude
+category: Coding
+from:
+  source: claude
+  repo: anthropics/claude-plugins-official
+  commit: dceb15d50832e6adf380bedc26dde03d251324b9
+  path: plugins/feature-dev
+  follows: main
+license: Apache-2.0
+license_file: plugin/LICENSE
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: 270064
+description: Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review
+why: Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  path: plugins/feature-dev/plugin

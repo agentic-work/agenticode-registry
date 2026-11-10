@@ -1,0 +1,8 @@
+kind: agent
+name: security-deep-dive
+owner: agentic-work
+source: agentic-work
+status: planned
+license: null
+description: "The adversarial review agent: source plus dependencies, H/M/L findings."
+where: "Not built yet."

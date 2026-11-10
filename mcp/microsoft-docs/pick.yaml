@@ -1,0 +1,21 @@
+kind: mcp
+name: microsoft-docs
+source: Claude
+category: Docs
+from:
+  source: claude
+  repo: MicrosoftDocs/mcp
+  commit: f0a9478a954c9b3a7c6525a5183466902ca60731
+  follows: main
+license: LicenseRef-hosted-service
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 31364
+description: Access official Microsoft documentation, API references, and code samples for Azure, .NET, Windows, and more.
+why: Access official Microsoft documentation, API references, and code samples for Azure, .NET, Windows, and more.
+install:
+  type: http
+  url: https://learn.microsoft.com/api/mcp
+expects:
+  tools_min: 1

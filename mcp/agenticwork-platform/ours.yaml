@@ -1,0 +1,8 @@
+kind: mcp
+name: agenticwork-platform
+owner: agentic-work
+source: agentic-work
+status: planned
+license: null
+description: "Platform models, image generation, policy, the admin console."
+where: "The platform provider is built into agenticode (src/platform); the MCP surface described here is not built yet."

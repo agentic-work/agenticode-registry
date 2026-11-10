@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp",
+      "headers": {
+        "X-Source-Name": "agenticode",
+        "X-Source-Version": "registry"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+kind: skill
+name: agents-md
+owner: agentic-work
+source: agentic-work
+status: planned
+license: null
+description: "Keep AGENTS.md / CLAUDE.md lean and current."
+where: "Not built yet."
+replaces: [claude-md-management]

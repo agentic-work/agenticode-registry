@@ -1,0 +1,26 @@
+kind: mcp
+name: sequential-thinking
+source: MCP Registry
+category: Reference
+group: "memory · sequential-thinking"
+from:
+  source: mcp-registry
+  repo: modelcontextprotocol/servers
+  commit: "36380287ed3b15d115b55f546617d723072b1296"
+  path: src/sequentialthinking
+  follows: main
+license: MIT OR Apache-2.0
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: null
+description: Structured step-by-step reasoning tool (reference server).
+why: Structured step-by-step reasoning tool (reference server).
+install:
+  type: stdio
+  command: npx
+  args:
+    - "-y"
+    - "@modelcontextprotocol/server-sequential-thinking@2.1.1"
+expects:
+  tools_min: 1

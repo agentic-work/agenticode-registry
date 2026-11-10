@@ -1,0 +1,21 @@
+kind: skill
+name: gh-issues
+source: OpenClaw
+category: Coding
+from:
+  source: openclaw
+  repo: openclaw/openclaw
+  commit: c321c038b59c1e67f4729023b5e680d3c061c9ca
+  path: skills/gh-issues
+  follows: main
+license: MIT
+license_file: UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: Fetch GitHub issues, select candidates, spawn background fix agents, open PRs, and optionally process PR review comments.
+why: Fetch GitHub issues, select candidates, spawn background fix agents, open PRs, and optionally process PR review comments.
+install:
+  type: skill
+  dir: gh-issues

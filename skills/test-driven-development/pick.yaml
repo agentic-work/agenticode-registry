@@ -1,0 +1,22 @@
+kind: skill
+name: test-driven-development
+source: Hermes
+category: Coding
+from:
+  source: hermes
+  repo: NousResearch/hermes-agent
+  commit: c382971c9fd649938937422ad937a3954a9f1128
+  path: skills/software-development/test-driven-development
+  follows: main
+license: MIT
+license_file: UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+version: "1.1.0"
+description: "TDD: enforce RED-GREEN-REFACTOR, tests before code."
+why: "TDD: enforce RED-GREEN-REFACTOR, tests before code."
+install:
+  type: skill
+  dir: test-driven-development

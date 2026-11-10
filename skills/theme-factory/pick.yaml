@@ -1,0 +1,21 @@
+kind: skill
+name: theme-factory
+source: Claude
+category: Design
+from:
+  source: claude
+  repo: anthropics/skills
+  commit: "2c5958ecac7cee2b583967a2c4981d0f4a75c579"
+  path: skills/theme-factory
+  follows: main
+license: Apache-2.0
+license_file: LICENSE.txt
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been…"
+why: "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can…"
+install:
+  type: skill
+  dir: theme-factory

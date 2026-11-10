@@ -1,0 +1,28 @@
+kind: mcp
+name: serena
+source: Claude
+category: Coding
+from:
+  source: claude
+  repo: anthropics/claude-plugins-official
+  commit: dceb15d50832e6adf380bedc26dde03d251324b9
+  path: external_plugins/serena
+  follows: main
+license: GPL-3.0-or-later AND MIT
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 89673
+description: Semantic code analysis MCP server providing intelligent code understanding, refactoring suggestions, and codebase navigation through language server protocol integration.
+why: "Semantic code analysis MCP server providing intelligent code understanding, refactoring suggestions, and codebase navigation through… (semantic code navigation)"
+note: semantic code navigation
+install:
+  type: stdio
+  command: uvx
+  args:
+    - --from
+    - git+https://github.com/oraios/serena@6e5c3776d4e67befaab7c290bc29b0279c98d1ed
+    - serena
+    - start-mcp-server
+expects:
+  tools_min: 1

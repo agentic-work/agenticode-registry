@@ -1,0 +1,23 @@
+kind: plugin
+name: learning-output-style
+type: style
+source: Claude
+category: Coding
+from:
+  source: claude
+  repo: anthropics/claude-plugins-official
+  commit: dceb15d50832e6adf380bedc26dde03d251324b9
+  path: plugins/learning-output-style
+  follows: main
+license: Apache-2.0
+license_file: plugin/LICENSE
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: 43781
+description: Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)
+why: Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  path: plugins/learning-output-style/plugin

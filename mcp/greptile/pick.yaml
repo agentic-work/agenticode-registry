@@ -1,0 +1,22 @@
+kind: mcp
+name: greptile
+source: Claude
+category: Coding
+from:
+  source: claude
+  repo: greptileai/skills
+  commit: "4a13eb124ab175d018869fe7cc4d203e374571dc"
+  path: plugins/greptile
+  follows: main
+license: MIT
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 57474
+description: "AI code review agent for GitHub and GitLab. View and resolve Greptile's PR review comments, run reviews on your working branch, and search your organization's knowledge base and coding patterns, directly from Claude…"
+why: "AI code review agent for GitHub and GitLab. View and resolve Greptile's PR review comments, run reviews on your working branch, and search your organization's knowledge base and…"
+install:
+  type: http
+  url: https://api.greptile.com/mcp
+expects:
+  tools_min: 1

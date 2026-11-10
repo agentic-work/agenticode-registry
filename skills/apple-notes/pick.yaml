@@ -1,0 +1,22 @@
+kind: skill
+name: apple-notes
+source: OpenClaw
+category: Productivity
+from:
+  source: openclaw
+  repo: openclaw/openclaw
+  commit: c321c038b59c1e67f4729023b5e680d3c061c9ca
+  path: skills/apple-notes
+  follows: main
+license: MIT
+license_file: UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: Create, view, edit, delete, search, move, or export Apple Notes via the memo CLI on macOS.
+why: Create, view, edit, delete, search, move, or export Apple Notes via the memo CLI on macOS. (macOS)
+note: macOS
+install:
+  type: skill
+  dir: apple-notes

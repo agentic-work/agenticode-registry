@@ -1,0 +1,23 @@
+kind: plugin
+name: mcp-server-dev
+source: Claude
+category: Authoring
+from:
+  source: claude
+  repo: anthropics/claude-plugins-official
+  commit: dceb15d50832e6adf380bedc26dde03d251324b9
+  path: plugins/mcp-server-dev
+  follows: main
+license: Apache-2.0
+license_file: plugin/LICENSE
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: 43174
+description: Skills for designing and building MCP servers that work seamlessly with Claude. Guides you through deployment models (remote HTTP, MCPB, local), tool design patterns, auth, and interactive MCP apps.
+why: "Skills for designing and building MCP servers that work seamlessly with Claude. Guides you through deployment models (remote HTTP, MCPB,… (with Claude mcp-builder)"
+note: with Claude mcp-builder
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  path: plugins/mcp-server-dev/plugin

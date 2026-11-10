@@ -1,0 +1,486 @@
+{
+  "gate": "scan",
+  "ran_at": "2026-11-10T14:28:42.400Z",
+  "tools": "gitleaks not installed: skipped (built-in secret patterns ran instead); osv-scanner not installed: skipped (pinned MCP packages were checked against api.osv.dev instead)",
+  "offline": false,
+  "results": {
+    "skill/algorithmic-art": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/apple-notes": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/apple-reminders": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/architecture-diagram": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/arxiv": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: export.arxiv.org, a9.com, arxiv.org",
+      "hosts": [
+        "export.arxiv.org",
+        "a9.com",
+        "arxiv.org"
+      ]
+    },
+    "skill/canvas-design": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/cli-creator": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/codebase-inspection": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/define-goal": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/diagram-maker": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/doc-coauthoring": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/frontend-design": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/gh-address-comments": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/gh-fix-ci": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/gh-issues": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/grounded-citations": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/humanizer": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/jupyter-notebook": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/manim-video": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/mcp-builder": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/meeting-action-items": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/netlify-deploy": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/notion-spec-to-implementation": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/obsidian": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/p5js": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: nodejs.org",
+      "hosts": [
+        "nodejs.org"
+      ]
+    },
+    "skill/playground": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/render-deploy": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/requesting-code-review": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/sdlc-review": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/security-best-practices": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/security-ownership-map": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/security-threat-model": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/skill-creator": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: fonts.googleapis.com, fonts.gstatic.com",
+      "hosts": [
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ]
+    },
+    "skill/spike": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/summarize": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/systematic-debugging": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/test-driven-development": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/theme-factory": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/things-mac": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/tmux": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/transcribe": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/trello": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "skill/web-artifacts-builder": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: ui.shadcn.com",
+      "hosts": [
+        "ui.shadcn.com"
+      ]
+    },
+    "skill/weekly-review-planning": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "agent/code-simplifier": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "agent/registry-scout": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "mcp/atlassian": {
+      "status": "pass",
+      "detail": "remote mcp.atlassian.com"
+    },
+    "mcp/aws-knowledge": {
+      "status": "pass",
+      "detail": "remote knowledge-mcp.global.api.aws"
+    },
+    "mcp/cloudflare": {
+      "status": "pass",
+      "detail": "remote mcp.cloudflare.com"
+    },
+    "mcp/context7": {
+      "status": "pass",
+      "detail": "remote mcp.context7.com"
+    },
+    "mcp/datadog": {
+      "status": "pass",
+      "detail": "remote env"
+    },
+    "mcp/expo": {
+      "status": "pass",
+      "detail": "remote mcp.expo.dev"
+    },
+    "mcp/fetch": {
+      "status": "pass",
+      "detail": "pinned, no advisories"
+    },
+    "mcp/firebase": {
+      "status": "pass",
+      "detail": "pinned, no advisories"
+    },
+    "mcp/firecrawl": {
+      "status": "pass",
+      "detail": "remote mcp.firecrawl.dev"
+    },
+    "mcp/git": {
+      "status": "pass",
+      "detail": "pinned, no advisories"
+    },
+    "mcp/github": {
+      "status": "pass",
+      "detail": "remote api.githubcopilot.com"
+    },
+    "mcp/gitlab": {
+      "status": "pass",
+      "detail": "remote gitlab.com"
+    },
+    "mcp/greptile": {
+      "status": "pass",
+      "detail": "remote api.greptile.com"
+    },
+    "mcp/linear": {
+      "status": "pass",
+      "detail": "remote mcp.linear.app"
+    },
+    "mcp/memory": {
+      "status": "pass",
+      "detail": "pinned, no advisories"
+    },
+    "mcp/microsoft-docs": {
+      "status": "pass",
+      "detail": "remote learn.microsoft.com"
+    },
+    "mcp/notion": {
+      "status": "pass",
+      "detail": "remote mcp.notion.com"
+    },
+    "mcp/postgres": {
+      "status": "fail",
+      "detail": "npm marks @modelcontextprotocol/server-postgres@0.6.2 deprecated: Archived and unmaintained; no security guarantees. See https://github.com/modelcontextprotocol/servers-archived; upstream modelcontextprotocol/servers-archived is archived"
+    },
+    "mcp/posthog": {
+      "status": "pass",
+      "detail": "remote mcp.posthog.com"
+    },
+    "mcp/postman": {
+      "status": "pass",
+      "detail": "remote mcp.postman.com"
+    },
+    "mcp/sentry": {
+      "status": "pass",
+      "detail": "remote mcp.sentry.dev"
+    },
+    "mcp/sequential-thinking": {
+      "status": "pass",
+      "detail": "pinned, no advisories"
+    },
+    "mcp/serena": {
+      "status": "pass",
+      "detail": "pinned, no advisories"
+    },
+    "mcp/slack": {
+      "status": "pass",
+      "detail": "remote mcp.slack.com"
+    },
+    "mcp/sourcegraph": {
+      "status": "warn",
+      "detail": "host comes from SOURCEGRAPH_ENDPOINT (your own instance)"
+    },
+    "mcp/stripe": {
+      "status": "pass",
+      "detail": "remote mcp.stripe.com"
+    },
+    "mcp/supabase": {
+      "status": "pass",
+      "detail": "remote mcp.supabase.com"
+    },
+    "mcp/time": {
+      "status": "pass",
+      "detail": "pinned, no advisories"
+    },
+    "mcp/vercel": {
+      "status": "pass",
+      "detail": "remote mcp.vercel.com"
+    },
+    "plugin/aws-core": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: docs.aws.amazon.com, your-domain.example, launch-with-aws.us-east-1.api.aws, view.awsapps.com",
+      "hosts": [
+        "docs.aws.amazon.com",
+        "your-domain.example",
+        "launch-with-aws.us-east-1.api.aws",
+        "view.awsapps.com"
+      ]
+    },
+    "plugin/clangd-lsp": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/code-review": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/coderabbit": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/commit-commands": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/csharp-lsp": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/data-engineering": {
+      "status": "warn",
+      "detail": "private-key in skills/analyzing-data/scripts/tests/test_connectors.py allowed after review: test fixture: the 'private key' is the literal text 'test' between PEM markers (reviewed 2026-11-10); scripts reach hosts the pick does not declare: airflow.apache.org, api.astronomer.io, xyz123.astronomer.run, already-https.com, xyz.astronomer.run, example.astronomer.run (+8)",
+      "hosts": [
+        "airflow.apache.org",
+        "api.astronomer.io",
+        "xyz123.astronomer.run",
+        "already-https.com",
+        "xyz.astronomer.run",
+        "example.astronomer.run",
+        "api.astronomer-dev.io",
+        "pr12345.api.astronomer-dev.io",
+        "auth.astronomer.io",
+        "dep.d1.astronomer.run",
+        "test.airflow.com",
+        "prod.airflow.com",
+        "airflow.example",
+        "astral.sh"
+      ]
+    },
+    "plugin/explanatory-output-style": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/feature-dev": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/gopls-lsp": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/hookify": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/huggingface-skills": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: huggingface.co, docs.astral.sh, datasets-server.huggingface.co, arxiv.org, export.arxiv.org",
+      "hosts": [
+        "huggingface.co",
+        "docs.astral.sh",
+        "datasets-server.huggingface.co",
+        "arxiv.org",
+        "export.arxiv.org"
+      ]
+    },
+    "plugin/jdtls-lsp": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/kotlin-lsp": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/learning-output-style": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/lua-lsp": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/mattpocock-skills": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: dashboard.stripe.com",
+      "hosts": [
+        "dashboard.stripe.com"
+      ]
+    },
+    "plugin/mcp-server-dev": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/php-lsp": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/plugin-dev": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/pr-review-toolkit": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/pyright-lsp": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/ralph-loop": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/rust-analyzer-lsp": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/security-guidance": {
+      "status": "warn",
+      "detail": "aws-access-key in tests/test_patterns_file_shape.py allowed after review: test fixture for the plugin's own secret detector: AKIAABCDEFGHIJKLMNOP is a fake key (reviewed 2026-11-10); private-key in tests/test_secret_shaped_paths.py allowed after review: test fixture writes only a PEM header line to a temp file to exercise the detector (reviewed 2026-11-10); scripts reach hosts the pick does not declare: trusted.com, evil.com, apache.org, github.blog, gateway.internal, gw.internal",
+      "hosts": [
+        "trusted.com",
+        "evil.com",
+        "apache.org",
+        "github.blog",
+        "gateway.internal",
+        "gw.internal"
+      ]
+    },
+    "plugin/semgrep": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: semgrep.dev",
+      "hosts": [
+        "semgrep.dev"
+      ]
+    },
+    "plugin/superpowers": {
+      "status": "warn",
+      "detail": "scripts reach hosts the pick does not declare: primeradiant.com, opencode.ai",
+      "hosts": [
+        "primeradiant.com",
+        "opencode.ai"
+      ]
+    },
+    "plugin/swift-lsp": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    },
+    "plugin/typescript-lsp": {
+      "status": "pass",
+      "detail": "no secrets, no install scripts"
+    }
+  }
+}

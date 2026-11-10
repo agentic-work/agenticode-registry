@@ -1,0 +1,10 @@
+kind: mcp
+name: brainbow
+owner: agentic-work
+source: agentic-work
+status: built-in
+license: LicenseRef-agentic-work-proprietary
+description: "Browser and desktop control: the tier-1 tool, shipped in every release."
+where: "Ships inside every agenticode release (desktop/cli-bundle/agenticode-cli/brainbow). Source: agentic-work/brainbow (private); not published here."
+use: "Already enabled. Nothing to install."
+replaces: [playwright, chrome-devtools-mcp, webapp-testing, dogfood, playwright-codex, playwright-interactive, screenshot, peekaboo, camsnap]

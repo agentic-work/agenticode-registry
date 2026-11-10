@@ -1,0 +1,21 @@
+kind: skill
+name: notion-spec-to-implementation
+source: Codex
+category: Productivity
+from:
+  source: codex
+  repo: openai/skills
+  commit: "49f948faa9258a0c61caceaf225e179651397431"
+  path: skills/.curated/notion-spec-to-implementation
+  follows: main
+license: MIT
+license_file: LICENSE.txt
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: "Turn Notion specs into implementation plans, tasks, and progress tracking; use when implementing PRDs/feature specs and creating Notion plans + tasks from them."
+why: "Turn Notion specs into implementation plans, tasks, and progress tracking; use when implementing PRDs/feature specs and creating Notion plans + tasks from them."
+install:
+  type: skill
+  dir: notion-spec-to-implementation

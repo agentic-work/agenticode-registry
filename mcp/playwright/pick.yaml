@@ -1,0 +1,10 @@
+kind: mcp
+name: playwright
+source: Claude
+category: Browser
+status: exclude
+replaced_by: brainbow
+vendor: false
+installs: 361957
+note: "never runs: Brainbow does browser work"
+why: "Excluded: never runs: Brainbow does browser work."

@@ -1,0 +1,34 @@
+kind: plugin
+name: aws-core
+type: bundle
+source: Claude
+category: Deploy
+from:
+  source: claude
+  repo: aws/agent-toolkit-for-aws
+  commit: "34b3eccfd8b619ea0cb4ba04a9be9dfefebd94e7"
+  path: plugins/aws-core
+  follows: main
+license: Apache-2.0
+license_file: plugin/UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: blocked
+blocked_reason: "lint: skip-approvals skills/aws-iam/references/aws-iam-policy-generation.md:221 \"- If unavailable, proceed with the `curl` and `jq` fallback automatically — do NOT ask the user for permission to proceed\""
+installs: 12887
+description: Build, deploy, and operate applications on AWS. Skills to author infrastructure-as-code, use core services, and complete common tasks.
+why: "Build, deploy, and operate applications on AWS. Skills to author infrastructure-as-code, use core services, and complete common tasks. (backfill: AWS skills plus the AWS MCP proxy)"
+note: "backfill: AWS skills plus the AWS MCP proxy"
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  path: plugins/aws-core/plugin
+lint_allow:
+  "skills/aws-ai-ml/references/model-deployment/overview.md#skip-approvals": "the opposite: says a user's 'skip confirmation' does not count as licence acceptance (reviewed 2026-11-10)"
+  "skills/aws-ai-ml/references/model-deployment/references/deploy-jumpstart-sagemaker.md#skip-approvals": "same licence-acceptance safeguard (reviewed 2026-11-10)"
+  "skills/aws-ai-ml/references/model-evaluation/references/llmaaj-evaluation.md#skip-approvals": "same licence-acceptance safeguard (reviewed 2026-11-10)"
+  "skills/aws-ai-ml/references/model-evaluation/references/custom-scorer-evaluation.md#hidden-text": "a TODO comment for maintainers (reviewed 2026-11-10)"
+  "skills/aws-ai-ml/references/model-evaluation/references/llmaaj-evaluation.md#hidden-text": "a TODO comment for maintainers (reviewed 2026-11-10)"
+  "skills/aws-auth/references/lambda-triggers.md#skip-approvals": "describes a Cognito sign-up option for end users, not agent approvals (reviewed 2026-11-10)"
+  "skills/aws-cloudformation/SKILL.md#skip-approvals": "points at a guide about validation-tool conditions (reviewed 2026-11-10)"
+  "skills/aws-observability/references/cloudwatch-omni/agent-evaluation.md#skip-approvals": "the opposite: a tool that refuses to write without confirmation (reviewed 2026-11-10)"

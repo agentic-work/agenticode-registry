@@ -1,0 +1,22 @@
+kind: skill
+name: p5js
+source: Hermes
+category: Design
+from:
+  source: hermes
+  repo: NousResearch/hermes-agent
+  commit: c382971c9fd649938937422ad937a3954a9f1128
+  path: skills/creative/p5js
+  follows: main
+license: MIT
+license_file: UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+version: "1.0.0"
+description: "p5.js sketches: gen art, shaders, interactive, 3D."
+why: "p5.js sketches: gen art, shaders, interactive, 3D."
+install:
+  type: skill
+  dir: p5js

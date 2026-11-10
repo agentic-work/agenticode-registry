@@ -1,0 +1,492 @@
+"""Tests for Astro CLI integration."""
+
+from __future__ import annotations
+
+from unittest.mock import MagicMock, patch
+
+import pytest
+
+from astro_airflow_mcp.discovery.astro_cli import (
+    AstroCli,
+    AstroCliError,
+    AstroCliNotAuthenticatedError,
+    AstroCliNotInstalledError,
+    AstroDeployment,
+)
+
+
+class TestAstroDeployment:
+    """Tests for AstroDeployment dataclass."""
+
+    def test_from_inspect_yaml_basic(self):
+        """Test creating deployment from inspect YAML output."""
+        data = {
+            "deployment": {
+                "configuration": {
+                    "name": "my-deployment",
+                    "workspace_name": "my-workspace",
+                },
+                "metadata": {
+                    "deployment_id": "dep-123",
+                    "workspace_id": "ws-456",
+                    "status": "HEALTHY",
+                    "webserver_url": "xyz123.astronomer.run/abc456",
+                    "airflow_version": "3.1.6",
+                    "release_name": "my-deployment-7890",
+                },
+            }
+        }
+        deployment = AstroDeployment.from_inspect_yaml(data)
+
+        assert deployment.id == "dep-123"
+        assert deployment.name == "my-deployment"
+        assert deployment.workspace_id == "ws-456"
+        assert deployment.workspace_name == "my-workspace"
+        assert deployment.status == "HEALTHY"
+        assert deployment.airflow_api_url == "https://xyz123.astronomer.run/abc456"
+        assert deployment.airflow_version == "3.1.6"
+        assert deployment.release_name == "my-deployment-7890"
+
+    def test_from_inspect_yaml_with_https(self):
+        """Test that https:// is not duplicated if already present."""
+        data = {
+            "deployment": {
+                "configuration": {"name": "test"},
+                "metadata": {
+                    "deployment_id": "dep-123",
+                    "webserver_url": "https://already-https.com",
+                },
+            }
+        }
+        deployment = AstroDeployment.from_inspect_yaml(data)
+        assert deployment.airflow_api_url == "https://already-https.com"
+
+    def test_from_inspect_yaml_minimal(self):
+        """Test with minimal data."""
+        data = {
+            "deployment": {
+                "configuration": {},
+                "metadata": {},
+            }
+        }
+        deployment = AstroDeployment.from_inspect_yaml(data)
+
+        assert deployment.id == ""
+        assert deployment.name == ""
+        assert deployment.status == "UNKNOWN"
+        assert deployment.airflow_api_url == ""
+
+    def test_from_inspect_yaml_strips_query_string(self):
+        """Some Astro deployments return webserver_url with ?orgId=… —
+        if we store that, every API call concatenates /api/v1/... into
+        the query string and breaks. Strip query/fragment at the boundary."""
+        data = {
+            "deployment": {
+                "configuration": {"name": "t"},
+                "metadata": {
+                    "deployment_id": "dep-123",
+                    "webserver_url": "https://xyz.astronomer.run/abc?orgId=org_abc",
+                },
+            }
+        }
+        deployment = AstroDeployment.from_inspect_yaml(data)
+        assert deployment.airflow_api_url == "https://xyz.astronomer.run/abc"
+
+
+class TestAstroCliInstallation:
+    """Tests for CLI installation detection."""
+
+    def test_is_installed_when_found(self):
+        """Test is_installed returns True when CLI found."""
+        with patch("shutil.which", return_value="/usr/local/bin/astro"):
+            cli = AstroCli()
+            assert cli.is_installed() is True
+
+    def test_is_installed_when_not_found(self):
+        """Test is_installed returns False when CLI not found."""
+        with patch("shutil.which", return_value=None):
+            cli = AstroCli()
+            assert cli.is_installed() is False
+
+    def test_run_command_raises_when_not_installed(self):
+        """Test _run_command raises when CLI not installed."""
+        with patch("shutil.which", return_value=None):
+            cli = AstroCli()
+            with pytest.raises(AstroCliNotInstalledError, match="not installed"):
+                cli._run_command(["version"])
+
+
+class TestAstroCliAuthentication:
+    """Tests for authentication detection."""
+
+    @pytest.fixture
+    def mock_cli(self):
+        """Create CLI with mocked astro path."""
+        with patch("shutil.which", return_value="/usr/local/bin/astro"):
+            yield AstroCli()
+
+    @pytest.mark.parametrize(
+        "error_message",
+        [
+            # Actual error from `astro` CLI when not logged in
+            "no context set, have you authenticated to Astro? Run astro login and try again",
+            # Partial matches
+            "no context set",
+            "Run astro login",
+        ],
+    )
+    def test_run_command_detects_auth_errors(self, mock_cli, error_message):
+        """Test _run_command detects auth error from astro CLI."""
+        mock_result = MagicMock()
+        mock_result.returncode = 1
+        mock_result.stdout = ""
+        mock_result.stderr = error_message
+
+        with (
+            patch("subprocess.run", return_value=mock_result),
+            pytest.raises(AstroCliNotAuthenticatedError, match="Not authenticated"),
+        ):
+            mock_cli._run_command(["deployment", "list"])
+
+    def test_run_command_success(self, mock_cli):
+        """Test _run_command returns result on success."""
+        mock_result = MagicMock()
+        mock_result.returncode = 0
+        mock_result.stdout = "some output"
+        mock_result.stderr = ""
+
+        with patch("subprocess.run", return_value=mock_result):
+            result = mock_cli._run_command(["context", "list"])
+            assert result.returncode == 0
+            assert result.stdout == "some output"
+
+
+class TestTableParsing:
+    """Tests for table output parsing."""
+
+    @pytest.fixture
+    def mock_cli(self):
+        """Create CLI with mocked astro path."""
+        with patch("shutil.which", return_value="/usr/local/bin/astro"):
+            yield AstroCli()
+
+    def test_parse_table_output_basic(self, mock_cli):
+        """Test parsing basic table output."""
+        output = """ NAME     NAMESPACE                    DEPLOYMENT ID
+ test     physical-refraction-2416     cml0a458406f401jkva87iahu"""
+
+        result = mock_cli._parse_table_output(output)
+        assert len(result) == 1
+        assert result[0]["name"] == "test"
+        assert result[0]["namespace"] == "physical-refraction-2416"
+        assert result[0]["deployment_id"] == "cml0a458406f401jkva87iahu"
+
+    def test_parse_table_output_multi_word_headers(self, mock_cli):
+        """Test parsing table with multi-word headers."""
+        output = """ NAME     CLOUD PROVIDER     DEPLOYMENT ID
+ test     AZURE              abc123"""
+
+        result = mock_cli._parse_table_output(output)
+        assert len(result) == 1
+        assert result[0]["name"] == "test"
+        assert result[0]["cloud_provider"] == "AZURE"
+        assert result[0]["deployment_id"] == "abc123"
+
+    def test_parse_table_output_multiple_rows(self, mock_cli):
+        """Test parsing table with multiple rows."""
+        output = """ NAME     DEPLOYMENT ID
+ dep1     id1
+ dep2     id2
+ dep3     id3"""
+
+        result = mock_cli._parse_table_output(output)
+        assert len(result) == 3
+        assert result[0]["name"] == "dep1"
+        assert result[1]["name"] == "dep2"
+        assert result[2]["name"] == "dep3"
+
+    def test_parse_table_output_empty(self, mock_cli):
+        """Test parsing empty table."""
+        result = mock_cli._parse_table_output("")
+        assert result == []
+
+    def test_parse_table_output_header_only(self, mock_cli):
+        """Test parsing table with only headers."""
+        output = " NAME     DEPLOYMENT ID"
+        result = mock_cli._parse_table_output(output)
+        assert result == []
+
+    def test_parse_table_output_data_wider_than_header(self, mock_cli):
+        """Test that data wider than its header doesn't get truncated."""
+        # ID column is short but data is long
+        output = """ NAME     ID
+ test     very-long-deployment-identifier-123"""
+
+        result = mock_cli._parse_table_output(output)
+        assert len(result) == 1
+        assert result[0]["name"] == "test"
+        assert result[0]["id"] == "very-long-deployment-identifier-123"
+
+    def test_parse_table_output_short_lines(self, mock_cli):
+        """Test handling lines shorter than header columns."""
+        output = """ NAME     NAMESPACE     STATUS
+ test     ns-1
+ test2    ns-2          HEALTHY"""
+
+        result = mock_cli._parse_table_output(output)
+        assert len(result) == 2
+        assert result[0]["name"] == "test"
+        assert result[0]["namespace"] == "ns-1"
+        assert result[0]["status"] == ""
+        assert result[1]["status"] == "HEALTHY"
+
+    def test_parse_table_output_skips_api_token_preamble(self, mock_cli):
+        """Astro CLI prints ``Using an Astro API Token`` ahead of the
+        table when ``ASTRO_API_TOKEN`` is set. The parser must skip it
+        rather than treating it as the header row (it has only
+        single-space gaps and would collapse the table to one column).
+        """
+        output = """Using an Astro API Token
+ NAME     NAMESPACE                    DEPLOYMENT ID
+ test     physical-refraction-2416     cml0a458406f401jkva87iahu"""
+
+        result = mock_cli._parse_table_output(output)
+        assert len(result) == 1
+        assert result[0]["name"] == "test"
+        assert result[0]["namespace"] == "physical-refraction-2416"
+        assert result[0]["deployment_id"] == "cml0a458406f401jkva87iahu"
+
+    def test_parse_table_output_preamble_only_no_table(self, mock_cli):
+        """When astro CLI prints a preamble but no table (eg auth notice
+        followed by ``no Deployments found in workspace X``), the parser
+        should return ``[]`` rather than misparsing the no-results line.
+        """
+        output = """Using an Astro API Token
+no Deployments found in workspace my-workspace"""
+
+        result = mock_cli._parse_table_output(output)
+        assert result == []
+
+
+class TestAstroCliContext:
+    """Tests for context management.
+
+    ``get_context`` reads ``~/.astro/config.yaml`` directly when present
+    (canonical path), and only falls back to parsing ``astro context list``
+    when the file is missing or unparseable. Each test isolates ASTRO_HOME
+    via tmp_path so the user's real config doesn't leak in.
+    """
+
+    @pytest.fixture
+    def mock_cli(self, tmp_path, monkeypatch):
+        """Create CLI with mocked astro path and isolated ASTRO_HOME."""
+        monkeypatch.setenv("ASTRO_HOME", str(tmp_path / "astro"))
+        with patch("shutil.which", return_value="/usr/local/bin/astro"):
+            yield AstroCli()
+
+    def test_get_context_reads_from_config_yaml(self, mock_cli, tmp_path):
+        """Primary path: read the active context from ~/.astro/config.yaml."""
+        astro_home = tmp_path / "astro"
+        astro_home.mkdir()
+        (astro_home / "config.yaml").write_text("context: cloud.astronomer.io\n")
+
+        # subprocess.run should not be called when we get a hit from disk.
+        with patch("subprocess.run") as run_mock:
+            assert mock_cli.get_context() == "cloud.astronomer.io"
+            run_mock.assert_not_called()
+
+    def test_get_context_falls_back_to_table_parser(self, mock_cli):
+        """When config.yaml is absent, fall back to legacy table parser."""
+        output = """   DOMAIN                    LAST USED WORKSPACE
+ * cloud.astronomer.io       my-workspace
+   dev.astronomer.io         other-workspace"""
+
+        mock_result = MagicMock()
+        mock_result.returncode = 0
+        mock_result.stdout = output
+        mock_result.stderr = ""
+
+        with patch("subprocess.run", return_value=mock_result):
+            assert mock_cli.get_context() == "cloud.astronomer.io"
+
+    def test_get_context_returns_none_when_no_config_and_command_fails(self, mock_cli):
+        """No config.yaml and `context list` fails → None."""
+        mock_result = MagicMock()
+        mock_result.returncode = 1
+        mock_result.stdout = ""
+        mock_result.stderr = "error"
+
+        with patch("subprocess.run", return_value=mock_result):
+            assert mock_cli.get_context() is None
+
+
+class TestAstroCliDeployments:
+    """Tests for deployment listing and inspection."""
+
+    @pytest.fixture
+    def mock_cli(self):
+        """Create CLI with mocked astro path."""
+        with patch("shutil.which", return_value="/usr/local/bin/astro"):
+            yield AstroCli()
+
+    def test_list_deployments_success(self, mock_cli):
+        """Test list_deployments returns deployment list."""
+        output = """ NAME     NAMESPACE     DEPLOYMENT ID
+ dep-1    ns-1          id-1
+ dep-2    ns-2          id-2"""
+
+        mock_result = MagicMock()
+        mock_result.returncode = 0
+        mock_result.stdout = output
+        mock_result.stderr = ""
+
+        with patch("subprocess.run", return_value=mock_result):
+            result = mock_cli.list_deployments()
+            assert len(result) == 2
+            assert result[0]["name"] == "dep-1"
+            assert result[0]["deployment_id"] == "id-1"
+
+    def test_list_deployments_all_workspaces(self, mock_cli):
+        """Test list_deployments passes --all flag."""
+        mock_result = MagicMock()
+        mock_result.returncode = 0
+        mock_result.stdout = " NAME     DEPLOYMENT ID\n"
+        mock_result.stderr = ""
+
+        with patch("subprocess.run", return_value=mock_result) as mock_run:
+            mock_cli.list_deployments(all_workspaces=True)
+            call_args = mock_run.call_args[0][0]
+            assert "--all" in call_args
+
+    def test_list_deployments_error(self, mock_cli):
+        """Test list_deployments raises on error."""
+        mock_result = MagicMock()
+        mock_result.returncode = 1
+        mock_result.stdout = ""
+        mock_result.stderr = "some error"
+
+        with (
+            patch("subprocess.run", return_value=mock_result),
+            pytest.raises(AstroCliError, match="Failed to list"),
+        ):
+            mock_cli.list_deployments()
+
+    def test_list_deployments_auth_error(self, mock_cli):
+        """Test list_deployments raises AstroCliNotAuthenticatedError for auth issues."""
+        mock_result = MagicMock()
+        mock_result.returncode = 1
+        mock_result.stdout = ""
+        mock_result.stderr = (
+            "Error: failed to find a valid workspace: failed to get current Workspace: "
+            "no context set, have you authenticated to Astro or Astro Private Cloud? "
+            "Run astro login and try again"
+        )
+
+        with (
+            patch("subprocess.run", return_value=mock_result),
+            pytest.raises(AstroCliNotAuthenticatedError, match="Not authenticated"),
+        ):
+            mock_cli.list_deployments()
+
+    def test_inspect_deployment_success(self, mock_cli):
+        """Test inspect_deployment returns AstroDeployment."""
+        yaml_output = """deployment:
+    configuration:
+        name: my-dep
+        workspace_name: my-workspace
+    metadata:
+        deployment_id: dep-123
+        workspace_id: ws-456
+        status: HEALTHY
+        webserver_url: example.astronomer.run/abc
+"""
+        mock_result = MagicMock()
+        mock_result.returncode = 0
+        mock_result.stdout = yaml_output
+        mock_result.stderr = ""
+
+        with patch("subprocess.run", return_value=mock_result):
+            deployment = mock_cli.inspect_deployment("dep-123")
+            assert isinstance(deployment, AstroDeployment)
+            assert deployment.id == "dep-123"
+            assert deployment.name == "my-dep"
+            assert deployment.airflow_api_url == "https://example.astronomer.run/abc"
+
+    def test_inspect_deployment_with_workspace(self, mock_cli):
+        """Test inspect_deployment passes workspace_id."""
+        yaml_output = """deployment:
+    configuration:
+        name: test
+    metadata:
+        deployment_id: x
+"""
+        mock_result = MagicMock()
+        mock_result.returncode = 0
+        mock_result.stdout = yaml_output
+        mock_result.stderr = ""
+
+        with patch("subprocess.run", return_value=mock_result) as mock_run:
+            mock_cli.inspect_deployment("dep-123", workspace_id="ws-123")
+            call_args = mock_run.call_args[0][0]
+            assert "--workspace-id" in call_args
+            assert "ws-123" in call_args
+
+
+class TestInstanceNameGeneration:
+    """Tests for instance name generation from deployments."""
+
+    def test_basic_name_generation(self):
+        """Test basic name generation."""
+        from astro_airflow_mcp.discovery.astro import _generate_instance_name
+
+        dep = AstroDeployment(
+            id="dep-1",
+            name="my-deployment",
+            workspace_id="ws-1",
+            workspace_name="My Workspace",
+            airflow_api_url="https://example.com/api/v2",
+            status="HEALTHY",
+        )
+        assert _generate_instance_name(dep) == "my-workspace-my-deployment"
+
+    def test_name_generation_normalizes_special_chars(self):
+        """Test that special characters are normalized."""
+        from astro_airflow_mcp.discovery.astro import _generate_instance_name
+
+        dep = AstroDeployment(
+            id="dep-1",
+            name="My_Deployment (Test)",
+            workspace_id="ws-1",
+            workspace_name="Dev & Staging",
+            airflow_api_url="https://example.com/api/v2",
+            status="HEALTHY",
+        )
+        assert _generate_instance_name(dep) == "dev-staging-my-deployment-test"
+
+    def test_name_generation_empty_workspace(self):
+        """Test name generation when workspace name is empty."""
+        from astro_airflow_mcp.discovery.astro import _generate_instance_name
+
+        dep = AstroDeployment(
+            id="dep-1",
+            name="standalone",
+            workspace_id="ws-1",
+            workspace_name="",
+            airflow_api_url="https://example.com/api/v2",
+            status="HEALTHY",
+        )
+        assert _generate_instance_name(dep) == "standalone"
+
+    def test_name_generation_strips_leading_trailing_hyphens(self):
+        """Test that leading/trailing hyphens are stripped."""
+        from astro_airflow_mcp.discovery.astro import _generate_instance_name
+
+        dep = AstroDeployment(
+            id="dep-1",
+            name="---test---",
+            workspace_id="ws-1",
+            workspace_name="---workspace---",
+            airflow_api_url="https://example.com/api/v2",
+            status="HEALTHY",
+        )
+        assert _generate_instance_name(dep) == "workspace-test"

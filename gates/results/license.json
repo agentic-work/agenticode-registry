@@ -1,0 +1,641 @@
+{
+  "gate": "license",
+  "ran_at": "2026-11-10T14:28:23.494Z",
+  "results": {
+    "skill/algorithmic-art": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/apple-notes": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/apple-reminders": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/architecture-diagram": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/arxiv": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/canvas-design": {
+      "status": "pass",
+      "detail": "Apache-2.0, OFL-1.1",
+      "licenses": [
+        "Apache-2.0",
+        "OFL-1.1"
+      ]
+    },
+    "skill/cli-creator": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/codebase-inspection": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/define-goal": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/diagram-maker": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/doc-coauthoring": {
+      "status": "warn",
+      "detail": "no licence: link-only, nothing copied; installed from upstream at the pinned commit",
+      "licenses": []
+    },
+    "skill/frontend-design": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/gh-address-comments": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/gh-fix-ci": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/gh-issues": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/grounded-citations": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/humanizer": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/jupyter-notebook": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/manim-video": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/mcp-builder": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/meeting-action-items": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/netlify-deploy": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/notion-spec-to-implementation": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/obsidian": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/p5js": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/playground": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/render-deploy": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/requesting-code-review": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/sdlc-review": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/security-best-practices": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/security-ownership-map": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/security-threat-model": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/skill-creator": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/spike": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/summarize": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/systematic-debugging": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/test-driven-development": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/theme-factory": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/things-mac": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/tmux": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/transcribe": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/trello": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "skill/web-artifacts-builder": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "skill/weekly-review-planning": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "agent/code-simplifier": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "agent/registry-scout": {
+      "status": "pass",
+      "detail": "ours (agentic-work)"
+    },
+    "mcp/atlassian": {
+      "status": "pass",
+      "detail": "link-only config; server licence Apache-2.0"
+    },
+    "mcp/aws-knowledge": {
+      "status": "pass",
+      "detail": "link-only config; server licence Apache-2.0"
+    },
+    "mcp/cloudflare": {
+      "status": "pass",
+      "detail": "link-only config; server licence Apache-2.0"
+    },
+    "mcp/context7": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT"
+    },
+    "mcp/datadog": {
+      "status": "pass",
+      "detail": "link-only config; server licence Apache-2.0"
+    },
+    "mcp/expo": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT"
+    },
+    "mcp/fetch": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT OR Apache-2.0"
+    },
+    "mcp/firebase": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT"
+    },
+    "mcp/firecrawl": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT"
+    },
+    "mcp/git": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT OR Apache-2.0"
+    },
+    "mcp/github": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT"
+    },
+    "mcp/gitlab": {
+      "status": "pass",
+      "detail": "link-only config; server licence LicenseRef-hosted-service"
+    },
+    "mcp/greptile": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT"
+    },
+    "mcp/linear": {
+      "status": "pass",
+      "detail": "link-only config; server licence LicenseRef-hosted-service"
+    },
+    "mcp/memory": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT OR Apache-2.0"
+    },
+    "mcp/microsoft-docs": {
+      "status": "pass",
+      "detail": "link-only config; server licence LicenseRef-hosted-service"
+    },
+    "mcp/notion": {
+      "status": "pass",
+      "detail": "link-only config; server licence LicenseRef-hosted-service"
+    },
+    "mcp/postgres": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT"
+    },
+    "mcp/posthog": {
+      "status": "pass",
+      "detail": "link-only config; server licence LicenseRef-hosted-service"
+    },
+    "mcp/postman": {
+      "status": "pass",
+      "detail": "link-only config; server licence Apache-2.0"
+    },
+    "mcp/sentry": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT"
+    },
+    "mcp/sequential-thinking": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT OR Apache-2.0"
+    },
+    "mcp/serena": {
+      "status": "pass",
+      "detail": "link-only config; server licence GPL-3.0-or-later AND MIT"
+    },
+    "mcp/slack": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT"
+    },
+    "mcp/sourcegraph": {
+      "status": "pass",
+      "detail": "link-only config; server licence LicenseRef-hosted-service"
+    },
+    "mcp/stripe": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT"
+    },
+    "mcp/supabase": {
+      "status": "pass",
+      "detail": "link-only config; server licence LicenseRef-hosted-service"
+    },
+    "mcp/time": {
+      "status": "pass",
+      "detail": "link-only config; server licence MIT OR Apache-2.0"
+    },
+    "mcp/vercel": {
+      "status": "pass",
+      "detail": "link-only config; server licence LicenseRef-hosted-service"
+    },
+    "plugin/aws-core": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/clangd-lsp": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/code-review": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/coderabbit": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "plugin/commit-commands": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/csharp-lsp": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/data-engineering": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/explanatory-output-style": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/feature-dev": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/gopls-lsp": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/hookify": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/huggingface-skills": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/jdtls-lsp": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/kotlin-lsp": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/learning-output-style": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/lua-lsp": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/mattpocock-skills": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "plugin/mcp-server-dev": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/php-lsp": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/plugin-dev": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/pr-review-toolkit": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/pyright-lsp": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/ralph-loop": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/rust-analyzer-lsp": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/security-guidance": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/semgrep": {
+      "status": "warn",
+      "detail": "no licence: link-only, nothing copied; installed from upstream at the pinned commit",
+      "licenses": []
+    },
+    "plugin/superpowers": {
+      "status": "pass",
+      "detail": "MIT",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    "plugin/swift-lsp": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    "plugin/typescript-lsp": {
+      "status": "pass",
+      "detail": "Apache-2.0",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    }
+  }
+}

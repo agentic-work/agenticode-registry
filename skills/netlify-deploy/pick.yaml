@@ -1,0 +1,23 @@
+kind: skill
+name: netlify-deploy
+source: Codex
+category: Deploy
+from:
+  source: codex
+  repo: openai/skills
+  commit: "49f948faa9258a0c61caceaf225e179651397431"
+  path: skills/.curated/netlify-deploy
+  follows: main
+license: Apache-2.0
+license_file: LICENSE.txt
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+description: "Deploy web projects to Netlify using the Netlify CLI (`npx netlify`). Use when the user asks to deploy, host, publish, or link a site/repo on Netlify, including preview and production deploys."
+why: "Deploy web projects to Netlify using the Netlify CLI (`npx netlify`). Use when the user asks to deploy, host, publish, or link a site/repo on Netlify, including preview and…"
+install:
+  type: skill
+  dir: netlify-deploy
+lint_allow:
+  "references/cli-commands.md#skip-approvals": "documents the Netlify CLI's own --force flag; does not tell the model to skip agenticode approvals (reviewed 2026-11-10)"

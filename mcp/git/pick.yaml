@@ -1,0 +1,25 @@
+kind: mcp
+name: git
+source: MCP Registry
+category: Reference
+group: "fetch · time · git"
+from:
+  source: mcp-registry
+  repo: modelcontextprotocol/servers
+  commit: "36380287ed3b15d115b55f546617d723072b1296"
+  path: src/git
+  follows: main
+license: MIT OR Apache-2.0
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: null
+description: Read, search and edit a local git repository (reference server).
+why: Read, search and edit a local git repository (reference server).
+install:
+  type: stdio
+  command: uvx
+  args:
+    - "mcp-server-git==2026.11.4"
+expects:
+  tools_min: 1

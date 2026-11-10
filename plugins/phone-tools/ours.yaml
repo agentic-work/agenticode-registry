@@ -1,0 +1,9 @@
+kind: plugin
+name: phone-tools
+type: mobile
+owner: agentic-work
+source: agentic-work
+status: built-in
+license: MIT
+description: "Texts, calls, camera, reminders: each one opt-in and confirmed with a tap."
+where: "The agenticode phone app (agentic-work/agenticode, mobile/)."

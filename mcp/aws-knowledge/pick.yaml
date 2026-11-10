@@ -1,0 +1,21 @@
+kind: mcp
+name: aws-knowledge
+source: MCP Registry
+category: Docs
+from:
+  source: mcp-registry
+  repo: awslabs/mcp
+  commit: "5deffe5982c392b9f5f77cac354c3b82d558ebe3"
+  follows: main
+license: Apache-2.0
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: null
+description: AWS documentation, API references, regional availability and architecture guidance (remote, no credentials).
+why: AWS documentation, API references, regional availability and architecture guidance (remote, no credentials).
+install:
+  type: http
+  url: https://knowledge-mcp.global.api.aws
+expects:
+  tools_min: 1

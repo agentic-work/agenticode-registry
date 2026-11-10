@@ -1,0 +1,22 @@
+kind: skill
+name: meeting-action-items
+source: Hermes
+category: Productivity
+from:
+  source: hermes
+  repo: NousResearch/hermes-agent
+  commit: c382971c9fd649938937422ad937a3954a9f1128
+  path: skills/productivity/meeting-action-items
+  follows: main
+license: MIT
+license_file: UPSTREAM-LICENSE
+vendor: true
+vendor_reason: "MIT: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: null
+version: "0.1.0"
+description: Turn meeting notes into cited decisions, owners, tickets.
+why: Turn meeting notes into cited decisions, owners, tickets.
+install:
+  type: skill
+  dir: meeting-action-items

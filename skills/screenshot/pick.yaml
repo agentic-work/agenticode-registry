@@ -1,0 +1,10 @@
+kind: skill
+name: screenshot
+source: Codex
+category: Desktop
+status: replace
+replaced_by: brainbow
+vendor: false
+installs: null
+note: Brainbow
+why: "Covered by our own brainbow; nothing is copied or installed from upstream."

@@ -1,0 +1,22 @@
+kind: mcp
+name: firecrawl
+source: Claude
+category: Web
+from:
+  source: claude
+  repo: firecrawl/firecrawl-claude-plugin
+  commit: "3e1fb0c319d71b067906b8b602208dded3932cdb"
+  follows: main
+license: MIT
+vendor: false
+vendor_reason: "MCP: only the connection config is kept here; the server runs from its upstream package or URL"
+status: ok
+installs: 43281
+description: "Web scraping and crawling powered by Firecrawl. Turn any website into clean, LLM-ready markdown or structured data. Scrape single pages, crawl entire sites, search the web, and extract structured information. Includes…"
+why: "Web scraping and crawling powered by Firecrawl. Turn any website into clean, LLM-ready markdown or structured data. Scrape single pages,… (kept for search and crawling many pages at scale only; reading or scraping a single page is Brainbow (navigate + get_page_text))"
+note: "kept for search and crawling many pages at scale only; reading or scraping a single page is Brainbow (navigate + get_page_text)"
+install:
+  type: http
+  url: https://mcp.firecrawl.dev/v2/mcp-search
+expects:
+  tools_min: 1

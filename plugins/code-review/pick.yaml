@@ -1,0 +1,22 @@
+kind: plugin
+name: code-review
+source: Claude
+category: Coding
+from:
+  source: claude
+  repo: anthropics/claude-plugins-official
+  commit: dceb15d50832e6adf380bedc26dde03d251324b9
+  path: plugins/code-review
+  follows: main
+license: Apache-2.0
+license_file: plugin/LICENSE
+vendor: true
+vendor_reason: "Apache-2.0: copied at the pinned commit with its licence and credit kept"
+status: ok
+installs: 480179
+description: Automated code review for pull requests using multiple specialized agents with confidence-based scoring to filter false positives
+why: Automated code review for pull requests using multiple specialized agents with confidence-based scoring to filter false positives
+install:
+  type: plugin
+  marketplace: agenticode-registry
+  path: plugins/code-review/plugin
