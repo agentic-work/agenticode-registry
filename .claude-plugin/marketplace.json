@@ -35,7 +35,12 @@
       },
       "name": "clangd-lsp",
       "category": "languages",
-      "source": "./plugins/clangd-lsp/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/clangd-lsp",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Automated code review for pull requests using multiple specialized agents with confidence-based scoring to filter false positives",
@@ -46,14 +51,23 @@
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/code-review",
       "name": "code-review",
       "category": "coding",
-      "source": "./plugins/code-review/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/code-review",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Your code review partner. CodeRabbit provides external validation using a specialized AI architecture and 40+ integrated static analyzers—offering a different perspective that catches bugs, security vulnerabilities,…",
       "homepage": "https://github.com/coderabbitai/skills",
       "name": "coderabbit",
       "category": "coding",
-      "source": "./plugins/coderabbit/plugin"
+      "source": {
+        "source": "url",
+        "url": "https://github.com/coderabbitai/skills.git",
+        "sha": "3e8763d24d543b48615b82535d02288de3ddae40"
+      }
     },
     {
       "description": "Commands for git commit workflows including commit, push, and PR creation",
@@ -64,7 +78,12 @@
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/commit-commands",
       "name": "commit-commands",
       "category": "coding",
-      "source": "./plugins/commit-commands/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/commit-commands",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "C# language server for code intelligence",
@@ -84,14 +103,23 @@
       },
       "name": "csharp-lsp",
       "category": "languages",
-      "source": "./plugins/csharp-lsp/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/csharp-lsp",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Data engineering plugin - warehouse exploration, pipeline authoring, Airflow integration",
       "homepage": "https://github.com/astronomer/agents",
       "name": "data-engineering",
       "category": "data",
-      "source": "./plugins/data-engineering/plugin"
+      "source": {
+        "source": "url",
+        "url": "https://github.com/astronomer/agents.git",
+        "sha": "35b9610bb2710c37ca11326c4cbf7818b6725fec"
+      }
     },
     {
       "description": "Adds educational insights about implementation choices and codebase patterns (mimics the deprecated Explanatory output style)",
@@ -102,7 +130,12 @@
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/explanatory-output-style",
       "name": "explanatory-output-style",
       "category": "coding",
-      "source": "./plugins/explanatory-output-style/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/explanatory-output-style",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
@@ -113,7 +146,12 @@
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/feature-dev",
       "name": "feature-dev",
       "category": "coding",
-      "source": "./plugins/feature-dev/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/feature-dev",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Go language server for code intelligence and refactoring",
@@ -133,7 +171,12 @@
       },
       "name": "gopls-lsp",
       "category": "languages",
-      "source": "./plugins/gopls-lsp/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/gopls-lsp",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Easily create custom hooks to prevent unwanted behaviors by analyzing conversation patterns or from explicit instructions. Define rules via simple markdown files.",
@@ -144,7 +187,12 @@
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/hookify",
       "name": "hookify",
       "category": "authoring",
-      "source": "./plugins/hookify/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/hookify",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Java language server (Eclipse JDT.LS) for code intelligence",
@@ -165,7 +213,12 @@
       },
       "name": "jdtls-lsp",
       "category": "languages",
-      "source": "./plugins/jdtls-lsp/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/jdtls-lsp",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Kotlin language server for code intelligence",
@@ -190,7 +243,12 @@
       },
       "name": "kotlin-lsp",
       "category": "languages",
-      "source": "./plugins/kotlin-lsp/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/kotlin-lsp",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)",
@@ -201,7 +259,12 @@
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/learning-output-style",
       "name": "learning-output-style",
       "category": "coding",
-      "source": "./plugins/learning-output-style/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/learning-output-style",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Lua language server for code intelligence",
@@ -221,7 +284,12 @@
       },
       "name": "lua-lsp",
       "category": "languages",
-      "source": "./plugins/lua-lsp/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/lua-lsp",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Matt Pocock's agent skills for real engineering — grilling, spec/ticket flows, TDD, code review, domain modelling and more. Plug-and-play, not vibe coding.",
@@ -231,7 +299,11 @@
       "homepage": "https://github.com/mattpocock/skills",
       "name": "mattpocock-skills",
       "category": "coding",
-      "source": "./plugins/mattpocock-skills/plugin"
+      "source": {
+        "source": "url",
+        "url": "https://github.com/mattpocock/skills.git",
+        "sha": "49dd158d1076134a641b33efb035946536778336"
+      }
     },
     {
       "description": "Skills for designing and building MCP servers that work seamlessly with Claude. Guides you through deployment models (remote HTTP, MCPB, local), tool design patterns, auth, and interactive MCP apps.",
@@ -242,7 +314,12 @@
       "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/mcp-server-dev",
       "name": "mcp-server-dev",
       "category": "authoring",
-      "source": "./plugins/mcp-server-dev/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/mcp-server-dev",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "PHP language server (Intelephense) for code intelligence",
@@ -265,7 +342,12 @@
       },
       "name": "php-lsp",
       "category": "languages",
-      "source": "./plugins/php-lsp/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/php-lsp",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Comprehensive toolkit for developing Claude Code plugins. Includes 7 expert skills covering hooks, MCP integration, commands, agents, and best practices. AI-assisted plugin creation and validation.",
@@ -276,7 +358,12 @@
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/plugin-dev",
       "name": "plugin-dev",
       "category": "authoring",
-      "source": "./plugins/plugin-dev/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/plugin-dev",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification",
@@ -287,7 +374,12 @@
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/pr-review-toolkit",
       "name": "pr-review-toolkit",
       "category": "coding",
-      "source": "./plugins/pr-review-toolkit/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/pr-review-toolkit",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Python language server (Pyright) for type checking and code intelligence",
@@ -311,7 +403,12 @@
       },
       "name": "pyright-lsp",
       "category": "languages",
-      "source": "./plugins/pyright-lsp/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/pyright-lsp",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Interactive self-referential AI loops for iterative development, implementing the Ralph Wiggum technique. Claude works on the same task repeatedly, seeing its previous work, until completion.",
@@ -322,7 +419,12 @@
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/ralph-loop",
       "name": "ralph-loop",
       "category": "coding",
-      "source": "./plugins/ralph-loop/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/ralph-loop",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Rust language server for code intelligence and analysis",
@@ -342,7 +444,12 @@
       },
       "name": "rust-analyzer-lsp",
       "category": "languages",
-      "source": "./plugins/rust-analyzer-lsp/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/rust-analyzer-lsp",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Security review for Claude-generated code. Pattern-based warnings on edits, LLM-powered diff review on Stop, and an agentic commit reviewer that catches injection, XSS, SSRF, hardcoded secrets, and 25+ other…",
@@ -354,7 +461,12 @@
       "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance",
       "name": "security-guidance",
       "category": "security",
-      "source": "./plugins/security-guidance/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/security-guidance",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "Semgrep catches security vulnerabilities in real-time and guides Claude to write secure code from the start.",
@@ -373,7 +485,11 @@
       "homepage": "https://github.com/obra/superpowers.git",
       "name": "superpowers",
       "category": "coding",
-      "source": "./plugins/superpowers/plugin"
+      "source": {
+        "source": "url",
+        "url": "https://github.com/obra/superpowers.git",
+        "sha": "bb92a77741419a4ab5f06e711a283343f1ada0c3"
+      }
     },
     {
       "description": "Swift language server (SourceKit-LSP) for code intelligence",
@@ -393,7 +509,12 @@
       },
       "name": "swift-lsp",
       "category": "languages",
-      "source": "./plugins/swift-lsp/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/swift-lsp",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     },
     {
       "description": "TypeScript/JavaScript language server for enhanced code intelligence",
@@ -423,7 +544,12 @@
       },
       "name": "typescript-lsp",
       "category": "languages",
-      "source": "./plugins/typescript-lsp/plugin"
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/typescript-lsp",
+        "sha": "dceb15d50832e6adf380bedc26dde03d251324b9"
+      }
     }
   ]
 }

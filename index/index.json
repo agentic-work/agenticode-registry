@@ -1,29 +1,29 @@
 {
  "schema": 1,
  "name": "agenticode-registry",
- "version": "2026.11.10",
- "generated_at": "2026-11-10T14:39:46.702Z",
+ "version": "2026.11.10.1",
+ "generated_at": "2026-11-10T15:18:07.744Z",
  "registry": {
   "repo": "agentic-work/agenticode-registry",
-  "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-  "raw": "https://raw.githubusercontent.com/agentic-work/agenticode-registry/fef975ae4b78d696ce590ad4e6b0494de4ed8c98/"
+  "commit": "55aec5f37ee5b018f2be4e2b5dab855b19b893d7",
+  "raw": "https://raw.githubusercontent.com/agentic-work/agenticode-registry/55aec5f37ee5b018f2be4e2b5dab855b19b893d7/"
  },
  "gates_note": {
   "platforms": "install tests ran on macOS (this Mac); Linux and Windows runners are not set up yet",
   "scan": "gitleaks not installed: skipped (built-in secret patterns ran instead); osv-scanner not installed: skipped (pinned MCP packages were checked against api.osv.dev instead)",
-  "install": "agenticode v1.0.52"
+  "install": "agenticode v1.0.53"
  },
  "counts": {
   "items": 141,
-  "picks": 103,
-  "ok": 99,
-  "vendored": 72,
-  "link_only": 31,
+  "picks": 107,
+  "ok": 103,
+  "vendored": 0,
+  "from_upstream": 107,
   "blocked": 4,
-  "replaced": 20,
+  "replaced": 16,
   "excluded": 2,
-  "ours_built": 6,
-  "ours_planned": 10,
+  "ours_built": 7,
+  "ours_planned": 9,
   "skills": 60,
   "agents": 5,
   "mcp": 35,
@@ -92,7 +92,7 @@
    "src": "anthropics/skills#2c5958e",
    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -102,7 +102,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "652ab57368ae7ab7549679a2870b2f78388be01de268744d4ca1466cceddffa0",
+   "sha256": "24645257a6e57f1a0add6d5b67701ad56e1a76453b7e89f212503832b3cc8d36",
    "tokens_idle": 90,
    "files": [
     {
@@ -124,12 +124,21 @@
      "p": "templates/viewer.html",
      "sha256": "86c79d7ce97d2599ebe4bd9b97fdeb7295c9d3ed61ceeb513cbe1b2bb5d1ce29",
      "size": 20844
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "d51971f38625df0d0b4c7069917b35ffd52bd6fd8fe3757a827bbba2352d6881",
+     "size": 528,
+     "from": {
+      "base": "registry",
+      "path": "skills/algorithmic-art/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "anthropics/skills",
+    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
     "path": "skills/algorithmic-art"
    }
   },
@@ -148,7 +157,7 @@
    "src": "openclaw/openclaw#c321c03",
    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -158,7 +167,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "8c6bb180344d2d2ebe350a2c48f53e7386412579984622b2645ebff5737d41f0",
+   "sha256": "aa4b0f5099caf8ac6be739fe624c67bdd761481eae57fda10179169baceaa671",
    "tokens_idle": 31,
    "files": [
     {
@@ -169,13 +178,26 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "9efd316ecf1c4c60f6fd5d26433142fff2b6794d7d328e9bc6179b29bf9c82a4",
-     "size": 1076
+     "size": 1076,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "fae16d3a573a05e37b045b73d8710186065b9cfe0d3b4b79299390305e03266d",
+     "size": 513,
+     "from": {
+      "base": "registry",
+      "path": "skills/apple-notes/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "openclaw/openclaw",
+    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
     "path": "skills/apple-notes"
    }
   },
@@ -194,7 +216,7 @@
    "src": "openclaw/openclaw#c321c03",
    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -204,7 +226,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "9fda43ca6378e427899b400d8bb9a1df8b17b59ff91619440dc1c68d508a23a1",
+   "sha256": "0b7c4af70b948d05ec22fb7e4c3f47bae8a09df1fcd0d801e1f6711a09feb295",
    "tokens_idle": 31,
    "files": [
     {
@@ -215,13 +237,26 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "9efd316ecf1c4c60f6fd5d26433142fff2b6794d7d328e9bc6179b29bf9c82a4",
-     "size": 1076
+     "size": 1076,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "beba4686e63e266cb4a481cd4ef378e9347d8790ab27ce3370dc1bda6236714f",
+     "size": 521,
+     "from": {
+      "base": "registry",
+      "path": "skills/apple-reminders/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "openclaw/openclaw",
+    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
     "path": "skills/apple-reminders"
    }
   },
@@ -238,7 +273,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -248,7 +283,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "6229b599de340143747836f3b8ee488de17752e1afe6d35ef9f77241f90753c9",
+   "sha256": "49e8db5af54a3d3a2c30ada98bfedbfb6d5d0b40f8550d2900524c1dec1e7bb2",
    "tokens_idle": 25,
    "files": [
     {
@@ -257,21 +292,34 @@
      "size": 5830
     },
     {
-     "p": "UPSTREAM-LICENSE",
-     "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
-    },
-    {
      "p": "templates/template.html",
      "sha256": "d17a1631a14f108dd469ad16c83d667d917565ebe780f42fad7321be327de442",
      "size": 12483
+    },
+    {
+     "p": "UPSTREAM-LICENSE",
+     "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "be25a32409d91539cdd78e9d31b754d84041cd39e765b4293f592f2cbd013b60",
+     "size": 556,
+     "from": {
+      "base": "registry",
+      "path": "skills/architecture-diagram/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/architecture-diagram"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/creative/architecture-diagram"
    }
   },
   {
@@ -287,7 +335,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -297,7 +345,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "290af3fd404bd2161df12ac2beed19770197fe643930f0f7a681d9dfc08f1b97",
+   "sha256": "1d206102b530d2a59aea04ce18d07bbd2fe598fd7c14375e28e43ec6c94b9da4",
    "tokens_idle": 21,
    "files": [
     {
@@ -306,21 +354,34 @@
      "size": 10061
     },
     {
-     "p": "UPSTREAM-LICENSE",
-     "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
-    },
-    {
      "p": "scripts/search_arxiv.py",
      "sha256": "68f0bcc09ef1f59ecd9be8a7693e47239fd99b19d62cecb80a92b8c476cca371",
      "size": 4272
+    },
+    {
+     "p": "UPSTREAM-LICENSE",
+     "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "4843a18bd120f641e24b351fe66abdb07eb61527eeb68a36206f132151586620",
+     "size": 526,
+     "from": {
+      "base": "registry",
+      "path": "skills/arxiv/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/arxiv"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/research/arxiv"
    }
   },
   {
@@ -386,7 +447,7 @@
    "src": "anthropics/skills#2c5958e",
    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -396,7 +457,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "f60af843c4e771970fa1fe3f7b9c673d79826093f3093fac9e286a3785c7cd11",
+   "sha256": "2207a025729c5faaf93c00e443123da328a36fed37042342d5437e9401f8845a",
    "tokens_idle": 81,
    "files": [
     {
@@ -813,12 +874,21 @@
      "p": "canvas-fonts/YoungSerif-Regular.ttf",
      "sha256": "f8dc08f77abad753a00670af70756a8ace938e5c3f0b770f4f4c2071c4bd8fc6",
      "size": 105136
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "da15d1df7234f67c33add3f74302ae4175add65d00e56cdfe7c584c006a5ffa7",
+     "size": 524,
+     "from": {
+      "base": "registry",
+      "path": "skills/canvas-design/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "anthropics/skills",
+    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
     "path": "skills/canvas-design"
    }
   },
@@ -836,7 +906,7 @@
    "src": "openai/skills#49f948f",
    "commit": "49f948faa9258a0c61caceaf225e179651397431",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -846,7 +916,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "19390e499018746480c77fd3175eb66cf51a9ce2c98df5ac3477c456675a70ad",
+   "sha256": "556a1ed6ff4b22c1c3356b28a07f2ff9c82742a34708a9c44725da2733f2233e",
    "tokens_idle": 91,
    "files": [
     {
@@ -868,13 +938,22 @@
      "p": "references/agent-cli-patterns.md",
      "sha256": "ac11612b780a80a97b15a5ffca23b21a182f854003911cce2363dd69b6126272",
      "size": 5244
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "9616c8dbbd4b148ce12c9852b66b77b72a77032ab8eb38419f1c094315a3c493",
+     "size": 521,
+     "from": {
+      "base": "registry",
+      "path": "skills/cli-creator/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/cli-creator"
+    "base": "upstream",
+    "repo": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.curated/cli-creator"
    }
   },
   {
@@ -890,7 +969,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -900,7 +979,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "e0baa148dc22300c89e70d43061f13435d539d46980fa5229d985b7e7b3fb408",
+   "sha256": "63e51131032265048643c8999d2dd541e72bdf46aad32d59babd1889f5d60d0b",
    "tokens_idle": 24,
    "files": [
     {
@@ -911,14 +990,27 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "f4a1f711f82e4feaac997968d079d73dc6211b4eb4aaaf4b6044513e9df87467",
+     "size": 566,
+     "from": {
+      "base": "registry",
+      "path": "skills/codebase-inspection/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/codebase-inspection"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/software-development/codebase-inspection"
    }
   },
   {
@@ -935,7 +1027,7 @@
    "src": "openai/skills#49f948f",
    "commit": "49f948faa9258a0c61caceaf225e179651397431",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -945,7 +1037,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "ede51cda761dc6da7badbfc9515db4a4fbcdafee66334370ca65bea03aab6e75",
+   "sha256": "454575b17d565a5d34f73133f6a07803b36f054de88d1c4390409b9b78047754",
    "tokens_idle": 103,
    "files": [
     {
@@ -962,13 +1054,22 @@
      "p": "agents/openai.yaml",
      "sha256": "9d870a5d594130261173d7a4bd3fd9221a71eff34c347a7c782da5046fd23cb9",
      "size": 208
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "6793a3261e9a2c97ee7a5a07c385caa51a3ce60274e3edcaac7bb03d8c974be1",
+     "size": 521,
+     "from": {
+      "base": "registry",
+      "path": "skills/define-goal/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/define-goal"
+    "base": "upstream",
+    "repo": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.curated/define-goal"
    }
   },
   {
@@ -984,7 +1085,7 @@
    "src": "openclaw/openclaw#c321c03",
    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -994,18 +1095,13 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "cad594c48d65c8409df2cac9bd6c14e7bf27b7b50c78f1daefdb7d0b389ee1b4",
+   "sha256": "bbb800e1c6afeaaebe62b48ba46e97dc961d0c40de9eb049a6f36e5f6497a36d",
    "tokens_idle": 31,
    "files": [
     {
      "p": "SKILL.md",
      "sha256": "6195e03fcb04a1a68c4af72165e0c85efcd2719af79380d82e42996ea89ad74a",
      "size": 2357
-    },
-    {
-     "p": "UPSTREAM-LICENSE",
-     "sha256": "9efd316ecf1c4c60f6fd5d26433142fff2b6794d7d328e9bc6179b29bf9c82a4",
-     "size": 1076
     },
     {
      "p": "references/excalidraw-patterns.md",
@@ -1016,12 +1112,30 @@
      "p": "references/svg-template.md",
      "sha256": "3a8b47dbaeb341377a4999ff227f088a3a7fe2bee7b1353929f11a1f30b20c71",
      "size": 1930
+    },
+    {
+     "p": "UPSTREAM-LICENSE",
+     "sha256": "9efd316ecf1c4c60f6fd5d26433142fff2b6794d7d328e9bc6179b29bf9c82a4",
+     "size": 1076,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "0f1d8336f9e7ef3afdca473ba608ddd24e76f9afb59e8013b60c849c3419b0bc",
+     "size": 517,
+     "from": {
+      "base": "registry",
+      "path": "skills/diagram-maker/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "openclaw/openclaw",
+    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
     "path": "skills/diagram-maker"
    }
   },
@@ -1049,13 +1163,22 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "23f393c187c9bce571bc46eb5cdc9599f1d8a6347f862a72b3a71ad865aac6b8",
+   "sha256": "b5c9e76a81aebab429140a918a36bcec9424fd881427b904d57086bc794bf82a",
    "tokens_idle": 116,
    "files": [
     {
      "p": "SKILL.md",
      "sha256": "2e47d78846faeea4a56e9809c52700087a15a2155a3f293a3efbaded81398ef4",
      "size": 15815
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "7099ee688bbdbd9d0cc58041d2a8329cdf03a5a9cd2fea7fa3dc1c85f47850c1",
+     "size": 528,
+     "from": {
+      "base": "registry",
+      "path": "skills/doc-coauthoring/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
@@ -1071,23 +1194,347 @@
    "name": "docx",
    "source": "Claude",
    "category": "Office",
-   "desc": "",
-   "why": "Covered by our own office-docs (planned); nothing is copied or installed from upstream.",
-   "note": "replaced by our office-docs rewrite. Upstream moved these skills to Apache-2.0 on 2026-11-06 (anthropics/skills 2c5958e), so copying would now be allowed; kept as a rewrite until agentic-work decides",
-   "v": "0",
-   "status": "replace",
-   "replaced_by": "office-docs",
+   "desc": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files) or Word templates (.dotx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', '.dotx',…",
+   "why": "Anthropic's Word documents skill; Apache-2.0 since 2026-11-06 (anthropics/skills 2c5958e), so it is taken from upstream instead of rewritten.",
+   "v": "2c5958e",
+   "status": "ok",
    "yanked": null,
-   "lic": null,
+   "src": "anthropics/skills#2c5958e",
+   "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+   "lic": "Apache-2.0",
    "vendor": false,
    "installs": null,
    "gates": {
-    "license": "not run",
-    "scan": "not run",
-    "lint": "not run",
-    "mac": "not run",
+    "license": "pass",
+    "scan": "warn",
+    "lint": "pass",
+    "mac": "pass",
     "linux": "not run",
     "win": "not run"
+   },
+   "sha256": "b8f5ec9e6ebfeb6c51dee399615a17eff795bcbbccd8adc8dc14f894aaa5bb23",
+   "tokens_idle": 215,
+   "files": [
+    {
+     "p": "LICENSE.txt",
+     "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+     "size": 11357
+    },
+    {
+     "p": "SKILL.md",
+     "sha256": "9e8202e2524a9ed87da67a5b3eaa76e8e6038f4171f8251ad6aaefd34e82a3df",
+     "size": 6897
+    },
+    {
+     "p": "scripts/__init__.py",
+     "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+     "size": 1
+    },
+    {
+     "p": "scripts/accept_changes.py",
+     "sha256": "0c991d2bc7304a1248e9f3bf9b1498f0b6e76641fc457e7cbd73c99b4eef3a74",
+     "size": 4051
+    },
+    {
+     "p": "scripts/comment.py",
+     "sha256": "37d116e5f56bb142b208c6c6a4bbcf960495abf470ddb7c6675ccfac864ba3d7",
+     "size": 14054
+    },
+    {
+     "p": "scripts/merge_runs.py",
+     "sha256": "3ab367fd7fba4647943d0aa5e65203b15458551410f5ffc821d902616a4b9f40",
+     "size": 9398
+    },
+    {
+     "p": "scripts/office/helpers/__init__.py",
+     "sha256": "678e42456d9e10923c8b9a93691cdd993de3433448a184fa72a0c31f4ae086d5",
+     "size": 3358
+    },
+    {
+     "p": "scripts/office/helpers/pptx_chart.py",
+     "sha256": "47ac266f7d39d11ede6bb0d1f3a19d801394fd2964636f1b48beb701f1832964",
+     "size": 5862
+    },
+    {
+     "p": "scripts/office/helpers/pptx_slide.py",
+     "sha256": "7b9f69b4a5bd6a2d9eabf9e0e3e796d7a421373145f6a8cd11f60b7ba2d6a5d0",
+     "size": 1675
+    },
+    {
+     "p": "scripts/office/helpers/pptx_theme.py",
+     "sha256": "ebb54c56e9c13807f5f98f0cae22d47cdd0162da8525eaa664e3f2c8c8d6bb03",
+     "size": 3510
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd",
+     "sha256": "41b93bd8857cc68b1e43be2806a872d736a9bdd6566900062d8fdb57d7bbb354",
+     "size": 74984
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd",
+     "sha256": "3fd0586f2637b98bb9886f0e0b67d89e1cc987c2d158cc7deb5f5b9890ced412",
+     "size": 6956
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd",
+     "sha256": "29b254ee0d10414a8504b5a08149c7baec35a60d5ff607d6b3f492aa36815f40",
+     "size": 51302
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd",
+     "sha256": "5cb76dabd8b97d1e9308a1700b90c20139be4d50792d21a7f09789f5cccd6026",
+     "size": 624
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd",
+     "sha256": "5375417f0f5394b8dd1a7035b9679151f19a6b65df309dec10cfb4a420cb00e9",
+     "size": 152039
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd",
+     "sha256": "5d389d42befbebd91945d620242347caecd3367f9a3a7cf8d97949507ae1f53c",
+     "size": 1231
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd",
+     "sha256": "b4532b6d258832953fbb3ee4c711f4fe25d3faf46a10644b2505f17010d01e88",
+     "size": 8862
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd",
+     "sha256": "bdad416b096b61d37b71603b2c949484f9070c830bdaeba93bf35e15c8900614",
+     "size": 14795
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd",
+     "sha256": "d173c3e5d61e42e2e3a97226c632fd2ab7cc481fc4e492365b87024ab546daff",
+     "size": 83612
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd",
+     "sha256": "3c6709101c6aaa82888df5d8795c33f9e857196790eb320d9194e64be2b6bdd8",
+     "size": 1269
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd",
+     "sha256": "0b364451dc36a48dd6dae0f3b6ada05fd9b71e5208211f8ee5537d7e51a587e2",
+     "size": 7328
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd",
+     "sha256": "e2abacbb9a55ce1365f8961bc1b1395bbc811e512b111000d8c333f98458dece",
+     "size": 6382
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd",
+     "sha256": "0ef4bb354ff44b923564c4ddbdda5987919d220225129ec94614a618ceafc281",
+     "size": 1248
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd",
+     "sha256": "0d103b99a4a8652f8871552a69d42d2a3760ac6a5e3ef02d979c4273257ff6a4",
+     "size": 880
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd",
+     "sha256": "9c085407751b9061c1f996f6c39ce58451be22a8d334f09175f0e89e42736285",
+     "size": 2608
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd",
+     "sha256": "bc92e36ccd233722d4c5869bec71ddc7b12e2df56059942cce5a39065cc9c368",
+     "size": 3507
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd",
+     "sha256": "7b5b7413e2c895b1e148e82e292a117d53c7ec65b0696c992edca57b61b4a74b",
+     "size": 7507
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd",
+     "sha256": "3213ef1631606250f5010b42cad7ef716f7c59426367798e33c374c0ec391d3a",
+     "size": 23313
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd",
+     "sha256": "12264f3c03d738311cd9237d212f1c07479e70f0cbe1ae725d29b36539aef637",
+     "size": 1367
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd",
+     "sha256": "beffeed56945c22a77440122c8bdc426f3fcbe7f3b12ea0976c770d1f8d54578",
+     "size": 242277
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd",
+     "sha256": "f5ee623b08b6a66935e5aced2f5d8ad0fc71bf9e8e833cd490150c0fa94b8763",
+     "size": 26148
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd",
+     "sha256": "585bedc1313b40888dcc544cb74cd939a105ee674f3b1d3aa1cc6d34f70ff155",
+     "size": 25279
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd",
+     "sha256": "133c9f64a5c5d573b78d0a474122b22506d8eadb5e063f67cdbbb8fa2f161d0e",
+     "size": 535
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd",
+     "sha256": "6bdeb169c3717eb01108853bd9fc5a3750fb1fa5b82abbdd854d49855a40f519",
+     "size": 5712
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd",
+     "sha256": "475dcae1e7d1ea46232db6f8481040c15e53a52a3c256831d3df204212b0e831",
+     "size": 4010
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd",
+     "sha256": "c2dd9f61f892deae6acd8d20771ea79b12018af25f3bf8d06639c8542d218cfd",
+     "size": 171367
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd",
+     "sha256": "a539aa2fb154fa50e0f5cc97e6ad7cbc66f8ec3e3746f61ec6a8b0d5d15ecdf2",
+     "size": 4646
+    },
+    {
+     "p": "scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd",
+     "sha256": "9e0b7209fc69ab11987900404540969976000c5ebe4d4f58c43dc3842886bf3a",
+     "size": 1963
+    },
+    {
+     "p": "scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd",
+     "sha256": "451958454e8588dfc7cd945981ada142ca06ff3307937f5700df059c2b307fa8",
+     "size": 2515
+    },
+    {
+     "p": "scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd",
+     "sha256": "6de111e11403f7cd49027400755bae0ea1cabef2815f09bd40a24f0017613b24",
+     "size": 2856
+    },
+    {
+     "p": "scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd",
+     "sha256": "f565adfef5a502044abc3a9153e157edc25af78304d335994afb958874b15e26",
+     "size": 1344
+    },
+    {
+     "p": "scripts/office/schemas/mce/mc.xsd",
+     "sha256": "3a37e461ecf5a8670fdec34029703401f8728ab9c96ec1739a6ae58d55212413",
+     "size": 3127
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-2010.xsd",
+     "sha256": "568b26ee156cb9549aa439ca2158965f77b7c1602b7e0316f40ac6cf586e35f2",
+     "size": 26549
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-2012.xsd",
+     "sha256": "0fa75578a000439a7988ba0c59fdc69f774bbd416cbacc14d07125b3f686cb74",
+     "size": 3745
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-2018.xsd",
+     "sha256": "be0ff793a22dd31384650c3a4da14c2fa8062751c2e97b0e5ee852bda13c60ad",
+     "size": 901
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-cex-2018.xsd",
+     "sha256": "fddc2b880cabb9005aebbc7e783e53c19fec1c03df7d0e2f2076a33a0fdfd081",
+     "size": 1778
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-cid-2016.xsd",
+     "sha256": "127ca209fa73d7cb708449cb355c871867948a96e4a74f7bf5811ef62d17991d",
+     "size": 1002
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd",
+     "sha256": "842e7163409c8d74f4d7088a8bc99500d80bc75332681a0980055b08f374a604",
+     "size": 600
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-symex-2015.xsd",
+     "sha256": "16f6f8072249f431370723c2cd8974672e0d9c897e00e97dd918079df934871b",
+     "size": 745
+    },
+    {
+     "p": "scripts/office/soffice.py",
+     "sha256": "df2c8d7249c132a4512d744482e4b5ed0ecbe885f0bcfb1295e7e6a7ced0432c",
+     "size": 5927
+    },
+    {
+     "p": "scripts/office/validate.py",
+     "sha256": "346a4c89d92fff55e610f11efda48c30228815b29bdb10b987e48f7af70acf1e",
+     "size": 6142
+    },
+    {
+     "p": "scripts/office/validators/__init__.py",
+     "sha256": "83e0f035c5abea238d3f2c3968afbd511ed022b527b7c9cb60a9434cc34ff987",
+     "size": 336
+    },
+    {
+     "p": "scripts/office/validators/base.py",
+     "sha256": "f818ea28c793ba42960fa4498265e2632a62c86f7b5d6aff6fa89dacc02d59ea",
+     "size": 33756
+    },
+    {
+     "p": "scripts/office/validators/docx.py",
+     "sha256": "93d3444c0ef3f043d21a2285c46d2cda478426b930dc33dcf3b11265935517b5",
+     "size": 17482
+    },
+    {
+     "p": "scripts/office/validators/pptx.py",
+     "sha256": "17eadad2b7a8374ccbe4cda45693bcd6a36f9d61a7d60f9c9ceef9464dec8299",
+     "size": 15966
+    },
+    {
+     "p": "scripts/office/validators/redlining.py",
+     "sha256": "ed50d0885eee4b9c387f546b059bcaed64086815880a5167336244f93e305123",
+     "size": 11231
+    },
+    {
+     "p": "scripts/templates/comments.xml",
+     "sha256": "a08ba83ee8790ac9e3dc61921f4988f19edd7e06ac09d6f1897a877c1581818d",
+     "size": 2603
+    },
+    {
+     "p": "scripts/templates/commentsExtended.xml",
+     "sha256": "544eeecfeceed4b468fff163cd9c366d33641c8b8ab691ce002576197846afe8",
+     "size": 2611
+    },
+    {
+     "p": "scripts/templates/commentsExtensible.xml",
+     "sha256": "bad10b3283e6ad6e7ef6d1ca5169683721ed690ee331282c65df04017e080631",
+     "size": 2707
+    },
+    {
+     "p": "scripts/templates/commentsIds.xml",
+     "sha256": "db20f9616e004ec42ef736e80c2384e45db0f8d1194d31dc8b37c7d6ecdd6420",
+     "size": 2619
+    },
+    {
+     "p": "scripts/templates/people.xml",
+     "sha256": "056f63aa1197fd8c9dda980c9f1b9ff016fd5fa4a462df8aec5f384f39d23e37",
+     "size": 115
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "3006420c13a87b62151bc5f3251792bc68e3f84c2cb38325366866cd5571e7a4",
+     "size": 506,
+     "from": {
+      "base": "registry",
+      "path": "skills/docx/UPSTREAM.md"
+     }
+    }
+   ],
+   "fetch": {
+    "base": "upstream",
+    "repo": "anthropics/skills",
+    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+    "path": "skills/docx"
    }
   },
   {
@@ -1128,7 +1575,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 1285261,
    "gates": {
     "license": "pass",
@@ -1138,7 +1585,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "bfaf399ef64709e44984c746e0ba0d6d8f24b2de4d5579dd9daae98c84965293",
+   "sha256": "d59f8aab1324301752bf063bf2d9b98c6736dbd7b5debea2a87a4dadef4ad640",
    "tokens_idle": 60,
    "files": [
     {
@@ -1150,13 +1597,22 @@
      "p": "SKILL.md",
      "sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
      "size": 9390
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "7603fd8666ffbc81fb2e2909776abf6a3b4d71eef3f033fc4cff15de3ab25098",
+     "size": 586,
+     "from": {
+      "base": "registry",
+      "path": "skills/frontend-design/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/frontend-design"
+    "base": "upstream",
+    "repo": "anthropics/claude-plugins-official",
+    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
+    "path": "plugins/frontend-design/skills/frontend-design"
    }
   },
   {
@@ -1172,7 +1628,7 @@
    "src": "openai/skills#49f948f",
    "commit": "49f948faa9258a0c61caceaf225e179651397431",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -1182,7 +1638,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "0376d853ed25f8f91098b9a26d81aca7d2a2c1f24cae90caf9b993ad53d76afc",
+   "sha256": "964808ef5987af4d2b64163144b253d1ce590485542f8d2b5ee6777e879937ab",
    "tokens_idle": 52,
    "files": [
     {
@@ -1214,13 +1670,22 @@
      "p": "scripts/fetch_comments.py",
      "sha256": "d7bc64f6b26f7482f9ca9dd7c923a5b8b20e1ef13491ae2d9052cd208a7c1ad1",
      "size": 6537
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "5ceed03ab8419b7c48e4544d17ce9b8742acea9c6201740bdb607794a58c68d3",
+     "size": 537,
+     "from": {
+      "base": "registry",
+      "path": "skills/gh-address-comments/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/gh-address-comments"
+    "base": "upstream",
+    "repo": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.curated/gh-address-comments"
    }
   },
   {
@@ -1237,7 +1702,7 @@
    "src": "openai/skills#49f948f",
    "commit": "49f948faa9258a0c61caceaf225e179651397431",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -1247,7 +1712,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "9221a5541793085f10f5fd2b3c04e70e7d63067fe86d3dd34d32fc0fc81d09b3",
+   "sha256": "dcf1117e68e70d040ffecd3e5a56127e94e3cbce252bcc7024503033f6b67d3a",
    "tokens_idle": 87,
    "files": [
     {
@@ -1279,13 +1744,22 @@
      "p": "scripts/inspect_pr_checks.py",
      "sha256": "9459e5b03f86785d184a83e5cd8d621b832e918ec04158a2962d867785812c6c",
      "size": 15222
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "016c7351eaaa94b31284af43eae888ea36763a5fe8e0562aa5fb68fbb4565363",
+     "size": 517,
+     "from": {
+      "base": "registry",
+      "path": "skills/gh-fix-ci/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/gh-fix-ci"
+    "base": "upstream",
+    "repo": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.curated/gh-fix-ci"
    }
   },
   {
@@ -1301,7 +1775,7 @@
    "src": "openclaw/openclaw#c321c03",
    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -1311,7 +1785,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "ab3efaeda7f9cb34dafbe14614f57a5a3a34bb9d3e8b4d97cd7ca9c923fa5f41",
+   "sha256": "158283563a001ef11ae4a306f139869ee45d90908bcd2f2332b1ca3728c13b6b",
    "tokens_idle": 38,
    "files": [
     {
@@ -1322,13 +1796,26 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "9efd316ecf1c4c60f6fd5d26433142fff2b6794d7d328e9bc6179b29bf9c82a4",
-     "size": 1076
+     "size": 1076,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "62aa2542527bd5940e157f632b53c1ad9a79d4034f01afc8f2dc46112ffd1495",
+     "size": 509,
+     "from": {
+      "base": "registry",
+      "path": "skills/gh-issues/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "openclaw/openclaw",
+    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
     "path": "skills/gh-issues"
    }
   },
@@ -1345,7 +1832,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -1355,18 +1842,13 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "5c51045ebb990d99b850e0b0610b217b01b43017b7cc44ef076bc0704cc9f414",
+   "sha256": "c715d539bf2c5fcaa0cf84715be58d189c24626d8efc1dea7773d0edba15f78a",
    "tokens_idle": 25,
    "files": [
     {
      "p": "SKILL.md",
      "sha256": "1e022ba6244fc68825127183d4632263f47d64dc857ea8d65c5e86d605b74f38",
      "size": 12644
-    },
-    {
-     "p": "UPSTREAM-LICENSE",
-     "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
     },
     {
      "p": "references/citation-formats.md",
@@ -1387,13 +1869,31 @@
      "p": "scripts/sources.py",
      "sha256": "0c216e29e092faedcaa1ebae129db15dfc100465169490704b3628446db96788",
      "size": 25790
+    },
+    {
+     "p": "UPSTREAM-LICENSE",
+     "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "65d8070cffc876fdaa5a06969a09dcfc3a8edba3cb171f9d67a5188b9a781b1f",
+     "size": 552,
+     "from": {
+      "base": "registry",
+      "path": "skills/grounded-citations/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/grounded-citations"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/research/grounded-citations"
    }
   },
   {
@@ -1409,7 +1909,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -1419,7 +1919,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "f7e7457b5f825cef6d39bac106475cde5955f39f69a93e405e7e736f51cef88e",
+   "sha256": "4ed1e6abdc7c4d980c934258aaa3611f30e2c9a72ce9cbc1584aa00bea07daa3",
    "tokens_idle": 20,
    "files": [
     {
@@ -1431,13 +1931,22 @@
      "p": "SKILL.md",
      "sha256": "887d5e3467a682da9b166e5293007f8bbbc299f8a6718ae00f26161b7d062b04",
      "size": 34463
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "8c2c0cec4e9d003629d7637a11d6192040f6d4e62dad2b2e952279d007150c95",
+     "size": 534,
+     "from": {
+      "base": "registry",
+      "path": "skills/humanizer/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/humanizer"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/creative/humanizer"
    }
   },
   {
@@ -1454,7 +1963,7 @@
    "src": "openai/skills#49f948f",
    "commit": "49f948faa9258a0c61caceaf225e179651397431",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -1464,7 +1973,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "ef4e0b24e8fb0b7132fcb570b364ef8f288fa21018fe659a1b71eb1d117cde36",
+   "sha256": "2933d23784d9d75be6f3d69b167167faa0fc5686a9c94bc02aea0cc558a4a216",
    "tokens_idle": 69,
    "files": [
     {
@@ -1526,13 +2035,22 @@
      "p": "scripts/new_notebook.py",
      "sha256": "a004e2ea3115edb24313928be0be6d1dc07e571d7ca6c1b24375f0569c616d2f",
      "size": 4086
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "a40e6c32b5c9ae09cef17755e557a9ba58db5967e0fd565ad52aefa848ae39bf",
+     "size": 531,
+     "from": {
+      "base": "registry",
+      "path": "skills/jupyter-notebook/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/jupyter-notebook"
+    "base": "upstream",
+    "repo": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.curated/jupyter-notebook"
    }
   },
   {
@@ -1548,7 +2066,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -1558,7 +2076,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "7170af84ee65b8dddca71bca736f3829dd91346a901b2cd8a4b5a244509993bb",
+   "sha256": "23d33935b0bccc77e116d33dd8e04bfb4981f042b0d438cad4884c2c796b79c4",
    "tokens_idle": 21,
    "files": [
     {
@@ -1570,11 +2088,6 @@
      "p": "SKILL.md",
      "sha256": "467376469fc2043e2674a843509f8eea52660791e76fb2e142074ecd4abc7e69",
      "size": 12150
-    },
-    {
-     "p": "UPSTREAM-LICENSE",
-     "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
     },
     {
      "p": "references/animation-design-thinking.md",
@@ -1650,13 +2163,31 @@
      "p": "scripts/setup.sh",
      "sha256": "e7563c458764c1b369c26f874cf94acbe43db8f9a3b1e0d9d735230f5d895bae",
      "size": 921
+    },
+    {
+     "p": "UPSTREAM-LICENSE",
+     "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "c43da16b28b8bde484ea7940a11ad15d2b06ec85914352504aeeccb3304b6aac",
+     "size": 538,
+     "from": {
+      "base": "registry",
+      "path": "skills/manim-video/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/manim-video"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/creative/manim-video"
    }
   },
   {
@@ -1673,7 +2204,7 @@
    "src": "anthropics/skills#2c5958e",
    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -1683,7 +2214,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "501a1d3c41113affcf2fa17c9fcb765640fee847c9a2723c72cb770939fa8a6f",
+   "sha256": "c4e613450f2dca6ab80465b3654fceca1cc0a99aeea035f090af0b2b8d34cb0a",
    "tokens_idle": 77,
    "files": [
     {
@@ -1740,12 +2271,21 @@
      "p": "scripts/requirements.txt",
      "sha256": "d5d7558b2368ecea9dfeed7d1fbc71ee9e0750bebd1282faa527d528a344c3c7",
      "size": 29
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "4fb3bc0b49d7f67ab45ed8cd75d5729c588faf233cbb62efff8d1c0647514610",
+     "size": 520,
+     "from": {
+      "base": "registry",
+      "path": "skills/mcp-builder/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "anthropics/skills",
+    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
     "path": "skills/mcp-builder"
    }
   },
@@ -1786,7 +2326,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -1796,7 +2336,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "ab5d26ba64e646a6a9369cb2ead8aa8c99496a7931ca631d40416d05a6e252fc",
+   "sha256": "37222fa735f53d566391085fd84777aaa3fd0a4b8ea935993fcdd4d32532ef6e",
    "tokens_idle": 25,
    "files": [
     {
@@ -1807,14 +2347,27 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "3292250808386f45d109ee3061b279d1b4796a7850ca57b622c438e44692f420",
+     "size": 560,
+     "from": {
+      "base": "registry",
+      "path": "skills/meeting-action-items/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/meeting-action-items"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/productivity/meeting-action-items"
    }
   },
   {
@@ -1831,7 +2384,7 @@
    "src": "openai/skills#49f948f",
    "commit": "49f948faa9258a0c61caceaf225e179651397431",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -1841,7 +2394,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "8f235b216e92f66734c50b7a132f48e92f612fffcab32f0776a8fe33096eba50",
+   "sha256": "d612032ce3fd3faf8039cd1862bc197dfc5d3f207c946bea05f184af429f084d",
    "tokens_idle": 57,
    "files": [
     {
@@ -1883,13 +2436,22 @@
      "p": "references/netlify-toml.md",
      "sha256": "436ea3c2e0ce04abb34895db993d91b8660423977d9c52a89f2dfa014cad0b9c",
      "size": 3972
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "eee2061a15403b205934ff784790d905eb1c4021bf51a973c49c5804965d7412",
+     "size": 527,
+     "from": {
+      "base": "registry",
+      "path": "skills/netlify-deploy/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/netlify-deploy"
+    "base": "upstream",
+    "repo": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.curated/netlify-deploy"
    }
   },
   {
@@ -1905,7 +2467,7 @@
    "src": "openai/skills#49f948f",
    "commit": "49f948faa9258a0c61caceaf225e179651397431",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -1915,7 +2477,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "1b1f0dc1ede641b412113ec76a8a477649a4064ac00079d0e6f4a290fbb74541",
+   "sha256": "50e66e6b512149e7c8f44d33d30aa9922e6e245bfa86decce445e913721d9f29",
    "tokens_idle": 52,
    "files": [
     {
@@ -2012,13 +2574,22 @@
      "p": "reference/task-creation.md",
      "sha256": "60a2eb24530097b7c4011582bb3954576655a30c0c95e9a8a12ff6a19aee3a26",
      "size": 7965
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "864ec60970bcd81656d259d94e67b64bc9fc37dcc0477b8b66fdca86b46e6f7f",
+     "size": 550,
+     "from": {
+      "base": "registry",
+      "path": "skills/notion-spec-to-implementation/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/notion-spec-to-implementation"
+    "base": "upstream",
+    "repo": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.curated/notion-spec-to-implementation"
    }
   },
   {
@@ -2034,7 +2605,7 @@
    "src": "openclaw/openclaw#c321c03",
    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -2044,7 +2615,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "f081c5eceff12ad48833a173e7497aa9954f22f013c385f0c6e564d6cbd09c12",
+   "sha256": "f2d543e38370cc1e099f18378d2aa33ff81b960d3b6ed787769a49c21298d527",
    "tokens_idle": 39,
    "files": [
     {
@@ -2055,39 +2626,28 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "9efd316ecf1c4c60f6fd5d26433142fff2b6794d7d328e9bc6179b29bf9c82a4",
-     "size": 1076
+     "size": 1076,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "3500ef21c0e7b3051edcf8996048ccec9e1d9f20c9ed36d5f2c660276deca0c2",
+     "size": 507,
+     "from": {
+      "base": "registry",
+      "path": "skills/obsidian/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "openclaw/openclaw",
+    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
     "path": "skills/obsidian"
    }
-  },
-  {
-   "id": "skill/office-docs",
-   "kind": "skill",
-   "name": "office-docs",
-   "type": "bundle",
-   "source": "agentic-work",
-   "owner": "agentic-work",
-   "desc": "docx / pdf / pptx / xlsx, written from scratch, no copied text.",
-   "v": "0",
-   "status": "planned",
-   "yanked": null,
-   "lic": null,
-   "vendor": false,
-   "installs": null,
-   "gates": {
-    "license": "not run",
-    "scan": "not run",
-    "lint": "not run",
-    "mac": "not run",
-    "linux": "not run",
-    "win": "not run"
-   },
-   "where": "Not built yet."
   },
   {
    "id": "skill/p5js",
@@ -2102,7 +2662,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -2112,7 +2672,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "e7634f4e8e35f88cec1d98ef2c2acb0452efb450c4de49063ee7ba5214fe3627",
+   "sha256": "7065a3942989c180bca5517ebf65fc82de6b48f20d3ba26bd2200ad701ef8180",
    "tokens_idle": 19,
    "files": [
     {
@@ -2124,11 +2684,6 @@
      "p": "SKILL.md",
      "sha256": "3b39b75303e082af69b3f4e2deab7a55b27d60293eff6a561fb627188194a33e",
      "size": 27534
-    },
-    {
-     "p": "UPSTREAM-LICENSE",
-     "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
     },
     {
      "p": "references/animation.md",
@@ -2204,13 +2759,31 @@
      "p": "templates/viewer.html",
      "sha256": "6a0f3f42fbc6a52cc82cd5990a856474cdbf43d2f157d2183a09b9cec91a331a",
      "size": 10858
+    },
+    {
+     "p": "UPSTREAM-LICENSE",
+     "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "3132d2fa430b654dcaa7612e551089db38c75e8ae17501b704fcca686e8485b7",
+     "size": 524,
+     "from": {
+      "base": "registry",
+      "path": "skills/p5js/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/p5js"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/creative/p5js"
    }
   },
   {
@@ -2219,23 +2792,102 @@
    "name": "pdf",
    "source": "Claude",
    "category": "Office",
-   "desc": "",
-   "why": "Covered by our own office-docs (planned); nothing is copied or installed from upstream.",
-   "note": "replaced by our office-docs rewrite. Upstream moved these skills to Apache-2.0 on 2026-11-06 (anthropics/skills 2c5958e), so copying would now be allowed; kept as a rewrite until agentic-work decides",
-   "v": "0",
-   "status": "replace",
-   "replaced_by": "office-docs",
+   "desc": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding…",
+   "why": "Anthropic's PDF files skill; Apache-2.0 since 2026-11-06 (anthropics/skills 2c5958e), so it is taken from upstream instead of rewritten.",
+   "v": "2c5958e",
+   "status": "ok",
    "yanked": null,
-   "lic": null,
+   "src": "anthropics/skills#2c5958e",
+   "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+   "lic": "Apache-2.0",
    "vendor": false,
    "installs": null,
    "gates": {
-    "license": "not run",
-    "scan": "not run",
-    "lint": "not run",
-    "mac": "not run",
+    "license": "pass",
+    "scan": "pass",
+    "lint": "pass",
+    "mac": "pass",
     "linux": "not run",
     "win": "not run"
+   },
+   "sha256": "802b3b89e94f8173d3aeaa5f22d90760c449dde873f7bfa1445babb2d637d623",
+   "tokens_idle": 115,
+   "files": [
+    {
+     "p": "LICENSE.txt",
+     "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+     "size": 11357
+    },
+    {
+     "p": "SKILL.md",
+     "sha256": "d1c7caf5f35eb7d37877dd7fc33a095037be2b34fb5d2f7f4d43bde3165bb4ee",
+     "size": 8058
+    },
+    {
+     "p": "forms.md",
+     "sha256": "9530b3f57034792e0242a3abfe8b3c296466329551916f2ff6c5a70db78f7e44",
+     "size": 11854
+    },
+    {
+     "p": "reference.md",
+     "sha256": "03a5f964f8abecbbe156f363356e927e864d7ee964f1012c84ee1bfc8acbeb95",
+     "size": 16692
+    },
+    {
+     "p": "scripts/check_bounding_boxes.py",
+     "sha256": "0ced522402dd7b3c82a0be9518cf4e485fa9cc0467d7beab6ddb04cb36fcc3e1",
+     "size": 2774
+    },
+    {
+     "p": "scripts/check_fillable_fields.py",
+     "sha256": "1fe10b9980a5493c9bbec8c20630c603eaa475b45403751c08f26738736647b8",
+     "size": 268
+    },
+    {
+     "p": "scripts/convert_pdf_to_images.py",
+     "sha256": "7f58e292a67e18a8ff000d30bad2469389546731f7e8a698cc1d0aed001ea15d",
+     "size": 1008
+    },
+    {
+     "p": "scripts/create_validation_image.py",
+     "sha256": "8fa9fd7962c9f940045b81cf6b991e7c1057c1838e3f9cc6d305007a222ffebf",
+     "size": 1258
+    },
+    {
+     "p": "scripts/extract_form_field_info.py",
+     "sha256": "bb235b36f497bbb1c7c6821cecf527bbba7213520de11219da99f7b13a38c109",
+     "size": 4300
+    },
+    {
+     "p": "scripts/extract_form_structure.py",
+     "sha256": "6814e3fe8f78c2b16d766c132b5a727ff7a31b71d76a7d46bd6e40fe50bc97c5",
+     "size": 3945
+    },
+    {
+     "p": "scripts/fill_fillable_fields.py",
+     "sha256": "d140872c2e92e41b1e05370ae8d270c5b7f5ebdf55d9905f03bc974a9c708ff5",
+     "size": 3819
+    },
+    {
+     "p": "scripts/fill_pdf_form_with_annotations.py",
+     "sha256": "8a56e063a49ed53c0b0e1d312ecf8023af76816ed139486ec3b539873de202fd",
+     "size": 3235
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "3f5ab555bbb68f41e0737c6924448af0b7ea349fb9e616d9f0238f4b3fbfa656",
+     "size": 504,
+     "from": {
+      "base": "registry",
+      "path": "skills/pdf/UPSTREAM.md"
+     }
+    }
+   ],
+   "fetch": {
+    "base": "upstream",
+    "repo": "anthropics/skills",
+    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+    "path": "skills/pdf"
    }
   },
   {
@@ -2278,7 +2930,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 69797,
    "gates": {
     "license": "pass",
@@ -2288,18 +2940,13 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "c91b12be0988cd7d690f95a18a0a8e2bd57442fc290a2803607720e110c7246f",
+   "sha256": "42f840f19e18cf30151b451814d2ac7d7dd2b03a63999948672ca5a7a9682c74",
    "tokens_idle": 75,
    "files": [
     {
      "p": "SKILL.md",
      "sha256": "521a3d62211e5f47b65ed17b660e001b15cf8d88d058cbf31bc00e889bcb63cc",
      "size": 3824
-    },
-    {
-     "p": "UPSTREAM-LICENSE",
-     "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-     "size": 11358
     },
     {
      "p": "templates/code-map.md",
@@ -2330,13 +2977,31 @@
      "p": "templates/document-critique.md",
      "sha256": "c5bd7a68a53f2075d127e482c93b5f3d0b51c24bf8d301c1124801cca7be2d41",
      "size": 5154
+    },
+    {
+     "p": "UPSTREAM-LICENSE",
+     "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+     "size": 11358,
+     "from": {
+      "base": "upstream",
+      "path": "plugins/playground/LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "56c7d3488d5af89c93a864cb5eb5b6241d6ffff37d79d07d52b42351bc9df2cc",
+     "size": 571,
+     "from": {
+      "base": "registry",
+      "path": "skills/playground/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/playground"
+    "base": "upstream",
+    "repo": "anthropics/claude-plugins-official",
+    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
+    "path": "plugins/playground/skills/playground"
    }
   },
   {
@@ -2395,23 +3060,322 @@
    "name": "pptx",
    "source": "Claude",
    "category": "Office",
-   "desc": "",
-   "why": "Covered by our own office-docs (planned); nothing is copied or installed from upstream.",
-   "note": "replaced by our office-docs rewrite. Upstream moved these skills to Apache-2.0 on 2026-11-06 (anthropics/skills 2c5958e), so copying would now be allowed; kept as a rewrite until agentic-work decides",
-   "v": "0",
-   "status": "replace",
-   "replaced_by": "office-docs",
+   "desc": "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx…",
+   "why": "Anthropic's PowerPoint decks skill; Apache-2.0 since 2026-11-06 (anthropics/skills 2c5958e), so it is taken from upstream instead of rewritten.",
+   "v": "2c5958e",
+   "status": "ok",
    "yanked": null,
-   "lic": null,
+   "src": "anthropics/skills#2c5958e",
+   "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+   "lic": "Apache-2.0",
    "vendor": false,
    "installs": null,
    "gates": {
-    "license": "not run",
-    "scan": "not run",
-    "lint": "not run",
-    "mac": "not run",
+    "license": "pass",
+    "scan": "warn",
+    "lint": "pass",
+    "mac": "pass",
     "linux": "not run",
     "win": "not run"
+   },
+   "sha256": "818d7a8ce3a590b66d652fe608440ee3d24932f18ad098f77838fc8a6b1930c3",
+   "tokens_idle": 191,
+   "files": [
+    {
+     "p": "LICENSE.txt",
+     "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+     "size": 11357
+    },
+    {
+     "p": "SKILL.md",
+     "sha256": "b60bd282c6e01297f0eefe71594d1756dbf60a584f524c04a803ec6950b7fba2",
+     "size": 20782
+    },
+    {
+     "p": "scripts/__init__.py",
+     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "size": 0
+    },
+    {
+     "p": "scripts/add_slide.py",
+     "sha256": "3922f819ee1f6b8bdc6aa146d1a86de70640f5f919321fe3f01a764482ff69c9",
+     "size": 14537
+    },
+    {
+     "p": "scripts/clean.py",
+     "sha256": "5c808cd4dff7e02661ef3c68b5917f4e25097cc6610c92a3a7df4a6366a5c3c1",
+     "size": 10415
+    },
+    {
+     "p": "scripts/office/helpers/__init__.py",
+     "sha256": "678e42456d9e10923c8b9a93691cdd993de3433448a184fa72a0c31f4ae086d5",
+     "size": 3358
+    },
+    {
+     "p": "scripts/office/helpers/pptx_chart.py",
+     "sha256": "47ac266f7d39d11ede6bb0d1f3a19d801394fd2964636f1b48beb701f1832964",
+     "size": 5862
+    },
+    {
+     "p": "scripts/office/helpers/pptx_slide.py",
+     "sha256": "7b9f69b4a5bd6a2d9eabf9e0e3e796d7a421373145f6a8cd11f60b7ba2d6a5d0",
+     "size": 1675
+    },
+    {
+     "p": "scripts/office/helpers/pptx_theme.py",
+     "sha256": "ebb54c56e9c13807f5f98f0cae22d47cdd0162da8525eaa664e3f2c8c8d6bb03",
+     "size": 3510
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd",
+     "sha256": "41b93bd8857cc68b1e43be2806a872d736a9bdd6566900062d8fdb57d7bbb354",
+     "size": 74984
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd",
+     "sha256": "3fd0586f2637b98bb9886f0e0b67d89e1cc987c2d158cc7deb5f5b9890ced412",
+     "size": 6956
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd",
+     "sha256": "29b254ee0d10414a8504b5a08149c7baec35a60d5ff607d6b3f492aa36815f40",
+     "size": 51302
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd",
+     "sha256": "5cb76dabd8b97d1e9308a1700b90c20139be4d50792d21a7f09789f5cccd6026",
+     "size": 624
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd",
+     "sha256": "5375417f0f5394b8dd1a7035b9679151f19a6b65df309dec10cfb4a420cb00e9",
+     "size": 152039
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd",
+     "sha256": "5d389d42befbebd91945d620242347caecd3367f9a3a7cf8d97949507ae1f53c",
+     "size": 1231
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd",
+     "sha256": "b4532b6d258832953fbb3ee4c711f4fe25d3faf46a10644b2505f17010d01e88",
+     "size": 8862
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd",
+     "sha256": "bdad416b096b61d37b71603b2c949484f9070c830bdaeba93bf35e15c8900614",
+     "size": 14795
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd",
+     "sha256": "d173c3e5d61e42e2e3a97226c632fd2ab7cc481fc4e492365b87024ab546daff",
+     "size": 83612
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd",
+     "sha256": "3c6709101c6aaa82888df5d8795c33f9e857196790eb320d9194e64be2b6bdd8",
+     "size": 1269
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd",
+     "sha256": "0b364451dc36a48dd6dae0f3b6ada05fd9b71e5208211f8ee5537d7e51a587e2",
+     "size": 7328
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd",
+     "sha256": "e2abacbb9a55ce1365f8961bc1b1395bbc811e512b111000d8c333f98458dece",
+     "size": 6382
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd",
+     "sha256": "0ef4bb354ff44b923564c4ddbdda5987919d220225129ec94614a618ceafc281",
+     "size": 1248
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd",
+     "sha256": "0d103b99a4a8652f8871552a69d42d2a3760ac6a5e3ef02d979c4273257ff6a4",
+     "size": 880
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd",
+     "sha256": "9c085407751b9061c1f996f6c39ce58451be22a8d334f09175f0e89e42736285",
+     "size": 2608
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd",
+     "sha256": "bc92e36ccd233722d4c5869bec71ddc7b12e2df56059942cce5a39065cc9c368",
+     "size": 3507
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd",
+     "sha256": "7b5b7413e2c895b1e148e82e292a117d53c7ec65b0696c992edca57b61b4a74b",
+     "size": 7507
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd",
+     "sha256": "3213ef1631606250f5010b42cad7ef716f7c59426367798e33c374c0ec391d3a",
+     "size": 23313
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd",
+     "sha256": "12264f3c03d738311cd9237d212f1c07479e70f0cbe1ae725d29b36539aef637",
+     "size": 1367
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd",
+     "sha256": "beffeed56945c22a77440122c8bdc426f3fcbe7f3b12ea0976c770d1f8d54578",
+     "size": 242277
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd",
+     "sha256": "f5ee623b08b6a66935e5aced2f5d8ad0fc71bf9e8e833cd490150c0fa94b8763",
+     "size": 26148
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd",
+     "sha256": "585bedc1313b40888dcc544cb74cd939a105ee674f3b1d3aa1cc6d34f70ff155",
+     "size": 25279
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd",
+     "sha256": "133c9f64a5c5d573b78d0a474122b22506d8eadb5e063f67cdbbb8fa2f161d0e",
+     "size": 535
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd",
+     "sha256": "6bdeb169c3717eb01108853bd9fc5a3750fb1fa5b82abbdd854d49855a40f519",
+     "size": 5712
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd",
+     "sha256": "475dcae1e7d1ea46232db6f8481040c15e53a52a3c256831d3df204212b0e831",
+     "size": 4010
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd",
+     "sha256": "c2dd9f61f892deae6acd8d20771ea79b12018af25f3bf8d06639c8542d218cfd",
+     "size": 171367
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd",
+     "sha256": "a539aa2fb154fa50e0f5cc97e6ad7cbc66f8ec3e3746f61ec6a8b0d5d15ecdf2",
+     "size": 4646
+    },
+    {
+     "p": "scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd",
+     "sha256": "9e0b7209fc69ab11987900404540969976000c5ebe4d4f58c43dc3842886bf3a",
+     "size": 1963
+    },
+    {
+     "p": "scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd",
+     "sha256": "451958454e8588dfc7cd945981ada142ca06ff3307937f5700df059c2b307fa8",
+     "size": 2515
+    },
+    {
+     "p": "scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd",
+     "sha256": "6de111e11403f7cd49027400755bae0ea1cabef2815f09bd40a24f0017613b24",
+     "size": 2856
+    },
+    {
+     "p": "scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd",
+     "sha256": "f565adfef5a502044abc3a9153e157edc25af78304d335994afb958874b15e26",
+     "size": 1344
+    },
+    {
+     "p": "scripts/office/schemas/mce/mc.xsd",
+     "sha256": "3a37e461ecf5a8670fdec34029703401f8728ab9c96ec1739a6ae58d55212413",
+     "size": 3127
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-2010.xsd",
+     "sha256": "568b26ee156cb9549aa439ca2158965f77b7c1602b7e0316f40ac6cf586e35f2",
+     "size": 26549
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-2012.xsd",
+     "sha256": "0fa75578a000439a7988ba0c59fdc69f774bbd416cbacc14d07125b3f686cb74",
+     "size": 3745
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-2018.xsd",
+     "sha256": "be0ff793a22dd31384650c3a4da14c2fa8062751c2e97b0e5ee852bda13c60ad",
+     "size": 901
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-cex-2018.xsd",
+     "sha256": "fddc2b880cabb9005aebbc7e783e53c19fec1c03df7d0e2f2076a33a0fdfd081",
+     "size": 1778
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-cid-2016.xsd",
+     "sha256": "127ca209fa73d7cb708449cb355c871867948a96e4a74f7bf5811ef62d17991d",
+     "size": 1002
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd",
+     "sha256": "842e7163409c8d74f4d7088a8bc99500d80bc75332681a0980055b08f374a604",
+     "size": 600
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-symex-2015.xsd",
+     "sha256": "16f6f8072249f431370723c2cd8974672e0d9c897e00e97dd918079df934871b",
+     "size": 745
+    },
+    {
+     "p": "scripts/office/soffice.py",
+     "sha256": "df2c8d7249c132a4512d744482e4b5ed0ecbe885f0bcfb1295e7e6a7ced0432c",
+     "size": 5927
+    },
+    {
+     "p": "scripts/office/validate.py",
+     "sha256": "346a4c89d92fff55e610f11efda48c30228815b29bdb10b987e48f7af70acf1e",
+     "size": 6142
+    },
+    {
+     "p": "scripts/office/validators/__init__.py",
+     "sha256": "83e0f035c5abea238d3f2c3968afbd511ed022b527b7c9cb60a9434cc34ff987",
+     "size": 336
+    },
+    {
+     "p": "scripts/office/validators/base.py",
+     "sha256": "f818ea28c793ba42960fa4498265e2632a62c86f7b5d6aff6fa89dacc02d59ea",
+     "size": 33756
+    },
+    {
+     "p": "scripts/office/validators/docx.py",
+     "sha256": "93d3444c0ef3f043d21a2285c46d2cda478426b930dc33dcf3b11265935517b5",
+     "size": 17482
+    },
+    {
+     "p": "scripts/office/validators/pptx.py",
+     "sha256": "17eadad2b7a8374ccbe4cda45693bcd6a36f9d61a7d60f9c9ceef9464dec8299",
+     "size": 15966
+    },
+    {
+     "p": "scripts/office/validators/redlining.py",
+     "sha256": "ed50d0885eee4b9c387f546b059bcaed64086815880a5167336244f93e305123",
+     "size": 11231
+    },
+    {
+     "p": "scripts/thumbnail.py",
+     "sha256": "94ef83a84346aa2d63913de0d42bb2fe902ccdc17bfac6130096ca758381793c",
+     "size": 9802
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "7fd023cf9ec3ce6b3ceba4cfc6e4482bae0dcbeb208e91b9eee61fc79142f0df",
+     "size": 506,
+     "from": {
+      "base": "registry",
+      "path": "skills/pptx/UPSTREAM.md"
+     }
+    }
+   ],
+   "fetch": {
+    "base": "upstream",
+    "repo": "anthropics/skills",
+    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+    "path": "skills/pptx"
    }
   },
   {
@@ -2428,7 +3392,7 @@
    "src": "openai/skills#49f948f",
    "commit": "49f948faa9258a0c61caceaf225e179651397431",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -2438,7 +3402,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "a3689a273f9904240cac1b4632d3969ffb40fa6c71d8ce68aebbc64f84d28bc0",
+   "sha256": "0b25c37fcfe7e9319834cdf219caec25f2573fa3be92fc7d5857acb747bcc68e",
    "tokens_idle": 66,
    "files": [
     {
@@ -2545,13 +3509,22 @@
      "p": "references/troubleshooting-basics.md",
      "sha256": "f999b13fc56ff62ccf6eec593d0e4cee94e52dec27a815e40d68532bf558a4ca",
      "size": 1361
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "51461b513efc2c17cb3bff85e8c0c68d988e3c0547bb3925af1aaa3d424c03d0",
+     "size": 525,
+     "from": {
+      "base": "registry",
+      "path": "skills/render-deploy/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/render-deploy"
+    "base": "upstream",
+    "repo": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.curated/render-deploy"
    }
   },
   {
@@ -2567,7 +3540,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -2577,7 +3550,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "7b5ace14ec3c4f5a8cae243c34c88549e3a288faec2358aa019ed38f0782ab74",
+   "sha256": "78bf1d71e21118081adec146c7afbb8924cb084aad3faac994cb942c18b18bb1",
    "tokens_idle": 26,
    "files": [
     {
@@ -2588,14 +3561,27 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "339cba948d913d69f9263f0c0a89ffce051635911a27946902ebb2588ef92c2c",
+     "size": 572,
+     "from": {
+      "base": "registry",
+      "path": "skills/requesting-code-review/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/requesting-code-review"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/software-development/requesting-code-review"
    }
   },
   {
@@ -2636,7 +3622,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -2646,7 +3632,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "9a0b71a6585f97cda9055edbad6653e807bb48721662c3869900ec989603e99a",
+   "sha256": "e00d1f167221b4682b1f047e687742d7df972c0a976be909af060bf5e25d9c46",
    "tokens_idle": 21,
    "files": [
     {
@@ -2657,14 +3643,27 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "26f4c71a7be048bcc00590a12fade37157d3fe005537800d9bdc2f7667c2d2d2",
+     "size": 536,
+     "from": {
+      "base": "registry",
+      "path": "skills/sdlc-review/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/sdlc-review"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/devops/sdlc-review"
    }
   },
   {
@@ -2681,7 +3680,7 @@
    "src": "openai/skills#49f948f",
    "commit": "49f948faa9258a0c61caceaf225e179651397431",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -2691,7 +3690,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "8a5517f625cd0f7f4ac5ae1fcf71207089d255cce04e1633a86e94c7bbe1ef6e",
+   "sha256": "9dc89c7dd4bd750fcff6d7a17ed2052ed2b4960efa453aa78ed83d799a226cc4",
    "tokens_idle": 108,
    "files": [
     {
@@ -2758,13 +3757,22 @@
      "p": "references/python-flask-web-server-security.md",
      "sha256": "9606d69190c04c167fdeac57e61297547a57b0542fd89dede36f355970446929",
      "size": 31748
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "95d23baacabf51a03e9307abc697fc51389c47bc75621204ecbfe20727c5de3b",
+     "size": 545,
+     "from": {
+      "base": "registry",
+      "path": "skills/security-best-practices/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/security-best-practices"
+    "base": "upstream",
+    "repo": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.curated/security-best-practices"
    }
   },
   {
@@ -2781,7 +3789,7 @@
    "src": "openai/skills#49f948f",
    "commit": "49f948faa9258a0c61caceaf225e179651397431",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -2791,7 +3799,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "9e4b82c0d2988c6fc42b47e0e66042fbcf8f8dc545eb3e42a45cf12919f1b1e4",
+   "sha256": "5e0a7168be8405be94fb6e3517d29d4117a09b977f0cc9e2524e7b212edf2faf",
    "tokens_idle": 145,
    "files": [
     {
@@ -2833,13 +3841,22 @@
      "p": "scripts/run_ownership_map.py",
      "sha256": "362b547d6133659eb5c4fe889b8b930bea790f31e412f3198671baae09eec692",
      "size": 5890
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "301e17d430be61d68942ca36e6aad03880e23c85bd260459c0f4ec70272e8de2",
+     "size": 543,
+     "from": {
+      "base": "registry",
+      "path": "skills/security-ownership-map/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/security-ownership-map"
+    "base": "upstream",
+    "repo": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.curated/security-ownership-map"
    }
   },
   {
@@ -2856,7 +3873,7 @@
    "src": "openai/skills#49f948f",
    "commit": "49f948faa9258a0c61caceaf225e179651397431",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -2866,7 +3883,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "b83dc94678790e04b3a450355b6f35699855b9133c64027a918a343c3bb9ae6c",
+   "sha256": "4446b604eff93793fe14cda778ea553da27d1511084769dc139e07800c89c62d",
    "tokens_idle": 114,
    "files": [
     {
@@ -2893,14 +3910,83 @@
      "p": "references/security-controls-and-assets.md",
      "sha256": "d536cfa9acad2523dc39134bcf33b9566c29dd9a57b407cbc9901637230c6b98",
      "size": 1680
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "d9bd80d8afa7e9bf9fc821edac87c4896f82fdc3b03cb87e31968f58642446a7",
+     "size": 541,
+     "from": {
+      "base": "registry",
+      "path": "skills/security-threat-model/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/security-threat-model"
+    "base": "upstream",
+    "repo": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.curated/security-threat-model"
    }
+  },
+  {
+   "id": "skill/simplify",
+   "kind": "skill",
+   "name": "simplify",
+   "source": "agentic-work",
+   "owner": "agentic-work",
+   "category": "Coding",
+   "desc": "Review changed code for reuse, quality, and efficiency, then fix any issues found.",
+   "why": "Ours. Used to be compiled into agenticode; now installed by default on first run from the signed index.",
+   "v": "1.0.0",
+   "status": "ok",
+   "yanked": null,
+   "src": "agentic-work/agenticode-skills#3aa55ca",
+   "commit": "3aa55cab59eb6b315d8d3b0c9f9922bf8bd1f3f6",
+   "lic": "MIT",
+   "vendor": false,
+   "installs": null,
+   "gates": {
+    "license": "pass",
+    "scan": "pass",
+    "lint": "pass",
+    "mac": "pass",
+    "linux": "not run",
+    "win": "not run"
+   },
+   "sha256": "477048e11317d18f150d6b425f4b7dfea0f341697c723811400c895c4ff27561",
+   "tokens_idle": 28,
+   "files": [
+    {
+     "p": "SKILL.md",
+     "sha256": "02211fdb8bedcc5d0b673fe6ea32d10880bb7672cc5a41fecb37cd8755689e6e",
+     "size": 3969
+    },
+    {
+     "p": "UPSTREAM-LICENSE",
+     "sha256": "61c4c474b561edaf6185a0808f7562402a74a8f2429d15ea35e15a705dd98b95",
+     "size": 1069,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "394554bf3516a46c1a90a41e9ee7db5646a8c27d4ccc16c84e4055f610b45609",
+     "size": 554,
+     "from": {
+      "base": "registry",
+      "path": "skills/simplify/UPSTREAM.md"
+     }
+    }
+   ],
+   "fetch": {
+    "base": "upstream",
+    "repo": "agentic-work/agenticode-skills",
+    "commit": "3aa55cab59eb6b315d8d3b0c9f9922bf8bd1f3f6",
+    "path": "skills/simplify"
+   },
+   "default": true
   },
   {
    "id": "skill/skill-creator",
@@ -2917,7 +4003,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 431044,
    "gates": {
     "license": "pass",
@@ -2927,7 +4013,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "9b8c01a31d61bfde4c64817137c58bd17f9e107c8d7fa2515911009e328e18bf",
+   "sha256": "e60d02ba29fb196f75bb977705a2bc008ef7ff06830033edc2bec546299965e9",
    "tokens_idle": 88,
    "files": [
     {
@@ -3019,13 +4105,22 @@
      "p": "scripts/utils.py",
      "sha256": "3af8ae62c40c73ab712207436a0d9a981e845f25c5a7040229eb189cc8e45bb1",
      "size": 1661
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "c08dac4355fd3a7ef433caf87765a206b806043a6921b21a3a088d8813a6198e",
+     "size": 580,
+     "from": {
+      "base": "registry",
+      "path": "skills/skill-creator/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/skill-creator"
+    "base": "upstream",
+    "repo": "anthropics/claude-plugins-official",
+    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
+    "path": "plugins/skill-creator/skills/skill-creator"
    }
   },
   {
@@ -3041,7 +4136,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -3051,7 +4146,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "70925839924c165801622a76f45095d6041dadced8352e2fbdc08340882a70c5",
+   "sha256": "cac39a3605f518e5cc86a8c356966a7844f470aeb273b2db08bd8624427a782b",
    "tokens_idle": 21,
    "files": [
     {
@@ -3062,14 +4157,27 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "e1db5642f1a9f12adc3f64668558fc7adf8ad5597197c0a333033ef641a0e7d7",
+     "size": 538,
+     "from": {
+      "base": "registry",
+      "path": "skills/spike/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/spike"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/software-development/spike"
    }
   },
   {
@@ -3085,7 +4193,7 @@
    "src": "openclaw/openclaw#c321c03",
    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -3095,7 +4203,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "c699539f8cddabac3c99015d9c66030b46e38a23baf59ce74bcf32714f1b995b",
+   "sha256": "888dd7f4cb5d7a7dbe749e469bb887aeb7714dd3b19b23b667162ca808a981af",
    "tokens_idle": 33,
    "files": [
     {
@@ -3106,13 +4214,26 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "9efd316ecf1c4c60f6fd5d26433142fff2b6794d7d328e9bc6179b29bf9c82a4",
-     "size": 1076
+     "size": 1076,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "440835d30e68e43bb07dce33326783326023af33e50a0a35973c71f926f5b4ae",
+     "size": 509,
+     "from": {
+      "base": "registry",
+      "path": "skills/summarize/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "openclaw/openclaw",
+    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
     "path": "skills/summarize"
    }
   },
@@ -3131,7 +4252,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -3141,7 +4262,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "2db107dac3283a62d3aed1e2182c1c721c19f96c6380941f6ff567def0ced542",
+   "sha256": "b3fa77fecb1d007ca6fe1f17eb9750874a86aab7b43b8423c8428a95f141dab7",
    "tokens_idle": 26,
    "files": [
     {
@@ -3152,14 +4273,27 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "fdda5ad97661f913b86cbbaf8c38eed2a85e99bd23dd6d5c12f5ad3f68ae3704",
+     "size": 568,
+     "from": {
+      "base": "registry",
+      "path": "skills/systematic-debugging/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/systematic-debugging"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/software-development/systematic-debugging"
    }
   },
   {
@@ -3175,7 +4309,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -3185,7 +4319,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "d0afc5371567476791560b9382152f71d11ee861ae8a303dcc1929eafcafa3a5",
+   "sha256": "f81eb49e3bebddeb5c5704c20b38d2cea16792894a1cfc06204ab39accc56e90",
    "tokens_idle": 24,
    "files": [
     {
@@ -3196,14 +4330,27 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "3f727f9d4ec138e691b54b1d29fa16f5122fcc7f06af41d2a096b0ed15790ef5",
+     "size": 574,
+     "from": {
+      "base": "registry",
+      "path": "skills/test-driven-development/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/test-driven-development"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/software-development/test-driven-development"
    }
   },
   {
@@ -3220,7 +4367,7 @@
    "src": "anthropics/skills#2c5958e",
    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -3230,7 +4377,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "c38bcc843f7f256472af7c4830529b8b4960c6bf91936b64cbafd2a7ebc6c436",
+   "sha256": "2095c4c8d739dc575d39d664b6bc93b056a874e30f39a23ef0f666f8a767e257",
    "tokens_idle": 74,
    "files": [
     {
@@ -3297,12 +4444,21 @@
      "p": "themes/tech-innovation.md",
      "sha256": "183648163026dd5eeba3df5effa335b55ba333c3ee1fe215278605e55f40a52a",
      "size": 547
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "87a1993d0ea6eecbe725d6cd293418112560ed2687c959848ae6a2b01e1ae1e6",
+     "size": 524,
+     "from": {
+      "base": "registry",
+      "path": "skills/theme-factory/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "anthropics/skills",
+    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
     "path": "skills/theme-factory"
    }
   },
@@ -3321,7 +4477,7 @@
    "src": "openclaw/openclaw#c321c03",
    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -3331,7 +4487,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "c510a826268958111e4cf03fe560c7474ff7175d33cb82c1ac1074c80c2ae3d7",
+   "sha256": "5f012c0678781558983cdcfc97ea7b0872bd3892d7aa4ca050fbf4102f76a63e",
    "tokens_idle": 34,
    "files": [
     {
@@ -3342,13 +4498,26 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "9efd316ecf1c4c60f6fd5d26433142fff2b6794d7d328e9bc6179b29bf9c82a4",
-     "size": 1076
+     "size": 1076,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "28f91a4c0b26cede022624254b8e7c50f5e36ae7a1dd986046262aca0fbc34ea",
+     "size": 511,
+     "from": {
+      "base": "registry",
+      "path": "skills/things-mac/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "openclaw/openclaw",
+    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
     "path": "skills/things-mac"
    }
   },
@@ -3365,7 +4534,7 @@
    "src": "openclaw/openclaw#c321c03",
    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -3375,18 +4544,13 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "91cdedc1abae02e15703271a895a6ce1c943bad565e29bb38b11f78b923131b4",
+   "sha256": "5ce2c044abe02bbed187bb237eaaa3f1be4a7bb75de1bac3f0d5c71275449fef",
    "tokens_idle": 34,
    "files": [
     {
      "p": "SKILL.md",
      "sha256": "8aeaa6f3dfe06d58e09721778b8c9e654bcbd47590f26f442c4dc87c9349c572",
      "size": 2564
-    },
-    {
-     "p": "UPSTREAM-LICENSE",
-     "sha256": "9efd316ecf1c4c60f6fd5d26433142fff2b6794d7d328e9bc6179b29bf9c82a4",
-     "size": 1076
     },
     {
      "p": "scripts/find-sessions.sh",
@@ -3397,12 +4561,30 @@
      "p": "scripts/wait-for-text.sh",
      "sha256": "ca874323f0b5b94db9a8299cef9183a2ebe8b07ca2bf1c90686ace84718cd020",
      "size": 2724
+    },
+    {
+     "p": "UPSTREAM-LICENSE",
+     "sha256": "9efd316ecf1c4c60f6fd5d26433142fff2b6794d7d328e9bc6179b29bf9c82a4",
+     "size": 1076,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "db6e5cf954f6f9081915690ca60fd56967ffb68fc45f90582cc22539c2e8d12f",
+     "size": 499,
+     "from": {
+      "base": "registry",
+      "path": "skills/tmux/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "openclaw/openclaw",
+    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
     "path": "skills/tmux"
    }
   },
@@ -3420,7 +4602,7 @@
    "src": "openai/skills#49f948f",
    "commit": "49f948faa9258a0c61caceaf225e179651397431",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -3430,7 +4612,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "933096fa3d802cc5926f8014289b1a3a5a19a0d803dcb0abd018cb267e5adac7",
+   "sha256": "7b3f9461cb2ffba52dd38dd38a9584fc9745251c743647ec7db1f041222f2e41",
    "tokens_idle": 63,
    "files": [
     {
@@ -3467,13 +4649,22 @@
      "p": "scripts/transcribe_diarize.py",
      "sha256": "d623b1fed1491b7ca4b7b5b393089165e3581a83d90d5a57868241f1b2a5d951",
      "size": 8684
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "dd2c88954f9da84af65f0bb2eda0e0adf21cd141deffd62c7e814d13d42762ca",
+     "size": 519,
+     "from": {
+      "base": "registry",
+      "path": "skills/transcribe/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/transcribe"
+    "base": "upstream",
+    "repo": "openai/skills",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "path": "skills/.curated/transcribe"
    }
   },
   {
@@ -3489,7 +4680,7 @@
    "src": "openclaw/openclaw#c321c03",
    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -3499,7 +4690,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "18fd961aa090f0610f44b610b000c1f9298b296243ace36b39943e170b7602fa",
+   "sha256": "3283d15749cd86183493ad9b01595fda292ac264695387b917b68938b805cd06",
    "tokens_idle": 23,
    "files": [
     {
@@ -3510,13 +4701,26 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "9efd316ecf1c4c60f6fd5d26433142fff2b6794d7d328e9bc6179b29bf9c82a4",
-     "size": 1076
+     "size": 1076,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "97a6f9293331bdfe0adf6b7c42e243c97928c8b2e1d694ae21040cc71f6af0be",
+     "size": 503,
+     "from": {
+      "base": "registry",
+      "path": "skills/trello/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "openclaw/openclaw",
+    "commit": "c321c038b59c1e67f4729023b5e680d3c061c9ca",
     "path": "skills/trello"
    }
   },
@@ -3534,7 +4738,7 @@
    "src": "anthropics/skills#2c5958e",
    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -3544,7 +4748,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "9c7b15bc05bb1abe43526a014edf1987c5e79fe2a71cc8a3032288cec88e96ec",
+   "sha256": "8c9c22994d8ea4ff0c52cc11629ec5706b19a34007bfa8bc34e17a4ddf6f75bb",
    "tokens_idle": 82,
    "files": [
     {
@@ -3571,12 +4775,21 @@
      "p": "scripts/shadcn-components.tar.gz",
      "sha256": "1296f069e825de7933de7e8ac63672495cacce3f88f2dc45554dbcddbcbca60f",
      "size": 19967
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "ac73f2cc6ff3d5b261a35f13352d538b0deb988789b2063ef73ebe1fa4cd754b",
+     "size": 540,
+     "from": {
+      "base": "registry",
+      "path": "skills/web-artifacts-builder/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
+    "base": "upstream",
+    "repo": "anthropics/skills",
+    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
     "path": "skills/web-artifacts-builder"
    }
   },
@@ -3618,7 +4831,7 @@
    "src": "NousResearch/hermes-agent#c382971",
    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": null,
    "gates": {
     "license": "pass",
@@ -3628,7 +4841,7 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "9835a3a54bb04d79a957ef40ac16e32cbbac546deb68bf04104771d96708ef4c",
+   "sha256": "057b64657004c4c3b5e4d61736dc2353cabc413dedf5f4a512af132e098ac286",
    "tokens_idle": 25,
    "files": [
     {
@@ -3639,14 +4852,27 @@
     {
      "p": "UPSTREAM-LICENSE",
      "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
-     "size": 1070
+     "size": 1070,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "112e1dfd7b8958b2530c2fdc28318a98737a77242fd3aeab03728492fed4e4e8",
+     "size": 564,
+     "from": {
+      "base": "registry",
+      "path": "skills/weekly-review-planning/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "skills/weekly-review-planning"
+    "base": "upstream",
+    "repo": "NousResearch/hermes-agent",
+    "commit": "c382971c9fd649938937422ad937a3954a9f1128",
+    "path": "skills/productivity/weekly-review-planning"
    }
   },
   {
@@ -3655,23 +4881,307 @@
    "name": "xlsx",
    "source": "Claude",
    "category": "Office",
-   "desc": "",
-   "why": "Covered by our own office-docs (planned); nothing is copied or installed from upstream.",
-   "note": "replaced by our office-docs rewrite. Upstream moved these skills to Apache-2.0 on 2026-11-06 (anthropics/skills 2c5958e), so copying would now be allowed; kept as a rewrite until agentic-work decides",
-   "v": "0",
-   "status": "replace",
-   "replaced_by": "office-docs",
+   "desc": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding…",
+   "why": "Anthropic's Excel workbooks skill; Apache-2.0 since 2026-11-06 (anthropics/skills 2c5958e), so it is taken from upstream instead of rewritten.",
+   "v": "2c5958e",
+   "status": "ok",
    "yanked": null,
-   "lic": null,
+   "src": "anthropics/skills#2c5958e",
+   "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+   "lic": "Apache-2.0",
    "vendor": false,
    "installs": null,
    "gates": {
-    "license": "not run",
-    "scan": "not run",
-    "lint": "not run",
-    "mac": "not run",
+    "license": "pass",
+    "scan": "warn",
+    "lint": "pass",
+    "mac": "pass",
     "linux": "not run",
     "win": "not run"
+   },
+   "sha256": "022b0e101fca8b0d519ff6515440be46a28759189d6f0be9c01dca58edeae41c",
+   "tokens_idle": 244,
+   "files": [
+    {
+     "p": "LICENSE.txt",
+     "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+     "size": 11357
+    },
+    {
+     "p": "SKILL.md",
+     "sha256": "caa1e1c29cf974c8d874bf3d0a70838445e7342b570f856ddb3e4a21ef7c7e8b",
+     "size": 8584
+    },
+    {
+     "p": "scripts/office/helpers/__init__.py",
+     "sha256": "678e42456d9e10923c8b9a93691cdd993de3433448a184fa72a0c31f4ae086d5",
+     "size": 3358
+    },
+    {
+     "p": "scripts/office/helpers/pptx_chart.py",
+     "sha256": "47ac266f7d39d11ede6bb0d1f3a19d801394fd2964636f1b48beb701f1832964",
+     "size": 5862
+    },
+    {
+     "p": "scripts/office/helpers/pptx_slide.py",
+     "sha256": "7b9f69b4a5bd6a2d9eabf9e0e3e796d7a421373145f6a8cd11f60b7ba2d6a5d0",
+     "size": 1675
+    },
+    {
+     "p": "scripts/office/helpers/pptx_theme.py",
+     "sha256": "ebb54c56e9c13807f5f98f0cae22d47cdd0162da8525eaa664e3f2c8c8d6bb03",
+     "size": 3510
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd",
+     "sha256": "41b93bd8857cc68b1e43be2806a872d736a9bdd6566900062d8fdb57d7bbb354",
+     "size": 74984
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd",
+     "sha256": "3fd0586f2637b98bb9886f0e0b67d89e1cc987c2d158cc7deb5f5b9890ced412",
+     "size": 6956
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd",
+     "sha256": "29b254ee0d10414a8504b5a08149c7baec35a60d5ff607d6b3f492aa36815f40",
+     "size": 51302
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd",
+     "sha256": "5cb76dabd8b97d1e9308a1700b90c20139be4d50792d21a7f09789f5cccd6026",
+     "size": 624
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd",
+     "sha256": "5375417f0f5394b8dd1a7035b9679151f19a6b65df309dec10cfb4a420cb00e9",
+     "size": 152039
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd",
+     "sha256": "5d389d42befbebd91945d620242347caecd3367f9a3a7cf8d97949507ae1f53c",
+     "size": 1231
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd",
+     "sha256": "b4532b6d258832953fbb3ee4c711f4fe25d3faf46a10644b2505f17010d01e88",
+     "size": 8862
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd",
+     "sha256": "bdad416b096b61d37b71603b2c949484f9070c830bdaeba93bf35e15c8900614",
+     "size": 14795
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd",
+     "sha256": "d173c3e5d61e42e2e3a97226c632fd2ab7cc481fc4e492365b87024ab546daff",
+     "size": 83612
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd",
+     "sha256": "3c6709101c6aaa82888df5d8795c33f9e857196790eb320d9194e64be2b6bdd8",
+     "size": 1269
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd",
+     "sha256": "0b364451dc36a48dd6dae0f3b6ada05fd9b71e5208211f8ee5537d7e51a587e2",
+     "size": 7328
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd",
+     "sha256": "e2abacbb9a55ce1365f8961bc1b1395bbc811e512b111000d8c333f98458dece",
+     "size": 6382
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd",
+     "sha256": "0ef4bb354ff44b923564c4ddbdda5987919d220225129ec94614a618ceafc281",
+     "size": 1248
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd",
+     "sha256": "0d103b99a4a8652f8871552a69d42d2a3760ac6a5e3ef02d979c4273257ff6a4",
+     "size": 880
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd",
+     "sha256": "9c085407751b9061c1f996f6c39ce58451be22a8d334f09175f0e89e42736285",
+     "size": 2608
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd",
+     "sha256": "bc92e36ccd233722d4c5869bec71ddc7b12e2df56059942cce5a39065cc9c368",
+     "size": 3507
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd",
+     "sha256": "7b5b7413e2c895b1e148e82e292a117d53c7ec65b0696c992edca57b61b4a74b",
+     "size": 7507
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd",
+     "sha256": "3213ef1631606250f5010b42cad7ef716f7c59426367798e33c374c0ec391d3a",
+     "size": 23313
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd",
+     "sha256": "12264f3c03d738311cd9237d212f1c07479e70f0cbe1ae725d29b36539aef637",
+     "size": 1367
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd",
+     "sha256": "beffeed56945c22a77440122c8bdc426f3fcbe7f3b12ea0976c770d1f8d54578",
+     "size": 242277
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd",
+     "sha256": "f5ee623b08b6a66935e5aced2f5d8ad0fc71bf9e8e833cd490150c0fa94b8763",
+     "size": 26148
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd",
+     "sha256": "585bedc1313b40888dcc544cb74cd939a105ee674f3b1d3aa1cc6d34f70ff155",
+     "size": 25279
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd",
+     "sha256": "133c9f64a5c5d573b78d0a474122b22506d8eadb5e063f67cdbbb8fa2f161d0e",
+     "size": 535
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd",
+     "sha256": "6bdeb169c3717eb01108853bd9fc5a3750fb1fa5b82abbdd854d49855a40f519",
+     "size": 5712
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd",
+     "sha256": "475dcae1e7d1ea46232db6f8481040c15e53a52a3c256831d3df204212b0e831",
+     "size": 4010
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd",
+     "sha256": "c2dd9f61f892deae6acd8d20771ea79b12018af25f3bf8d06639c8542d218cfd",
+     "size": 171367
+    },
+    {
+     "p": "scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd",
+     "sha256": "a539aa2fb154fa50e0f5cc97e6ad7cbc66f8ec3e3746f61ec6a8b0d5d15ecdf2",
+     "size": 4646
+    },
+    {
+     "p": "scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd",
+     "sha256": "9e0b7209fc69ab11987900404540969976000c5ebe4d4f58c43dc3842886bf3a",
+     "size": 1963
+    },
+    {
+     "p": "scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd",
+     "sha256": "451958454e8588dfc7cd945981ada142ca06ff3307937f5700df059c2b307fa8",
+     "size": 2515
+    },
+    {
+     "p": "scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd",
+     "sha256": "6de111e11403f7cd49027400755bae0ea1cabef2815f09bd40a24f0017613b24",
+     "size": 2856
+    },
+    {
+     "p": "scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd",
+     "sha256": "f565adfef5a502044abc3a9153e157edc25af78304d335994afb958874b15e26",
+     "size": 1344
+    },
+    {
+     "p": "scripts/office/schemas/mce/mc.xsd",
+     "sha256": "3a37e461ecf5a8670fdec34029703401f8728ab9c96ec1739a6ae58d55212413",
+     "size": 3127
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-2010.xsd",
+     "sha256": "568b26ee156cb9549aa439ca2158965f77b7c1602b7e0316f40ac6cf586e35f2",
+     "size": 26549
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-2012.xsd",
+     "sha256": "0fa75578a000439a7988ba0c59fdc69f774bbd416cbacc14d07125b3f686cb74",
+     "size": 3745
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-2018.xsd",
+     "sha256": "be0ff793a22dd31384650c3a4da14c2fa8062751c2e97b0e5ee852bda13c60ad",
+     "size": 901
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-cex-2018.xsd",
+     "sha256": "fddc2b880cabb9005aebbc7e783e53c19fec1c03df7d0e2f2076a33a0fdfd081",
+     "size": 1778
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-cid-2016.xsd",
+     "sha256": "127ca209fa73d7cb708449cb355c871867948a96e4a74f7bf5811ef62d17991d",
+     "size": 1002
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd",
+     "sha256": "842e7163409c8d74f4d7088a8bc99500d80bc75332681a0980055b08f374a604",
+     "size": 600
+    },
+    {
+     "p": "scripts/office/schemas/microsoft/wml-symex-2015.xsd",
+     "sha256": "16f6f8072249f431370723c2cd8974672e0d9c897e00e97dd918079df934871b",
+     "size": 745
+    },
+    {
+     "p": "scripts/office/soffice.py",
+     "sha256": "df2c8d7249c132a4512d744482e4b5ed0ecbe885f0bcfb1295e7e6a7ced0432c",
+     "size": 5927
+    },
+    {
+     "p": "scripts/office/validate.py",
+     "sha256": "346a4c89d92fff55e610f11efda48c30228815b29bdb10b987e48f7af70acf1e",
+     "size": 6142
+    },
+    {
+     "p": "scripts/office/validators/__init__.py",
+     "sha256": "83e0f035c5abea238d3f2c3968afbd511ed022b527b7c9cb60a9434cc34ff987",
+     "size": 336
+    },
+    {
+     "p": "scripts/office/validators/base.py",
+     "sha256": "f818ea28c793ba42960fa4498265e2632a62c86f7b5d6aff6fa89dacc02d59ea",
+     "size": 33756
+    },
+    {
+     "p": "scripts/office/validators/docx.py",
+     "sha256": "93d3444c0ef3f043d21a2285c46d2cda478426b930dc33dcf3b11265935517b5",
+     "size": 17482
+    },
+    {
+     "p": "scripts/office/validators/pptx.py",
+     "sha256": "17eadad2b7a8374ccbe4cda45693bcd6a36f9d61a7d60f9c9ceef9464dec8299",
+     "size": 15966
+    },
+    {
+     "p": "scripts/office/validators/redlining.py",
+     "sha256": "ed50d0885eee4b9c387f546b059bcaed64086815880a5167336244f93e305123",
+     "size": 11231
+    },
+    {
+     "p": "scripts/recalc.py",
+     "sha256": "66f6e726d5a53cfabea0b6471d6669deb95e54e96cb7913b687e4388da1bb3d9",
+     "size": 10670
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "5b287c9fd3975845c4b8e76de2608f603c548e173bcb20696f2448f5fdd7a12b",
+     "size": 506,
+     "from": {
+      "base": "registry",
+      "path": "skills/xlsx/UPSTREAM.md"
+     }
+    }
+   ],
+   "fetch": {
+    "base": "upstream",
+    "repo": "anthropics/skills",
+    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+    "path": "skills/xlsx"
    }
   },
   {
@@ -3687,7 +5197,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 372601,
    "gates": {
     "license": "pass",
@@ -3697,20 +5207,42 @@
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "51dbc2cc894e27f8eb0f693f181d53ca7516c24f293701890f5c68d6c000e20c",
+   "sha256": "2538fca5d689857c3225936b6bdeda77cb75f2ee71e5070986e138634041d179",
    "tokens_idle": 52,
    "files": [
     {
      "p": "code-simplifier.md",
      "sha256": "2a51e8d210580d9f66ac2ed1226c41f9374565fc275da30d7bb95f65c2cc87bb",
-     "size": 3129
+     "size": 3129,
+     "from": {
+      "base": "upstream",
+      "path": "plugins/code-simplifier/agents/code-simplifier.md"
+     }
+    },
+    {
+     "p": "LICENSE",
+     "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+     "size": 11358,
+     "from": {
+      "base": "upstream",
+      "path": "plugins/code-simplifier/LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "0ce76a1d1c4df2e199e641b99e05e2d80c3ec37c157b45bcc6c90320cc8c691e",
+     "size": 589,
+     "from": {
+      "base": "registry",
+      "path": "agents/code-simplifier/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "agents/code-simplifier"
+    "base": "upstream",
+    "repo": "anthropics/claude-plugins-official",
+    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
+    "path": "plugins/code-simplifier/agents"
    }
   },
   {
@@ -3742,10 +5274,14 @@
    "name": "registry-scout",
    "source": "agentic-work",
    "owner": "agentic-work",
-   "desc": "Runs scout, bump and yank for this repo and reports what changed.",
-   "v": "0",
+   "category": "Authoring",
+   "desc": "Runs scout, bump and yank for agentic-work/agenticode-registry and reports what needs a decision.",
+   "why": "Ours. Keeps the registry fresh.",
+   "v": "1.0.0",
    "status": "ok",
    "yanked": null,
+   "src": "agentic-work/agenticode-skills#3aa55ca",
+   "commit": "3aa55cab59eb6b315d8d3b0c9f9922bf8bd1f3f6",
    "lic": "MIT",
    "vendor": false,
    "installs": null,
@@ -3757,21 +5293,42 @@
     "linux": "not run",
     "win": "not run"
    },
-   "where": "This repo: agents/registry-scout/registry-scout.md (installable).",
-   "sha256": "1fb0e8b56b4fd61f6a0f41e64d26503b1424584fb7f13f3f48ba2f852d2d73ad",
+   "sha256": "3cc85a76759c90fe8bcf8e22934dcb05cae87673e1f4e92cd9325df37595dfcd",
    "tokens_idle": 63,
    "files": [
     {
      "p": "registry-scout.md",
      "sha256": "32df6fa6df8c0ab35f7aa149a1243aea12d059940b36700b8ce27400ad1acdd3",
-     "size": 1055
+     "size": 1055,
+     "from": {
+      "base": "upstream",
+      "path": "agents/registry-scout.md"
+     }
+    },
+    {
+     "p": "LICENSE",
+     "sha256": "61c4c474b561edaf6185a0808f7562402a74a8f2429d15ea35e15a705dd98b95",
+     "size": 1069,
+     "from": {
+      "base": "upstream",
+      "path": "LICENSE"
+     }
+    },
+    {
+     "p": "UPSTREAM.md",
+     "sha256": "c90bed7387c11265a207f3569c1698be1fb1e76c9bd51702eca1c9fe9a62f777",
+     "size": 569,
+     "from": {
+      "base": "registry",
+      "path": "agents/registry-scout/UPSTREAM.md"
+     }
     }
    ],
    "fetch": {
-    "base": "registry",
-    "repo": "agentic-work/agenticode-registry",
-    "commit": "fef975ae4b78d696ce590ad4e6b0494de4ed8c98",
-    "path": "agents/registry-scout"
+    "base": "upstream",
+    "repo": "agentic-work/agenticode-skills",
+    "commit": "3aa55cab59eb6b315d8d3b0c9f9922bf8bd1f3f6",
+    "path": "agents"
    }
   },
   {
@@ -4543,7 +6100,7 @@
    "desc": "Read-only SQL against a Postgres database (archived reference server).",
    "v": "9be4674",
    "status": "blocked",
-   "reason": "scan: npm marks @modelcontextprotocol/server-postgres@0.6.2 deprecated: Archived and unmaintained | install: handshake failed: MCP error -32000: Connection closed",
+   "reason": "scan: npm marks @modelcontextprotocol/server-postgres@0.6.2 deprecated: Archived and unmaintained",
    "yanked": null,
    "src": "modelcontextprotocol/servers-archived#9be4674",
    "commit": "9be4674d1ddf8c469e6461a27a337eeb65f76c2e",
@@ -4554,7 +6111,7 @@
     "license": "pass",
     "scan": "fail",
     "lint": "skip",
-    "mac": "fail",
+    "mac": "needs-env",
     "linux": "not run",
     "win": "not run"
    },
@@ -5063,21 +6620,21 @@
    "src": "aws/agent-toolkit-for-aws#34b3ecc",
    "commit": "34b3eccfd8b619ea0cb4ba04a9be9dfefebd94e7",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 12887,
    "gates": {
-    "license": "pass",
+    "license": "warn",
     "scan": "warn",
     "lint": "fail",
-    "mac": "pass",
+    "mac": "skip",
     "linux": "not run",
     "win": "not run"
    },
-   "sha256": "24680c94a4446bb56f8b6cfa23e5bb82ae9629f152c5236911e88366caf8bd8a",
+   "sha256": "63ea4aa4c98c87bae8e148139f1fe88d1ef793bd78c17a042940da4bae8d2b05",
    "tokens_idle": 4765,
    "plugin": {
     "marketplace": "agenticode-registry",
-    "files": 403
+    "files": 401
    }
   },
   {
@@ -5094,7 +6651,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 32274,
    "gates": {
     "license": "pass",
@@ -5174,7 +6731,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 480179,
    "gates": {
     "license": "pass",
@@ -5206,7 +6763,7 @@
    "src": "coderabbitai/skills#3e8763d",
    "commit": "3e8763d24d543b48615b82535d02288de3ddae40",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": 34833,
    "gates": {
     "license": "pass",
@@ -5236,7 +6793,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 179027,
    "gates": {
     "license": "pass",
@@ -5267,7 +6824,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 48879,
    "gates": {
     "license": "pass",
@@ -5298,7 +6855,7 @@
    "src": "astronomer/agents#35b9610",
    "commit": "35b9610bb2710c37ca11326c4cbf7818b6725fec",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 20705,
    "gates": {
     "license": "pass",
@@ -5354,7 +6911,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 67065,
    "gates": {
     "license": "pass",
@@ -5384,7 +6941,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 270064,
    "gates": {
     "license": "pass",
@@ -5415,7 +6972,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 44110,
    "gates": {
     "license": "pass",
@@ -5445,7 +7002,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 64157,
    "gates": {
     "license": "pass",
@@ -5477,13 +7034,13 @@
    "src": "huggingface/skills#c3ff942",
    "commit": "c3ff942be3e07116b475253f0a8fc4f54682c1a8",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 36876,
    "gates": {
     "license": "pass",
     "scan": "warn",
     "lint": "fail",
-    "mac": "pass",
+    "mac": "skip",
     "linux": "not run",
     "win": "not run"
    },
@@ -5533,7 +7090,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 36238,
    "gates": {
     "license": "pass",
@@ -5564,7 +7121,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 26049,
    "gates": {
     "license": "pass",
@@ -5595,7 +7152,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 43781,
    "gates": {
     "license": "pass",
@@ -5626,7 +7183,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 16386,
    "gates": {
     "license": "pass",
@@ -5657,7 +7214,7 @@
    "src": "mattpocock/skills#49dd158",
    "commit": "49dd158d1076134a641b33efb035946536778336",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": 74123,
    "gates": {
     "license": "pass",
@@ -5689,7 +7246,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 43174,
    "gates": {
     "license": "pass",
@@ -5744,7 +7301,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 35676,
    "gates": {
     "license": "pass",
@@ -5775,7 +7332,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 71543,
    "gates": {
     "license": "pass",
@@ -5805,7 +7362,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 124273,
    "gates": {
     "license": "pass",
@@ -5836,7 +7393,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 120763,
    "gates": {
     "license": "pass",
@@ -5867,7 +7424,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 199526,
    "gates": {
     "license": "pass",
@@ -5947,7 +7504,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 39257,
    "gates": {
     "license": "pass",
@@ -5978,7 +7535,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 272066,
    "gates": {
     "license": "pass",
@@ -6043,7 +7600,7 @@
    "src": "obra/superpowers#bb92a77",
    "commit": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
    "lic": "MIT",
-   "vendor": true,
+   "vendor": false,
    "installs": 1141697,
    "gates": {
     "license": "pass",
@@ -6074,7 +7631,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 24965,
    "gates": {
     "license": "pass",
@@ -6130,7 +7687,7 @@
    "src": "anthropics/claude-plugins-official#dceb15d",
    "commit": "dceb15d50832e6adf380bedc26dde03d251324b9",
    "lic": "Apache-2.0",
-   "vendor": true,
+   "vendor": false,
    "installs": 232280,
    "gates": {
     "license": "pass",
